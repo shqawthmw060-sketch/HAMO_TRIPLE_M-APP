@@ -1,227 +1,231 @@
-<!-- Live Now with Real Player -->
-<section class="section">
-  <h3>🔴 Live Now</h3>
-
-  <div class="carousel">
-
-    <!-- قناة 1 -->
-    <div class="live-card">
-      <video controls style="width:100%;border-radius:10px;">
-        <source src="https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8" type="application/x-mpegURL">
-        متصفحك لا يدعم البث المباشر
-      </video>
-      <div style="margin-top:8px;">
-        <strong>Channel One</strong><br/>
-        <small>News • LIVE</small>
-      </div>
-    </div>
-
-    <!-- قناة 2 -->
-    <div class="live-card">
-      <video controls style="width:100%;border-radius:10px;">
-        <source src="https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8" type="application/x-mpegURL">
-        متصفحك لا يدعم البث المباشر
-      </video>
-      <div style="margin-top:8px;">
-        <strong>Music TV</strong><br/>
-        <small>Music • LIVE</small>
-      </div>
-    </div
-    <!DOCTYPE html>
-<html lang="ar">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HAMO & TRIPLE M</title>
-<style>
-  :root {
-    --bg: #111;
-    --card: #222;
-    --text: #fff;
-    --active: #00f;
-  }
-  body {
-    margin:0; font-family:sans-serif; background:var(--bg); color:var(--text);
-  }
-  header {
-    padding:16px; font-size:20px; font-weight:700; text-align:center; background:#000;
-  }
-  section {
-    padding:16px;
-  }
-  h3 { margin-bottom:12px; }
-  .carousel { display:flex; overflow-x:auto; gap:12px; scroll-snap-type:x mandatory; }
-  .carousel::-webkit-scrollbar { display:none; }
-  .live-card { flex:0 0 80%; scroll-snap-align:start; background:var(--card); border-radius:12px; padding:8px; }
-  video { width:100%; border-radius:10px; }
-  nav {
-    position:fixed; bottom:0; left:0; width:100%; display:flex; justify-content:space-around;
-    background:#000; padding:6px 0; border-top:1px solid #333;
-  }
-  nav a { text-align:center; color:var(--text); text-decoration:none; font-size:12px; }
-  nav a.active { color:var(--active); font-weight:700; }
-  .section-hidden { display:none; }
-</style>
-</head>
-<body>
-
-<header>HAMO & TRIPLE M</header>
-
-<!-- Home Section -->
-<section id="home">
-  <h3>🏠 Home</h3>
-  <div>مرحبًا بك في تطبيق HAMO & TRIPLE M!</div>
-</section>
-
-<!-- Live Now Section -->
-<section id="live" class="section-hidden">
-  <h3>🔴 Live Now</h3>
-  <div class="carousel">
-    <!-- قناة 1 -->
-    <div class="live-card">
-      <video controls>
-        <source src="https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8" type="application/x-mpegURL">
-        متصفحك لا يدعم البث المباشر
-      </video>
-      <div style="margin-top:8px;"><strong>القناة الأولى</strong><br/><small>أخبار • LIVE</small></div>
-    </div>
-    <!-- قناة 2 -->
-    <div class="live-card">
-      <video controls>
-        <source src="https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8" type="application/x-mpegURL">
-        متصفحك لا يدعم البث المباشر
-      </video>
-      <div style="margin-top:8px;"><strong>كلاسيك موسيقى</strong><br/><small>موسيقى • LIVE</small></div>
-    </div>
-  </div>
-</section>
-
-<!-- Kids Section -->
-<section id="kids" class="section-hidden">
-  <h3>👶 Kids</h3>
-  <div class="carousel">
-    <div class="live-card">
-      <video controls>
-        <source src="https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8" type="application/x-mpegURL">
-      </video>
-      <div style="margin-top:8px;"><strong>كرتون 1</strong></div>
-    </div>
-    <div class="live-card">
-      <video controls>
-        <source src="https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8" type="application/x-mpegURL">
-      </video>
-      <div style="margin-top:8px;"><strong>كرتون 2</strong></div>
-    </div>
-  </div>
-</section>
-
-<!-- Featured Section -->
-<section id="featured" class="section-hidden">
-  <h3>⭐ Featured</h3>
-  <div class="carousel">
-    <div class="live-card">
-      <video controls>
-        <source src="https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8" type="application/x-mpegURL">
-      </video>
-      <div style="margin-top:8px;"><strong>وثائقي 1</strong></div>
-    </div>
-    <div class="live-card">
-      <video controls>
-        <source src="https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8" type="application/x-mpegURL">
-      </video>
-      <div style="margin-top:8px;"><strong>وثائقي 2</strong></div>
-    </div>
-  </div>
-</section>
-
-<!-- Settings Section -->
-<section id="settings" class="section-hidden">
-  <h3>⚙️ Settings</h3>
-  <div>إعدادات التطبيق...</div>
-</section>
-
-<!-- Navigation -->
-<nav>
-  <a href="#home" class="active" onclick="showSection('home', this)">🏠<br/>Home</a>
-  <a href="#live" onclick="showSection('live', this)">📺<br/>Live</a>
-  <a href="#kids" onclick="showSection('kids', this)">👶<br/>Kids</a>
-  <a href="#featured" onclick="showSection('featured', this)">⭐<br/>Featured</a>
-  <a href="#settings" onclick="showSection('settings', this)">⚙️<br/>Settings</a>
-</nav>
-
-<script>
-function showSection(id, elem){
-  // اخفاء جميع الأقسام
-  const sections = ['home','live','kids','featured','settings'];
-  sections.forEach(sec => document.getElementById(sec).classList.add('section-hidden'));
-  // إظهار القسم الحالي
-  document.getElementById(id).classList.remove('section-hidden');
-  // تحديث Navigation
-  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-  elem.classList.add('active');
-}
-</script>
-
-</body>
-
-</html>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>HAMO & TRIPLE M IPTV</title>
+  <title>HAMO & TRIPLE M IPTV - أقوى IPTV في العالم العربي</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-      color: white;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      text-shadow: 0 0 10px #fff;
-    }
-    p {
-      font-size: 1.4rem;
-      margin: 2rem 1rem;
-    }
-    a {
-      display: block;
-      width: 80%;
-      max-width: 320px;
-      margin: 1.2rem auto;
-      padding: 1.2rem;
-      background: #e91e63;
-      color: white;
-      text-decoration: none;
-      font-size: 1.5rem;
-      border-radius: 50px;
-      box-shadow: 0 8px 20px rgba(233, 30, 99, 0.4);
-      transition: all 0.3s;
-    }
-    a:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(233, 30, 99, 0.6);
-      background: #c2185b;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+    body { font-family: 'Cairo', sans-serif; }
+    .neon-text { text-shadow: 0 0 20px #c026d3, 0 0 40px #22d3ee; }
+    .card-hover { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    .card-hover:hover { transform: translateY(-15px) scale(1.05); box-shadow: 0 25px 50px -12px rgb(192 38 211 / 0.5); }
+    .live-dot { animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
   </style>
 </head>
-<body>
-  <h1>HAMO & TRIPLE M IPTV</h1>
-  <p>Welcome to our official page</p>
+<body class="bg-[#0a001f] text-white overflow-x-hidden">
 
-  <a href="https://t.me/hamo_triplem" target="_blank">Invite Friends</a>
-  <a href="https://t.me/hamo_triplem_subscribe" target="_blank">Subscribe Now</a>
-  <a href="https://yourlink.com/HAMO_TRIPLE_M.apk" target="_blank">Download App</a>
-  <!-- غيّر الرابط اللي فوق لرابط الـ APK الحقيقي بتاعك -->
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-lg z-50 border-b border-purple-500/30">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <i class="fa-solid fa-tv text-4xl text-purple-500"></i>
+        <h1 class="text-3xl font-black tracking-wider neon-text">HAMO & TRIPLE M</h1>
+      </div>
+      <div class="hidden md:flex gap-8 text-lg">
+        <a href="#plans" class="hover:text-purple-400 transition">خطط الاشتراك</a>
+        <a href="#content" class="hover:text-purple-400 transition">المحتوى</a>
+        <a href="#why" class="hover:text-purple-400 transition">لماذا نحن</a>
+      </div>
+      <a href="https://t.me/hamo_triplem_subscribe" target="_blank" 
+         class="bg-gradient-to-r from-purple-600 to-pink-600 px-8 py-3 rounded-2xl font-bold hover:scale-110 transition">
+        اشترك الآن
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero + Ramadan -->
+  <section class="min-h-screen flex items-center pt-24 bg-gradient-to-br from-purple-950 via-[#0a001f] to-black relative overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(at_center,#c026d380_0%,transparent_70%)]"></div>
+    <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+      <div class="inline-flex items-center gap-3 bg-red-600/20 text-red-400 px-6 py-2 rounded-full mb-6 text-xl font-bold">
+        <span class="live-dot w-4 h-4 bg-red-500 rounded-full"></span>
+        رمضان كريم 2026 - محتوى حصري خاص بالشهر الكريم!
+      </div>
+      
+      <h1 class="text-6xl md:text-7xl font-black leading-none neon-text mb-6">
+        HAMO &amp; TRIPLE M<br>IPTV
+      </h1>
+      <p class="text-3xl md:text-4xl text-purple-200 mb-10">أقوى خدمة IPTV في الوطن العربي • 4K • بدون تقطيع • تحديث يومي</p>
+      
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <a href="#plans" class="bg-gradient-to-r from-purple-600 to-pink-600 text-2xl font-bold px-12 py-6 rounded-3xl hover:scale-110 transition flex items-center justify-center gap-4">
+          <i class="fa-solid fa-crown"></i> اختر اشتراكك
+        </a>
+        <a href="https://yourlink.com/HAMO_TRIPLE_M.apk" target="_blank" 
+           class="border-2 border-white/70 hover:border-white text-2xl font-bold px-12 py-6 rounded-3xl transition flex items-center justify-center gap-4">
+          <i class="fa-solid fa-download"></i> تحميل التطبيق
+        </a>
+      </div>
+      
+      <div class="mt-16 flex justify-center gap-12 text-sm md:text-lg">
+        <div><i class="fa-solid fa-bolt text-yellow-400"></i> ٥٠٠٠+ قناة</div>
+        <div><i class="fa-solid fa-users text-cyan-400"></i> ١٢٠ ألف+ مشترك</div>
+        <div><i class="fa-solid fa-shield-halved text-green-400"></i> ضمان ٣٠ يوم</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Categories -->
+  <section id="content" class="py-24 bg-black/50">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-5xl font-bold text-center mb-16 neon-text">محتوى شامل ومتنوع</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="bg-zinc-900/70 p-8 rounded-3xl text-center card-hover border border-purple-500/30">
+          <i class="fa-solid fa-child text-6xl text-pink-400 mb-4"></i>
+          <h3 class="text-2xl font-bold">أفلام كرتون</h3>
+        </div>
+        <div class="bg-zinc-900/70 p-8 rounded-3xl text-center card-hover border border-purple-500/30">
+          <i class="fa-solid fa-sparkles text-6xl text-cyan-400 mb-4"></i>
+          <h3 class="text-2xl font-bold">أنمي</h3>
+        </div>
+        <div class="bg-zinc-900/70 p-8 rounded-3xl text-center card-hover border border-purple-500/30">
+          <i class="fa-solid fa-film text-6xl text-violet-400 mb-4"></i>
+          <h3 class="text-2xl font-bold">مسلسلات</h3>
+        </div>
+        <div class="bg-zinc-900/70 p-8 rounded-3xl text-center card-hover border border-purple-500/30">
+          <i class="fa-solid fa-moon text-6xl text-amber-400 mb-4"></i>
+          <h3 class="text-2xl font-bold">برامج رمضان</h3>
+        </div>
+        <div class="bg-zinc-900/70 p-8 rounded-3xl text-center card-hover border border-purple-500/30">
+          <i class="fa-solid fa-film text-6xl text-rose-400 mb-4"></i>
+          <h3 class="text-2xl font-bold">أفلام رمضان</h3>
+        </div>
+        <div class="bg-zinc-900/70 p-8 rounded-3xl text-center card-hover border border-purple-500/30">
+          <i class="fa-solid fa-trophy text-6xl text-emerald-400 mb-4"></i>
+          <h3 class="text-2xl font-bold">مباريات حصرية</h3>
+        </div>
+        <div class="bg-zinc-900/70 p-8 rounded-3xl text-center card-hover border border-purple-500/30">
+          <i class="fa-solid fa-music text-6xl text-fuchsia-400 mb-4"></i>
+          <h3 class="text-2xl font-bold">قنوات موسيقى</h3>
+        </div>
+        <div class="bg-zinc-900/70 p-8 rounded-3xl text-center card-hover border border-purple-500/30">
+          <i class="fa-solid fa-newspaper text-6xl text-sky-400 mb-4"></i>
+          <h3 class="text-2xl font-bold">أخبار حصرية</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Plans -->
+  <section id="plans" class="py-24 bg-gradient-to-b from-black to-purple-950">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-5xl font-bold text-center mb-6 neon-text">اختر خطتك المناسبة</h2>
+      <p class="text-center text-xl text-purple-200 mb-16">كل الخطط تدعم ٤K + جميع الأجهزة + دعم فوري</p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
+        <!-- يومي -->
+        <div class="bg-zinc-900 rounded-3xl p-8 card-hover border border-white/10">
+          <h3 class="text-2xl font-bold">يومي</h3>
+          <div class="mt-6 mb-8"><span class="text-6xl font-black">٣٠</span><span class="text-2xl"> ج.م</span></div>
+          <ul class="space-y-4 text-sm mb-10">
+            <li class="flex gap-3"><i class="fa-solid fa-check text-green-400"></i> يوم كامل</li>
+            <li class="flex gap-3"><i class="fa-solid fa-check text-green-400"></i> جميع القنوات</li>
+          </ul>
+          <a href="https://t.me/hamo_triplem_subscribe" target="_blank" class="block w-full bg-white/10 hover:bg-white/20 py-5 rounded-2xl font-bold text-center transition">اشترك الآن</a>
+        </div>
+
+        <!-- أسبوعي -->
+        <div class="bg-zinc-900 rounded-3xl p-8 card-hover border border-white/10">
+          <h3 class="text-2xl font-bold">أسبوعي</h3>
+          <div class="mt-6 mb-8"><span class="text-6xl font-black">١٢٠</span><span class="text-2xl"> ج.م</span></div>
+          <ul class="space-y-4 text-sm mb-10">
+            <li class="flex gap-3"><i class="fa-solid fa-check text-green-400"></i> ٧ أيام</li>
+            <li class="flex gap-3"><i class="fa-solid fa-check text-green-400"></i> توفير ٤٣٪</li>
+          </ul>
+          <a href="https://t.me/hamo_triplem_subscribe" target="_blank" class="block w-full bg-white/10 hover:bg-white/20 py-5 rounded-2xl font-bold text-center transition">اشترك الآن</a>
+        </div>
+
+        <!-- شهري - Popular -->
+        <div class="bg-gradient-to-b from-purple-600 to-pink-600 rounded-3xl p-8 card-hover border-4 border-yellow-400 relative -mt-6 scale-110 z-10 shadow-2xl">
+          <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-yellow-400 text-black text-sm font-bold px-8 py-1 rounded-full">الأكثر شعبية</div>
+          <h3 class="text-2xl font-bold">شهري</h3>
+          <div class="mt-6 mb-8"><span class="text-6xl font-black">٢٩٩</span><span class="text-2xl"> ج.م</span></div>
+          <ul class="space-y-4 text-sm mb-10">
+            <li class="flex gap-3"><i class="fa-solid fa-check"></i> ٣٠ يوم</li>
+            <li class="flex gap-3"><i class="fa-solid fa-check"></i> توفير ٦٧٪</li>
+            <li class="flex gap-3"><i class="fa-solid fa-check"></i> أولوية دعم</li>
+          </ul>
+          <a href="https://t.me/hamo_triplem_subscribe" target="_blank" class="block w-full bg-white text-black hover:bg-yellow-300 py-5 rounded-2xl font-bold text-center transition">اشترك الآن</a>
+        </div>
+
+        <!-- سنوي -->
+        <div class="bg-zinc-900 rounded-3xl p-8 card-hover border border-white/10">
+          <h3 class="text-2xl font-bold">سنوي</h3>
+          <div class="mt-6 mb-8"><span class="text-6xl font-black">١٩٩٩</span><span class="text-2xl"> ج.م</span></div>
+          <ul class="space-y-4 text-sm mb-10">
+            <li class="flex gap-3"><i class="fa-solid fa-check text-green-400"></i> ١٢ شهر</li>
+            <li class="flex gap-3"><i class="fa-solid fa-check text-green-400"></i> توفير ٤٤٪</li>
+          </ul>
+          <a href="https://t.me/hamo_triplem_subscribe" target="_blank" class="block w-full bg-white/10 hover:bg-white/20 py-5 rounded-2xl font-bold text-center transition">اشترك الآن</a>
+        </div>
+
+        <!-- سنتين -->
+        <div class="bg-zinc-900 rounded-3xl p-8 card-hover border border-white/10">
+          <h3 class="text-2xl font-bold">سنتين</h3>
+          <div class="mt-6 mb-8"><span class="text-6xl font-black">٣٤٩٩</span><span class="text-2xl"> ج.م</span></div>
+          <ul class="space-y-4 text-sm mb-10">
+            <li class="flex gap-3"><i class="fa-solid fa-check text-green-400"></i> ٢٤ شهر</li>
+            <li class="flex gap-3"><i class="fa-solid fa-check text-green-400"></i> أفضل توفير ٥٥٪</li>
+            <li class="flex gap-3"><i class="fa-solid fa-check text-green-400"></i> هدية VIP</li>
+          </ul>
+          <a href="https://t.me/hamo_triplem_subscribe" target="_blank" class="block w-full bg-white/10 hover:bg-white/20 py-5 rounded-2xl font-bold text-center transition">اشترك الآن</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Us -->
+  <section id="why" class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-5xl font-bold text-center mb-16 neon-text">لماذا HAMO &amp; TRIPLE M؟</h2>
+      <div class="grid md:grid-cols-3 gap-12">
+        <div class="text-center">
+          <i class="fa-solid fa-bolt text-7xl text-yellow-400 mb-6"></i>
+          <h3 class="text-3xl font-bold mb-3">سرعة فائقة</h3>
+          <p class="text-lg text-zinc-400">سيرفرات أوروبية + مصرية • بدون تقطيع أبدًا</p>
+        </div>
+        <div class="text-center">
+          <i class="fa-solid fa-headset text-7xl text-cyan-400 mb-6"></i>
+          <h3 class="text-3xl font-bold mb-3">دعم 24/7</h3>
+          <p class="text-lg text-zinc-400">رد فوري على تليجرام • حل أي مشكلة في دقايق</p>
+        </div>
+        <div class="text-center">
+          <i class="fa-solid fa-star text-7xl text-pink-400 mb-6"></i>
+          <h3 class="text-3xl font-bold mb-3">محتوى حصري</h3>
+          <p class="text-lg text-zinc-400">مباريات + أنمي + رمضان حصري • تحديث كل يوم</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-20 bg-gradient-to-r from-purple-900 to-pink-900 text-center">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-5xl font-bold mb-6">جاهز تبدأ؟</h2>
+      <p class="text-2xl mb-10">حمّل التطبيق أو اشترك دلوقتي واستمتع بأفضل تجربة IPTV في حياتك</p>
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <a href="https://yourlink.com/HAMO_TRIPLE_M.apk" target="_blank" class="bg-white text-black text-2xl font-bold px-16 py-7 rounded-3xl hover:scale-110 transition flex items-center gap-4 justify-center">
+          <i class="fa-solid fa-download"></i> تحميل التطبيق
+        </a>
+        <a href="https://t.me/hamo_triplem" target="_blank" class="border-2 border-white text-2xl font-bold px-16 py-7 rounded-3xl hover:bg-white/10 transition">
+          دعوة أصحابك
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black py-12 border-t border-purple-500/30">
+    <div class="max-w-7xl mx-auto px-6 text-center text-sm text-zinc-400">
+      © 2026 HAMO &amp; TRIPLE M IPTV • كل الحقوق محفوظة<br>
+      <span class="block mt-3">صفحة رسمية 100٪ • لا تثق بأي صفحة تانية</span>
+    </div>
+  </footer>
+
 </body>
-</html>
+  </html>
+  
