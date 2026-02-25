@@ -5,112 +5,200 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>الدعم والاشتراكات - HAMO & TRIPLE M</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
     body { font-family: 'Cairo', sans-serif; }
-    .metallic { background: linear-gradient(135deg, #cd7f32, #b87333, #990099); animation: flow 15s linear infinite; background-size: 200% 200%; }
-    @keyframes flow { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
-    .card { transition: all 0.4s; }
-    .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(205,127,50,0.4); }
+    
+    .metallic { 
+      background: linear-gradient(135deg, #cd7f32, #b87333, #990099, #7f00ff);
+      background-size: 300% 300%;
+      animation: metallicFlow 18s ease infinite;
+    }
+    @keyframes metallicFlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+    .card {
+      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    .card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .btn-pro {
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-pro::after {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 40%; height: 200%;
+      background: rgba(255,255,255,0.4);
+      transform: skewX(-25deg);
+      transition: left 0.7s;
+    }
+    .btn-pro:hover::after { left: 150%; }
+
+    .input-glow:focus {
+      box-shadow: 0 0 25px #cd7f32;
+      border-color: #cd7f32;
+    }
+
+    .toast {
+      animation: toastPop 0.4s ease forwards;
+    }
+    @keyframes toastPop {
+      from { transform: translateY(-100px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
   </style>
 </head>
-<body class="bg-[#1a0f24] text-white min-h-screen">
+<body class="bg-[#1a0f24] text-white min-h-screen metallic overflow-x-hidden">
+
+  <!-- Toast -->
+  <div id="toast" class="hidden fixed top-6 left-1/2 -translate-x-1/2 bg-black/90 text-[#e1c9b3] px-8 py-4 rounded-2xl border border-[#cd7f32] flex items-center gap-3 shadow-2xl toast">
+    <i class="fa-brands fa-whatsapp text-2xl text-green-500"></i>
+    <span id="toastText"></span>
+  </div>
 
   <!-- Header -->
   <nav class="bg-black/80 backdrop-blur-lg sticky top-0 z-50 border-b border-[#cd7f32]/30">
-    <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+    <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
       <div class="flex items-center gap-3">
         <i class="fa-solid fa-tv text-4xl text-[#cd7f32]"></i>
-        <h1 class="text-3xl font-black metallic bg-clip-text text-transparent">HAMO & TRIPLE M</h1>
+        <h1 class="text-3xl font-black">HAMO &amp; TRIPLE M</h1>
       </div>
-      <a href="index.html" class="text-[#cd7f32] hover:text-white flex items-center gap-2">
+      <a href="index.html" class="flex items-center gap-2 text-[#cd7f32] hover:text-white">
         <i class="fa-solid fa-home"></i> الرئيسية
       </a>
     </div>
   </nav>
 
-  <div class="max-w-5xl mx-auto px-6 py-10">
-    <h1 class="text-5xl font-black text-center mb-3 metallic bg-clip-text text-transparent">مركز الدعم والاشتراكات</h1>
-    <p class="text-center text-xl text-[#e1c9b3] mb-12">تواصل معانا مباشرة عبر واتساب لحل أي مشكلة أو تجديد اشتراكك</p>
+  <div class="max-w-5xl mx-auto px-6 py-12">
+    <h1 class="text-6xl font-black text-center mb-3">مركز الدعم التفاعلي</h1>
+    <p class="text-center text-2xl text-[#e1c9b3] mb-16">كل ضغطة بتفتح واتساب مباشرة على 01508536392</p>
 
-    <!-- حالة الاشتراك + تواصل -->
-    <div class="card bg-gradient-to-br from-[#2c1a40] to-[#1a0f24] p-8 rounded-3xl mb-10 border border-[#cd7f32]/50">
-      <h2 class="text-3xl font-bold mb-6 flex items-center gap-3"><i class="fa-solid fa-crown text-[#cd7f32]"></i> حالة اشتراكك</h2>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div>
-          <label class="block text-sm mb-2">يوزرنيم أو MAC ID</label>
-          <input id="checkId" type="text" placeholder="مثال: user123 أو 00:1A:2B:3C:4D:5E" 
-                 class="w-full bg-black/60 border border-[#cd7f32]/50 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#cd7f32]">
-        </div>
-        <div class="flex items-end">
-          <button onclick="openSupportWA('عايز أتأكد من حالة اشتراكي')" 
-                  class="w-full bg-[#cd7f32] hover:bg-[#b87333] text-black font-bold py-4 rounded-2xl transition flex items-center justify-center gap-3">
-            <i class="fa-brands fa-whatsapp text-2xl"></i> تواصل مع الدعم
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- تجديد الاشتراك -->
-    <div class="card bg-gradient-to-br from-[#2c1a40] to-[#1a0f24] p-8 rounded-3xl mb-10 border border-[#cd7f32]/50">
-      <h2 class="text-3xl font-bold mb-8 flex items-center gap-3"><i class="fa-solid fa-calendar text-[#cd7f32]"></i> تجديد الاشتراك</h2>
-      
+    <!-- Check Status -->
+    <div class="card bg-gradient-to-br from-[#2c1a40] to-[#1a0f24] p-10 rounded-3xl border border-[#cd7f32]/50 mb-12" id="statusCard">
+      <h2 class="text-3xl font-bold mb-8 flex items-center gap-3"><i class="fa-solid fa-crown text-[#cd7f32]"></i> تحقق من اشتراكك</h2>
       <div class="grid md:grid-cols-2 gap-8">
-        <div>
-          <label class="block text-sm mb-2">اختر المدة</label>
-          <select id="plan" class="w-full bg-black/60 border border-[#cd7f32]/50 rounded-2xl px-6 py-4">
-            <option value="يومي">يومي</option>
-            <option value="أسبوعي">أسبوعي</option>
-            <option value="شهري" selected>شهري (الأكثر طلبًا)</option>
-            <option value="سنوي">سنوي</option>
-            <option value="سنتين">سنتين (أفضل عرض)</option>
-          </select>
-        </div>
-        <div>
-          <label class="block text-sm mb-2">يوزرنيم أو MAC ID</label>
-          <input id="renewId" type="text" placeholder="اكتب يوزرنيم أو MAC" 
-                 class="w-full bg-black/60 border border-[#cd7f32]/50 rounded-2xl px-6 py-4">
-        </div>
-      </div>
-
-      <button onclick="openSupportWA('عايز أجدد اشتراكي')" 
-              class="mt-10 w-full bg-gradient-to-r from-[#cd7f32] to-[#990099] hover:from-[#b87333] hover:to-[#800080] text-white font-bold text-2xl py-7 rounded-3xl flex items-center justify-center gap-4 shadow-xl">
-        <i class="fa-brands fa-whatsapp text-3xl"></i>
-        تواصل عبر واتساب للتجديد
-      </button>
-      <p class="text-center text-sm text-[#e1c9b3] mt-4">اكتب تفاصيل اشتراكك في الشات وهنرد عليك فورًا</p>
-    </div>
-
-    <!-- حل المشاكل -->
-    <div class="card bg-gradient-to-br from-[#2c1a40] to-[#1a0f24] p-8 rounded-3xl border border-[#cd7f32]/50">
-      <h2 class="text-3xl font-bold mb-8 flex items-center gap-3"><i class="fa-solid fa-headset text-[#cd7f32]"></i> حل مشكلة فوري</h2>
-      <textarea id="problem" rows="4" placeholder="وصف المشكلة بالتفصيل (تقطيع، ما بيفتحش، جهاز...)" 
-                class="w-full bg-black/60 border border-[#cd7f32]/50 rounded-3xl px-6 py-5 resize-none"></textarea>
-      
-      <div class="grid grid-cols-2 gap-6 mt-8">
-        <input id="problemId" type="text" placeholder="يوزرنيم أو MAC" 
-               class="bg-black/60 border border-[#cd7f32]/50 rounded-3xl px-6 py-5">
-        <button onclick="openSupportWA('عندي مشكلة في التطبيق')" 
-                class="bg-gradient-to-r from-[#cd7f32] to-[#990099] hover:from-[#b87333] hover:to-[#800080] font-bold py-5 rounded-3xl flex items-center justify-center gap-3">
-          <i class="fa-brands fa-whatsapp text-2xl"></i>
-          تواصل مع الدعم
+        <input id="checkId" type="text" placeholder="يوزرنيم أو MAC ID" 
+               class="input-glow bg-black/70 border border-[#cd7f32]/50 rounded-3xl px-7 py-6 text-lg focus:outline-none">
+        <button onclick="checkStatus()" 
+                class="btn-pro bg-[#cd7f32] hover:bg-[#b87333] text-black font-bold text-xl py-6 rounded-3xl flex items-center justify-center gap-3">
+          <span id="checkText">تحقق الآن</span>
+          <i id="checkIcon" class="fa-solid fa-arrow-right"></i>
         </button>
       </div>
+      <div id="statusResult" class="hidden mt-10 p-8 bg-black/60 rounded-3xl border border-green-400 text-center"></div>
+    </div>
+
+    <!-- Renew -->
+    <div class="card bg-gradient-to-br from-[#2c1a40] to-[#1a0f24] p-10 rounded-3xl border border-[#cd7f32]/50 mb-12" id="renewCard">
+      <h2 class="text-3xl font-bold mb-8 flex items-center gap-3"><i class="fa-solid fa-calendar text-[#cd7f32]"></i> تجديد الاشتراك</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <select id="plan" class="input-glow bg-black/70 border border-[#cd7f32]/50 rounded-3xl px-7 py-6 text-lg">
+          <option value="يومي">يومي</option>
+          <option value="أسبوعي">أسبوعي</option>
+          <option value="شهري" selected>شهري</option>
+          <option value="سنوي">سنوي</option>
+          <option value="سنتين">سنتين</option>
+        </select>
+        <input id="renewId" type="text" placeholder="يوزرنيم أو MAC ID" 
+               class="input-glow bg-black/70 border border-[#cd7f32]/50 rounded-3xl px-7 py-6 text-lg">
+      </div>
+      <button onclick="openWA('تجديد اشتراك')" 
+              class="mt-10 w-full btn-pro bg-gradient-to-r from-[#cd7f32] to-[#990099] text-white font-bold text-2xl py-7 rounded-3xl flex items-center justify-center gap-4">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+        افتح واتساب للتجديد
+      </button>
+    </div>
+
+    <!-- Report Problem -->
+    <div class="card bg-gradient-to-br from-[#2c1a40] to-[#1a0f24] p-10 rounded-3xl border border-[#cd7f32]/50" id="problemCard">
+      <h2 class="text-3xl font-bold mb-8 flex items-center gap-3"><i class="fa-solid fa-headset text-[#cd7f32]"></i> عندك مشكلة؟</h2>
+      <textarea id="problem" rows="4" placeholder="اكتب المشكلة بالتفصيل..." 
+                class="input-glow w-full bg-black/70 border border-[#cd7f32]/50 rounded-3xl px-7 py-6 text-lg resize-none"></textarea>
+      <button onclick="openWA('حل مشكلة')" 
+              class="mt-8 w-full btn-pro bg-gradient-to-r from-[#cd7f32] to-[#990099] text-white font-bold text-2xl py-7 rounded-3xl flex items-center justify-center gap-4">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+        افتح واتساب للدعم
+      </button>
     </div>
   </div>
 
-  <!-- Floating WhatsApp Button -->
+  <!-- Floating WhatsApp -->
   <a href="https://wa.me/201508536392" target="_blank" 
-     class="fixed bottom-8 right-8 bg-green-600 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition text-4xl z-50">
+     onclick="showToast('جاري فتح واتساب...')"
+     class="fixed bottom-8 right-8 bg-green-600 hover:bg-green-500 w-20 h-20 rounded-full flex items-center justify-center shadow-2xl text-5xl transition-all duration-300 hover:scale-110 pulse">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
   <script>
-    function openSupportWA(defaultMsg = '') {
-      const waLink = `https://wa.me/201508536392`;
-      window.open(waLink, "_blank");
+    // Animate cards on scroll
+    function animateCards() {
+      document.querySelectorAll('.card').forEach((card, i) => {
+        setTimeout(() => card.classList.add('visible'), i * 150);
+      });
+    }
+    window.onload = animateCards;
+
+    // Show toast
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastText').innerHTML = msg;
+      toast.classList.remove('hidden');
+      setTimeout(() => toast.classList.add('hidden'), 2800);
+    }
+
+    // Check Status with loading + confetti
+    function checkStatus() {
+      const btn = document.querySelector('#statusCard button');
+      const text = document.getElementById('checkText');
+      const icon = document.getElementById('checkIcon');
+      const id = document.getElementById('checkId').value.trim() || 'عميل VIP';
+
+      text.innerHTML = 'جاري التحقق...';
+      icon.classList.add('fa-spinner', 'fa-spin');
+      btn.disabled = true;
+
+      setTimeout(() => {
+        const result = document.getElementById('statusResult');
+        result.innerHTML = `
+          <div class="text-green-400 text-3xl mb-4">✅ اشتراكك نشط يا ${id}</div>
+          <div class="text-[#e1c9b3]">منتهي في: <span class="font-bold">15 أبريل 2026</span></div>
+          <div class="text-amber-300 mt-6">اضغط على زرار التجديد لو عايز تمدده</div>
+        `;
+        result.classList.remove('hidden');
+
+        // Confetti
+        confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+        confetti({ particleCount: 80, angle: 60, spread: 55, origin: { x: 0.1 } });
+        confetti({ particleCount: 80, angle: 120, spread: 55, origin: { x: 0.9 } });
+
+        // Reset button
+        text.innerHTML = 'تم التحقق!';
+        icon.classList.remove('fa-spinner', 'fa-spin');
+        setTimeout(() => {
+          text.innerHTML = 'تحقق مرة أخرى';
+          btn.disabled = false;
+        }, 2500);
+
+        showToast('تم التحقق بنجاح 🎉');
+      }, 1500);
+    }
+
+    // Open WhatsApp with toast
+    function openWA(type) {
+      showToast(`جاري فتح واتساب - ${type}...`);
+      setTimeout(() => {
+        window.open('https://wa.me/201508536392', '_blank');
+      }, 800);
     }
   </script>
 </body>
-</html>
+      </html>
