@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>المحتوى - HAMO & TRIPLE M</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+</head>
+<body class="bg-[#000814] text-white min-h-screen p-6">
+
+  <a href="index.html" class="inline-flex items-center gap-3 text-cyan-400 hover:text-white mb-8 text-xl">
+    <i class="fa-solid fa-arrow-right"></i>
+    رجوع للرئيسية
+  </a>
+
+  <h1 class="text-4xl md:text-5xl font-bold text-center mb-12" id="catTitle">جاري التحميل...</h1>
+
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="itemsGrid">
+    <!-- هنا هتظهر المسلسلات / البرامج تلقائيًا -->
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const cat = params.get('cat');
+
+    const categories = {
+      'ramadan-new': {
+        title: 'مسلسلات رمضان الجديدة',
+        items: [
+          { name: 'مسلسل الاختيار 3', link: 'player.html?item=al-ekhtyar-3' },
+          { name: 'مسلسل الحشاشين', link: 'player.html?item=al-hashashin' },
+          { name: 'مسلسل سقوط حر', link: 'player.html?item=soqot-hor' },
+          // أضف المزيد هنا
+        ]
+      },
+      'anime-new': {
+        title: 'أنمي جديد',
+        items: [
+          { name: 'One Piece 2025', link: 'player.html?item=one-piece-2025' },
+          { name: 'Jujutsu Kaisen S3', link: 'player.html?item=jujutsu-kaisen-s3' },
+          // أضف المزيد
+        ]
+      },
+      // أضف باقي التصنيفات هنا بنفس الطريقة
+      // مثال:
+      'songs-ar': {
+        title: 'أغاني عربية',
+        items: [
+          { name: 'أغنية فلان - علان', link: 'player.html?item=song1' },
+          // إلخ
+        ]
+      }
+      // ... وهكذا لباقي الـ cat
+    };
+
+    const data = categories[cat] || { title: 'غير معروف', items: [] };
+    document.getElementById('catTitle').innerText = data.title;
+
+    const grid = document.getElementById('itemsGrid');
+    grid.innerHTML = '';
+
+    if (data.items.length === 0) {
+      grid.innerHTML = '<p class="text-center text-2xl col-span-full">لا يوجد محتوى متاح حاليًا في هذا التصنيف</p>';
+    } else {
+      data.items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'cursor-pointer bg-zinc-900/70 p-8 rounded-3xl text-center hover:scale-105 transition-all border border-cyan-500/40 hover:border-cyan-400';
+        card.innerHTML = `
+          <i class="fa-solid fa-play-circle text-6xl text-pink-400 mb-4"></i>
+          <h3 class="text-2xl font-bold">${item.name}</h3>
+        `;
+        card.onclick = () => window.location.href = item.link;
+        grid.appendChild(card);
+      });
+    }
+  </script>
+</body>
+  </html>
