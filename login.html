@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>تسجيل الدخول - HAMO & TRIPLE M</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(135deg, #000814, #0a1a2f);
+      overflow: hidden;
+    }
+    .glass {
+      background: rgba(10, 20, 47, 0.4);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(0, 240, 255, 0.25);
+      box-shadow: 0 8px 32px rgba(0, 240, 255, 0.12);
+    }
+    .neon-cyan-glow { text-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff; }
+    .neon-pink-glow { text-shadow: 0 0 15px #ff0099, 0 0 30px #ff0099; }
+    .input-neon:focus {
+      border-color: #00ffff;
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.5), inset 0 0 10px rgba(0, 255, 255, 0.3);
+    }
+    .btn-login {
+      background: linear-gradient(90deg, #00ffff, #ff0099, #00ffff);
+      background-size: 200% 100%;
+      animation: gradientShift 6s linear infinite;
+      transition: all 0.4s;
+    }
+    .btn-login:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px #ff0099;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+    .pulse-glow {
+      animation: pulseGlow 2s infinite alternate;
+    }
+    @keyframes pulseGlow {
+      from { opacity: 0.7; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-6 relative">
+
+  <!-- Subtle animated background lines -->
+  <div class="absolute inset-0 opacity-20 pointer-events-none">
+    <div class="absolute inset-0 bg-gradient-to-br from-transparent via-cyan-500/20 to-transparent animate-pulse"></div>
+    <div class="absolute inset-0 bg-gradient-to-tl from-transparent via-pink-500/10 to-transparent animate-pulse delay-1000"></div>
+  </div>
+
+  <div class="w-full max-w-lg relative z-10">
+    <div class="text-center mb-12">
+      <div class="inline-block p-6 glass rounded-full mb-6 pulse-glow">
+        <i class="fa-solid fa-satellite-dish text-6xl text-[#00ffff]"></i>
+      </div>
+      <h1 class="text-5xl md:text-6xl font-black neon-cyan-glow mb-3">HAMO & TRIPLE M</h1>
+      <p class="text-2xl text-[#a0f0ff] neon-pink-glow">تسجيل الدخول الآمن</p>
+    </div>
+
+    <div class="glass p-10 md:p-12 rounded-3xl">
+      <form id="loginForm" class="space-y-8">
+        <!-- MAC / Username -->
+        <div>
+          <label class="block text-lg text-[#00ffff] mb-3 font-bold">MAC Address أو Username</label>
+          <input id="mac" type="text" placeholder="00:1A:2B:3C:4D:5E" required
+                 class="input-neon w-full bg-black/50 border border-[#00ffff]/40 rounded-2xl px-6 py-5 text-xl focus:outline-none transition-all">
+        </div>
+
+        <!-- Password -->
+        <div>
+          <label class="block text-lg text-[#ff0099] mb-3 font-bold">كلمة السر</label>
+          <input id="password" type="password" placeholder="••••••••" required
+                 class="input-neon w-full bg-black/50 border border-[#ff0099]/40 rounded-2xl px-6 py-5 text-xl focus:outline-none transition-all">
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit"
+                class="btn-login w-full text-black font-black text-2xl py-7 rounded-3xl flex items-center justify-center gap-4 shadow-2xl">
+          <i class="fa-solid fa-right-to-bracket text-3xl"></i>
+          <span>دخول</span>
+        </button>
+      </form>
+
+      <div class="mt-8 text-center text-sm">
+        <a href="https://wa.me/201508536392" target="_blank" class="text-[#00ffff] hover:text-[#ff0099] transition">
+          نسيت كلمة السر؟ تواصل مع الدعم
+        </a>
+      </div>
+    </div>
+
+    <p class="text-center mt-10 text-sm text-gray-400">© 2026 HAMO & TRIPLE M • Premium IPTV</p>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const btn = this.querySelector('button');
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-3"></i> جاري التحقق...';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        // Simulate success
+        confetti({
+          particleCount: 150,
+          spread: 90,
+          origin: { y: 0.6 },
+          colors: ['#00ffff', '#ff0099', '#a0f0ff']
+        });
+
+        alert('تم تسجيل الدخول بنجاح! مرحباً بعودتك 🚀');
+        
+        // Redirect to main page or dashboard
+        // window.location.href = 'index.html';
+
+        btn.innerHTML = '<i class="fa-solid fa-right-to-bracket mr-3"></i> دخول';
+        btn.disabled = false;
+      }, 1800);
+    });
+  </script>
+</body>
+          </html>
