@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>الدعم والاشتراكات - HAMO & TRIPLE M</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+    body { font-family: 'Cairo', sans-serif; }
+    .metallic { background: linear-gradient(135deg, #cd7f32, #b87333, #990099); animation: flow 15s linear infinite; }
+    @keyframes flow { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
+    .card { transition: all 0.4s; }
+    .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(205,127,50,0.4); }
+  </style>
+</head>
+<body class="bg-[#1a0f24] text-white min-h-screen">
+
+  <!-- Header -->
+  <nav class="bg-black/80 backdrop-blur-lg sticky top-0 z-50 border-b border-[#cd7f32]/30">
+    <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <i class="fa-solid fa-tv text-4xl text-[#cd7f32]"></i>
+        <h1 class="text-3xl font-black metallic bg-clip-text text-transparent">HAMO & TRIPLE M</h1>
+      </div>
+      <a href="index.html" class="text-[#cd7f32] hover:text-white flex items-center gap-2">
+        <i class="fa-solid fa-home"></i> الرئيسية
+      </a>
+    </div>
+  </nav>
+
+  <div class="max-w-5xl mx-auto px-6 py-10">
+    <h1 class="text-5xl font-black text-center mb-3 metallic bg-clip-text text-transparent">مركز الدعم والاشتراكات</h1>
+    <p class="text-center text-xl text-[#e1c9b3] mb-12">تحكم كامل في اشتراكك • حل فوري لأي مشكلة</p>
+
+    <!-- حالة الاشتراك -->
+    <div class="card bg-gradient-to-br from-[#2c1a40] to-[#1a0f24] p-8 rounded-3xl mb-10 border border-[#cd7f32]/50">
+      <h2 class="text-3xl font-bold mb-6 flex items-center gap-3"><i class="fa-solid fa-crown text-[#cd7f32]"></i> حالة اشتراكك</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-sm mb-2">يوزرنيم أو MAC ID</label>
+          <input id="checkId" type="text" placeholder="مثال: user123 أو 00:1A:2B:3C:4D:5E" 
+                 class="w-full bg-black/60 border border-[#cd7f32]/50 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#cd7f32]">
+        </div>
+        <div class="flex items-end">
+          <button onclick="checkStatus()" 
+                  class="w-full bg-[#cd7f32] hover:bg-[#b87333] text-black font-bold py-4 rounded-2xl transition">
+            تحقق من الاشتراك
+          </button>
+        </div>
+      </div>
+      <div id="statusResult" class="mt-6 hidden text-center p-6 bg-black/60 rounded-2xl border border-[#cd7f32]"></div>
+    </div>
+
+    <!-- تجديد الاشتراك -->
+    <div class="card bg-gradient-to-br from-[#2c1a40] to-[#1a0f24] p-8 rounded-3xl mb-10 border border-[#cd7f32]/50">
+      <h2 class="text-3xl font-bold mb-8 flex items-center gap-3"><i class="fa-solid fa-calendar text-[#cd7f32]"></i> تجديد الاشتراك</h2>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <label class="block text-sm mb-2">اختر المدة</label>
+          <select id="plan" class="w-full bg-black/60 border border-[#cd7f32]/50 rounded-2xl px-6 py-4">
+            <option value="يومي - 30 جنيه">يومي - 30 جنيه</option>
+            <option value="أسبوعي - 120 جنيه">أسبوعي - 120 جنيه</option>
+            <option value="شهري - 299 جنيه" selected>شهري - 299 جنيه (الأكثر طلبًا)</option>
+            <option value="سنوي - 1999 جنيه">سنوي - 1999 جنيه</option>
+            <option value="سنتين - 3499 جنيه">سنتين - 3499 جنيه (أفضل عرض)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm mb-2">يوزرنيم أو MAC ID</label>
+          <input id="renewId" type="text" placeholder="اكتب يوزرنيم أو MAC" 
+                 class="w-full bg-black/60 border border-[#cd7f32]/50 rounded-2xl px-6 py-4">
+        </div>
+      </div>
+
+      <button onclick="renewViaWA()" 
+              class="mt-10 w-full bg-gradient-to-r from-[#cd7f32] to-[#990099] hover:from-[#b87333] hover:to-[#800080] text-white font-bold text-2xl py-7 rounded-3xl flex items-center justify-center gap-4 shadow-xl">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+        طلب التجديد عبر واتساب
+      </button>
+      <p class="text-center text-xs text-[#e1c9b3] mt-4">هيتم الرد خلال دقايق وتفعيل الاشتراك فورًا</p>
+    </div>
+
+    <!-- حل المشاكل -->
+    <div class="card bg-gradient-to-br from-[#2c1a40] to-[#1a0f24] p-8 rounded-3xl border border-[#cd7f32]/50">
+      <h2 class="text-3xl font-bold mb-8 flex items-center gap-3"><i class="fa-solid fa-headset text-[#cd7f32]"></i> حل مشكلة فوري</h2>
+      <textarea id="problem" rows="4" placeholder="وصف المشكلة بالتفصيل (تقطيع، ما بيفتحش، جهاز...)" 
+                class="w-full bg-black/60 border border-[#cd7f32]/50 rounded-3xl px-6 py-5 resize-none"></textarea>
+      
+      <div class="grid grid-cols-2 gap-6 mt-8">
+        <input id="problemId" type="text" placeholder="يوزرنيم أو MAC" 
+               class="bg-black/60 border border-[#cd7f32]/50 rounded-3xl px-6 py-5">
+        <button onclick="reportProblem()" 
+                class="bg-gradient-to-r from-[#cd7f32] to-[#990099] hover:from-[#b87333] hover:to-[#800080] font-bold py-5 rounded-3xl flex items-center justify-center gap-3">
+          <i class="fa-brands fa-whatsapp text-2xl"></i>
+          إرسال المشكلة
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/201012345678" target="_blank" 
+     class="fixed bottom-8 right-8 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition text-4xl">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <script>
+    const whatsappNumber = "201012345678"; // ← غيّر الرقم ده بحسابك
+
+    function checkStatus() {
+      const id = document.getElementById("checkId").value.trim();
+      if (!id) return alert("اكتب اليوزر أو الـ MAC");
+      
+      const result = document.getElementById("statusResult");
+      result.classList.remove("hidden");
+      result.innerHTML = `
+        <p class="text-green-400 text-2xl mb-2">✅ اشتراكك نشط</p>
+        <p>يوزر: <span class="font-bold">${id}</span></p>
+        <p class="text-[#e1c9b3]">منتهي في: 15 أبريل 2026</p>
+        <p class="text-xs mt-6 text-amber-300">للتجديد أو التأكيد الدقيق اضغط على زرار التجديد أعلاه</p>
+      `;
+    }
+
+    function renewViaWA() {
+      const plan = document.getElementById("plan").value;
+      const id = document.getElementById("renewId").value.trim() || "لم يُكتب";
+      const text = `السلام عليكم يا حمو\nعايز أجدد اشتراكي\nالخطة: ${plan}\nاليوزر/MAC: ${id}\nشكراً`;
+      window.open(`https://wa.me/\( {whatsappNumber}?text= \){encodeURIComponent(text)}`, "_blank");
+    }
+
+    function reportProblem() {
+      const problem = document.getElementById("problem").value.trim() || "مشكلة غير محددة";
+      const id = document.getElementById("problemId").value.trim() || "لم يُكتب";
+      const text = `السلام عليكم يا حمو\nعندي مشكلة:\n${problem}\nيوزر/MAC: ${id}\nشكراً`;
+      window.open(`https://wa.me/\( {whatsappNumber}?text= \){encodeURIComponent(text)}`, "_blank");
+    }
+  </script>
+</body>
+          </html>
