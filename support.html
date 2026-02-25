@@ -202,3 +202,167 @@
   </script>
 </body>
       </html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>الدعم والاشتراكات - HAMO & TRIPLE M</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+    body { font-family: 'Cairo', sans-serif; }
+    
+    .futuristic-bg { 
+      background: linear-gradient(135deg, #00f0ff, #ff0099, #00ffff);
+      background-size: 300% 300%;
+      animation: gradientFlow 20s ease infinite;
+    }
+    @keyframes gradientFlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+    .card {
+      background: rgba(10, 14, 31, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      box-shadow: 0 8px 32px rgba(0, 240, 255, 0.15);
+      transition: all 0.5s ease;
+    }
+    .card:hover {
+      transform: translateY(-12px);
+      border-color: #ff0099;
+      box-shadow: 0 20px 60px rgba(255, 0, 153, 0.3);
+    }
+
+    .btn-futur {
+      background: linear-gradient(90deg, #00f0ff, #ff0099);
+      background-size: 200% 100%;
+      animation: btnShift 4s linear infinite;
+      transition: all 0.4s;
+    }
+    .btn-futur:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px #ff0099;
+    }
+    @keyframes btnShift { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
+
+    .input-neon:focus {
+      box-shadow: 0 0 20px #00ffff, inset 0 0 10px #00ffff;
+      border-color: #00ffff;
+    }
+
+    .toast { animation: toastIn 0.5s ease; }
+    @keyframes toastIn { from { transform: translateY(-80px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+  </style>
+</head>
+<body class="bg-[#000814] text-white min-h-screen futuristic-bg overflow-x-hidden">
+
+  <!-- Toast -->
+  <div id="toast" class="hidden fixed top-6 left-1/2 -translate-x-1/2 bg-black/80 text-[#00ffff] px-10 py-5 rounded-3xl border border-[#ff0099]/50 flex items-center gap-4 shadow-2xl toast z-50">
+    <i class="fa-brands fa-whatsapp text-3xl text-green-400"></i>
+    <span id="toastText" class="text-lg"></span>
+  </div>
+
+  <!-- Header -->
+  <nav class="bg-black/70 backdrop-blur-xl sticky top-0 z-50 border-b border-[#00ffff]/30">
+    <div class="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center">
+      <div class="flex items-center gap-4">
+        <i class="fa-solid fa-satellite-dish text-4xl text-[#00ffff]"></i>
+        <h1 class="text-4xl font-black tracking-wide">HAMO & TRIPLE M</h1>
+      </div>
+      <a href="index.html" class="flex items-center gap-3 text-[#00ffff] hover:text-white text-xl">
+        <i class="fa-solid fa-arrow-left"></i> الرئيسية
+      </a>
+    </div>
+  </nav>
+
+  <div class="max-w-5xl mx-auto px-6 py-16">
+    <h1 class="text-6xl md:text-7xl font-black text-center mb-6 bg-gradient-to-r from-[#00ffff] to-[#ff0099] bg-clip-text text-transparent">مركز الدعم الذكي</h1>
+    <p class="text-center text-2xl text-[#a0f0ff] mb-16">تواصل معانا فورًا عبر واتساب لحل أي مشكلة أو تجديد</p>
+
+    <!-- Check Status -->
+    <div class="card p-10 rounded-3xl mb-12" id="statusCard">
+      <h2 class="text-4xl font-bold mb-8 flex items-center gap-4"><i class="fa-solid fa-shield-halved text-[#00ffff]"></i> تحقق من حالة اشتراكك</h2>
+      <input id="checkId" type="text" placeholder="يوزرنيم أو MAC ID" class="input-neon w-full bg-black/50 border border-[#00ffff]/40 rounded-3xl px-8 py-6 text-xl focus:outline-none">
+      <button onclick="checkStatus()" class="mt-8 w-full btn-futur text-black font-bold text-2xl py-7 rounded-3xl flex items-center justify-center gap-4 shadow-xl">
+        <span id="checkText">تحقق الآن</span>
+        <i id="checkIcon" class="fa-solid fa-rocket"></i>
+      </button>
+      <div id="statusResult" class="hidden mt-10 p-8 bg-black/60 rounded-3xl border border-[#ff0099]/50 text-center text-xl"></div>
+    </div>
+
+    <!-- Renew Subscription - More Options -->
+    <div class="card p-10 rounded-3xl mb-12" id="renewCard">
+      <h2 class="text-4xl font-bold mb-8 flex items-center gap-4"><i class="fa-solid fa-credit-card text-[#ff0099]"></i> تجديد الاشتراك</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <select id="plan" class="input-neon w-full bg-black/50 border border-[#00ffff]/40 rounded-3xl px-8 py-6 text-xl">
+          <option value="يومي - 30 EGP / \~0.6 USD / \~0.55 EUR">يومي - 30 جنيه مصري (\~0.6 دولار / \~0.55 يورو)</option>
+          <option value="أسبوعي - 120 EGP / \~2.4 USD / \~2.2 EUR">أسبوعي - 120 جنيه (\~2.4 دولار / \~2.2 يورو)</option>
+          <option value="شهري - 299 EGP / \~6 USD / \~5.5 EUR" selected>شهري - 299 جنيه (\~6 دولار / \~5.5 يورو)</option>
+          <option value="3 شهور - 799 EGP / \~16 USD / \~14.5 EUR">3 شهور - 799 جنيه (\~16 دولار / \~14.5 يورو)</option>
+          <option value="سنوي - 1999 EGP / \~40 USD / \~36 EUR">سنوي - 1999 جنيه (\~40 دولار / \~36 يورو)</option>
+          <option value="سنتين - 3499 EGP / \~70 USD / \~64 EUR">سنتين - 3499 جنيه (\~70 دولار / \~64 يورو)</option>
+          <option value="شهري VIP - 499 EGP / \~10 USD / \~9 EUR">شهري VIP (4K + أولوية) - 499 جنيه (\~10 دولار / \~9 يورو)</option>
+          <option value="سنوي VIP - 2999 EGP / \~60 USD / \~55 EUR">سنوي VIP - 2999 جنيه (\~60 دولار / \~55 يورو)</option>
+        </select>
+        <input id="renewId" type="text" placeholder="يوزرنيم أو MAC ID" class="input-neon w-full bg-black/50 border border-[#00ffff]/40 rounded-3xl px-8 py-6 text-xl">
+      </div>
+      <button onclick="openWA('تجديد')" class="mt-10 w-full btn-futur text-black font-bold text-2xl py-7 rounded-3xl flex items-center justify-center gap-4">
+        <i class="fa-brands fa-whatsapp text-3xl"></i> افتح واتساب للتجديد
+      </button>
+    </div>
+
+    <!-- Problem Report -->
+    <div class="card p-10 rounded-3xl" id="problemCard">
+      <h2 class="text-4xl font-bold mb-8 flex items-center gap-4"><i class="fa-solid fa-bug text-[#ff0099]"></i> أبلغ عن مشكلة</h2>
+      <textarea id="problem" rows="5" placeholder="وصف المشكلة بالتفصيل..." class="input-neon w-full bg-black/50 border border-[#00ffff]/40 rounded-3xl px-8 py-6 text-xl resize-none"></textarea>
+      <button onclick="openWA('مشكلة')" class="mt-8 w-full btn-futur text-black font-bold text-2xl py-7 rounded-3xl flex items-center justify-center gap-4">
+        <i class="fa-brands fa-whatsapp text-3xl"></i> افتح واتساب للدعم
+      </button>
+    </div>
+  </div>
+
+  <!-- Floating WA -->
+  <a href="https://wa.me/201508536392" target="_blank" onclick="showToast('جاري الاتصال بالدعم...')" 
+     class="fixed bottom-10 right-10 bg-gradient-to-br from-[#00ffff] to-[#ff0099] w-20 h-20 rounded-full flex items-center justify-center shadow-2xl text-5xl hover:scale-110 transition-all duration-300 pulse z-50">
+    <i class="fa-brands fa-whatsapp text-black drop-shadow-lg"></i>
+  </a>
+
+  <script>
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastText').innerHTML = msg;
+      toast.classList.remove('hidden');
+      setTimeout(() => toast.classList.add('hidden'), 3000);
+    }
+
+    function checkStatus() {
+      const id = document.getElementById('checkId').value.trim() || 'VIP User';
+      const btn = document.querySelector('#statusCard button');
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-3"></i> جاري التحقق...';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        const result = document.getElementById('statusResult');
+        result.innerHTML = `<div class="text-[#00ffff] text-3xl mb-4">✅ اشتراكك نشط يا ${id}!</div><div class="text-[#a0f0ff]">منتهي في: 30 يونيو 2026</div><div class="mt-6 text-pink-300">جاهز للتجديد؟ اضغط أعلاه</div>`;
+        result.classList.remove('hidden');
+        confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+        showToast('تم التحقق بنجاح 🚀');
+        btn.innerHTML = 'تحقق مرة تانية';
+        btn.disabled = false;
+      }, 1400);
+    }
+
+    function openWA(type) {
+      showToast(`فتح واتساب - ${type}...`);
+      setTimeout(() => window.open('https://wa.me/201508536392', '_blank'), 600);
+    }
+
+    // Animate cards
+    window.onload = () => {
+      document.querySelectorAll('.card').forEach((c, i) => setTimeout(() => c.classList.add('opacity-100', 'translate-y-0'), i * 200));
+    };
+  </script>
+</body>
+</html>
