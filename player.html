@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مشاهدة - HAMO & TRIPLE M</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+  <style>
+    .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+    .video-container iframe, .video-container video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+  </style>
+</head>
+<body class="bg-[#000814] text-white min-h-screen p-6">
+
+  <a href="index.html" class="inline-flex items-center gap-3 text-cyan-400 hover:text-white mb-8 text-xl">
+    <i class="fa-solid fa-arrow-right"></i>
+    رجوع للرئيسية
+  </a>
+
+  <h1 class="text-4xl md:text-5xl font-bold text-center mb-10" id="catTitle">جاري التحميل...</h1>
+
+  <div class="max-w-5xl mx-auto">
+    <!-- Player -->
+    <div class="video-container rounded-2xl overflow-hidden border-4 border-cyan-500/30 shadow-2xl mb-10">
+      <div id="playerPlaceholder" class="absolute inset-0 flex items-center justify-center bg-black/80">
+        <div class="text-center">
+          <i class="fa-solid fa-play-circle text-8xl text-pink-500 animate-pulse mb-6"></i>
+          <p class="text-3xl font-bold mb-4">جاري تحميل المحتوى...</p>
+          <p class="text-xl text-gray-300">إذا ما اشتغلش، اضغط على زرار الدعم أسفل</p>
+        </div>
+      </div>
+
+      <!-- هنا تضيف الرابط الحقيقي بعدين -->
+      <!-- مثال مؤقت: -->
+      <!-- <video id="videoPlayer" controls class="hidden"></video> -->
+      <!-- أو iframe لـ YouTube أو m3u8 -->
+    </div>
+
+    <!-- زرار الدعم / واتساب -->
+    <button onclick="window.open('https://wa.me/201508536392?text=السلام%20عليكم%20عندي%20مشكلة%20في%20مشاهدة%20' + document.getElementById('catTitle').innerText, '_blank')"
+            class="w-full bg-gradient-to-r from-cyan-600 to-pink-600 hover:from-cyan-500 hover:to-pink-500 text-white font-bold text-2xl py-8 rounded-3xl flex items-center justify-center gap-5 shadow-2xl">
+      <i class="fa-brands fa-whatsapp text-4xl"></i>
+      لو المحتوى ما اشتغلش أو عايز رابط جديد، اضغط هنا
+    </button>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const cat = params.get('cat');
+
+    const titles = {
+      'series-ar': 'مسلسلات عربية',
+      'series-foreign': 'مسلسلات أجنبية',
+      'movies-ar': 'أفلام عربية',
+      'movies-foreign': 'أفلام أجنبية',
+      'news-exclusive': 'أخبار حصرية',
+      'news-old': 'أخبار قديمة',
+      'ramadan-new': 'مسلسلات رمضان الجديدة',
+      'ramadan-old': 'مسلسلات رمضان القديمة',
+      'anime-new': 'أنمي جديد',
+      'anime-old': 'أنمي قديم',
+      'songs-ar': 'أغاني عربية',
+      'songs-foreign': 'أغاني أجنبية'
+    };
+
+    document.getElementById('catTitle').innerText = titles[cat] || 'المحتوى';
+
+    // هنا تضيف الرابط بعدين، مثال:
+    // const video = document.getElementById('videoPlayer');
+    // if (cat === 'series-ar') {
+    //   video.src = 'https://your-server.com/series-ar.m3u8';
+    //   video.classList.remove('hidden');
+    //   document.getElementById('playerPlaceholder').classList.add('hidden');
+    // }
+  </script>
+</body>
+</html>
