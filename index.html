@@ -144,71 +144,6 @@ news.html
 
   <!-- 1 -->
 
-
-  <!-- 5 -->
-  <div onclick="window.location.href='player.html?cat=news-exclusive'" 
-       class="cursor-pointer bg-zinc-900/70 p-8 rounded-3xl text-center hover:scale-105 transition-all border border-cyan-500/40 hover:border-cyan-400">
-    <i class="fa-solid fa-newspaper text-6xl text-cyan-400 mb-4"></i>
-    <h3 class="text-2xl font-bold">أخبار حصرية</h3>
-  </div>
-
-  <!-- 6 -->
-  <div onclick="window.location.href='player.html?cat=news-old'" 
-       class="cursor-pointer bg-zinc-900/70 p-8 rounded-3xl text-center hover:scale-105 transition-all border border-pink-500/40 hover:border-pink-400">
-    <i class="fa-solid fa-clock text-6xl text-pink-400 mb-4"></i>
-    <h3 class="text-2xl font-bold">أخبار قديمة</h3>
-  </div>
-
-  <!-- 7 -->
-  <div onclick="window.location.href='player.html?cat=ramadan-new'" 
-       class="cursor-pointer bg-zinc-900/70 p-8 rounded-3xl text-center hover:scale-105 transition-all border border-cyan-500/40 hover:border-cyan-400">
-    <i class="fa-solid fa-moon text-6xl text-cyan-400 mb-4"></i>
-    <h3 class="text-2xl font-bold">مسلسلات رمضان الجديدة</h3>
-  </div>
-
-  <!-- 8 -->
-  <div onclick="window.location.href='player.html?cat=ramadan-old'" 
-       class="cursor-pointer bg-zinc-900/70 p-8 rounded-3xl text-center hover:scale-105 transition-all border border-pink-500/40 hover:border-pink-400">
-    <i class="fa-solid fa-moon text-6xl text-pink-400 mb-4"></i>
-    <h3 class="text-2xl font-bold">مسلسلات رمضان القديمة</h3>
-  </div>
-
-  <!-- 9 -->
-  <div onclick="window.location.href='player.html?cat=anime-new'" 
-       class="cursor-pointer bg-zinc-900/70 p-8 rounded-3xl text-center hover:scale-105 transition-all border border-cyan-500/40 hover:border-cyan-400">
-    <i class="fa-solid fa-sparkles text-6xl text-cyan-400 mb-4"></i>
-    <h3 class="text-2xl font-bold">أنمي جديد</h3>
-  </div>
-
-  <!-- 10 -->
-  <div onclick="window.location.href='player.html?cat=anime-old'" 
-       class="cursor-pointer bg-zinc-900/70 p-8 rounded-3xl text-center hover:scale-105 transition-all border border-pink-500/40 hover:border-pink-400">
-    <i class="fa-solid fa-history text-6xl text-pink-400 mb-4"></i>
-    <h3 class="text-2xl font-bold">أنمي قديم</h3>
-  </div>
-
-  <!-- 11 -->
-  <div onclick="window.location.href='player.html?cat=songs-ar'" 
-       class="cursor-pointer bg-zinc-900/70 p-8 rounded-3xl text-center hover:scale-105 transition-all border border-cyan-500/40 hover:border-cyan-400">
-    <i class="fa-solid fa-music text-6xl text-cyan-400 mb-4"></i>
-    <h3 class="text-2xl font-bold">أغاني عربية</h3>
-  </div>
-
-  <!-- 12 -->
-  <div onclick="window.location.href='player.html?cat=songs-foreign'" 
-       class="cursor-pointer bg-zinc-900/70 p-8 rounded-3xl text-center hover:scale-105 transition-all border border-pink-500/40 hover:border-pink-400">
-    <i class="fa-solid fa-music text-6xl text-pink-400 mb-4"></i>
-    <h3 class="text-2xl font-bold">أغاني أجنبية</h3>
-  </div>
-</div>
-
-<div onclick="window.location.href='category.html?cat=ramadan-new'" 
-     class="cursor-pointer bg-zinc-900/70 p-8 rounded-3xl text-center hover:scale-105 transition-all border border-cyan-500/40 hover:border-cyan-400">
-  <i class="fa-solid fa-moon text-6xl text-cyan-400 mb-4"></i>
-  <h3 class="text-2xl font-bold">مسلسلات رمضان الجديدة</h3>
-</div>
-<!DOCTYPE html>
-<html>
 <head>
   <title>HAMO & TRIPLE M</title>
   <style>
@@ -257,6 +192,128 @@ a { text-decoration:none; color:#0af; display:block; }
 
 
 
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HAMO & TRIPLE M</title>
+<style>
+:root {
+  --bg: #0d0d0d;
+  --card: #1a1a1a;
+  --primary: #00f6ff;
+  --text: #fff;
+  --hover: #00f6ff33;
+}
+
+body {
+  margin:0;
+  font-family: 'Arial', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+header {
+  padding: 20px;
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--primary);
+  background: linear-gradient(90deg, #0f0c29, #302b63, #24243e);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+}
+
+.section-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.section-card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.section-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+  background: var(--hover);
+}
+
+.section-card a {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: bold;
+  display: block;
+  font-size: 16px;
+}
+
+.section-card a:hover {
+  color: #00ffff;
+}
+
+@media (max-width: 480px) {
+  .section-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+</style>
+</head>
+<body>
+
+<header>HAMO & TRIPLE M</header>
+
+<div class="section-grid">
+  <div class="section-card">
+    <a href="sections/1.html">مسلسلات عربية</a>
+  </div>
+  <div class="section-card">
+    <a href="sections/2.html">مسلسلات أجنبية</a>
+  </div>
+  <div class="section-card">
+    <a href="sections/3.html">أفلام عربية</a>
+  </div>
+  <div class="section-card">
+    <a href="sections/4.html">أفلام أجنبية</a>
+  </div>
+  <div class="section-card">
+    <a href="sections/5.html">أنمي</a>
+  </div>
+  <div class="section-card">
+    <a href="sections/6.html">أخبار</a>
+  </div>
+  <div class="section-card">
+    <a href="sections/7.html">رياضة</a>
+  </div>
+  <div class="section-card">
+    <a href="sections/8.html">مسلسلات رمضان</a>
+  </div>
+  <div class="section-card">
+    <a href="sections/9.html">أفلام كرتون</a>
+  </div>
+  <div class="section-card">
+    <a href="sections/10.html">وثائقيات</a>
+  </div>
+  <div class="section-card">
+    <a href="sections/11.html">موسيقى</a>
+  </div>
+  <div class="section-card">
+    <a href="sections/12.html">أطفال</a>
+  </div>
+  <div class="section-card">
+    <a href="sections/13.html">وثائقيات تعليمية</a>
+  </div>
+</div>
+
+</body>
+</html>
 
 
 
