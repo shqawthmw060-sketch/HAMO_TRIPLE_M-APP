@@ -347,3 +347,34 @@
         </div>`).join('')}
     </div>
 </section>
+// 25 قسم عالمي Pro Max Plus
+const sections25 = [
+    'home', 'movies', 'series', 'live', 'asutra', 'shahid', 'anime', 'kids', 
+    'sports', 'tennis', 'boxing', 'ai', 'music', 'doc', 'horror', 'romance', 
+    'comedy', 'trend', 'arabic', 'korean', 'turkish', 'bollywood', 'talkshow', 'admin'
+];
+
+// Tab Navigation لكل الأقسام
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.onclick = () => {
+        // إخفاء كل الأقسام
+        sections25.forEach(sec => {
+            const section = document.getElementById(sec + '-section');
+            if (section) section.classList.add('hidden');
+        });
+        
+        // إظهار القسم المختار
+        const targetSection = document.getElementById(btn.dataset.tab + '-section');
+        if (targetSection) {
+            targetSection.classList.remove('hidden');
+            btn.classList.add('bg-gradient-to-r', 'from-purple-500', 'to-pink-500', 'text-white');
+        }
+        
+        // تحديث باقي الأزرار
+        document.querySelectorAll('.tab-btn').forEach(b => {
+            if (b !== btn) {
+                b.classList.remove('bg-gradient-to-r', 'from-purple-500', 'to-pink-500', 'text-white');
+            }
+        });
+    }
+});
