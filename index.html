@@ -3,11 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HAMO & TRIPLE M - Pro Max Ultra</title>
-
-<!-- Font Awesome for icons -->
+<title>HAMO & TRIPLE M - Pro Max Plus</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 <style>
 :root {
   --bg: #0b0c10;
@@ -16,146 +13,71 @@
   --hover: #00f6ff44;
   --text: #ffffff;
   --accent: #ff00ff;
+  --ai-bg: #111;
 }
-
-/* Reset */
-* { margin:0; padding:0; box-sizing:border-box; font-family: 'Arial', sans-serif; }
-
-/* Body */
-body {
-  background: var(--bg);
-  color: var(--text);
-  overflow-x: hidden;
-}
-
-/* Header */
-header {
-  padding: 25px;
-  text-align: center;
-  font-size: 32px;
-  font-weight: bold;
-  background: linear-gradient(90deg,#0f0c29,#302b63,#24243e);
-  color: var(--primary);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.7);
-  position: relative;
-  z-index: 100;
-}
-
-/* AI Button */
-.ai-card {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: linear-gradient(135deg,#00f6ff,#ff00ff);
-  color:#fff;
-  padding:15px 25px;
-  border-radius:25px;
-  display:inline-flex;
-  align-items:center;
-  gap:12px;
-  font-weight:bold;
-  cursor:pointer;
-  text-align:center;
-  transition:0.3s;
-  box-shadow:0 6px 20px rgba(0,0,0,0.7);
-  z-index: 200;
-}
-.ai-card:hover {
-  transform:scale(1.1);
-  box-shadow:0 10px 30px rgba(0,0,0,0.8);
-}
-.ai-card i { font-size:24px; }
-
-/* AI Popup */
-.ai-popup {
-  position:fixed;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  background:#111;
-  color:#0ff;
-  border-radius:20px;
-  padding:25px;
-  box-shadow:0 8px 30px rgba(0,0,0,0.9);
-  display:none;
-  z-index:1000;
-  width:90%;
-  max-width:400px;
-  text-align:center;
-}
-.ai-popup h3 { margin-bottom:20px; }
-.ai-popup p { font-size:14px; margin-bottom:15px; }
-.ai-popup button {
-  padding:10px 20px;
-  border:none;
-  border-radius:15px;
-  background:var(--primary);
-  color:#111;
-  font-weight:bold;
-  cursor:pointer;
-}
-.ai-popup button:hover { background: var(--accent); color:#fff; }
-
-/* Section Grid */
-.section-grid {
-  display:grid;
-  grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
-  gap:20px;
-  padding:20px;
-  margin-top: 20px;
-}
-.section-card {
-  background: var(--card);
-  border-radius: 15px;
-  padding: 25px 15px;
-  text-align: center;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  position: relative;
-  overflow: hidden;
-}
-.section-card::after {
-  content:"";
-  position:absolute;
-  inset:0;
-  background: var(--hover);
-  opacity:0;
-  transition:0.4s;
-  border-radius:15px;
-}
+* { box-sizing: border-box; margin:0; padding:0; }
+body { font-family:'Arial',sans-serif; background:var(--bg); color:var(--text); overflow-x:hidden; }
+header { padding:25px; text-align:center; font-size:30px; font-weight:bold; background:linear-gradient(90deg,#0f0c29,#302b63,#24243e); color:var(--primary); box-shadow:0 4px 8px rgba(0,0,0,0.5); position:relative; z-index:10; }
+.language-selector { position:absolute; top:20px; right:20px; }
+.language-selector select { padding:5px 10px; border-radius:10px; border:none; background:#222; color:#fff; font-weight:bold; }
+.section-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:20px; padding:20px; }
+.section-card { background:var(--card); border-radius:15px; padding:25px 15px; text-align:center; transition:all 0.3s ease; cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,0.3); position:relative; overflow:hidden; }
+.section-card::after { content:""; position:absolute; inset:0; background:var(--hover); opacity:0; transition:0.4s; border-radius:15px; }
 .section-card:hover::after { opacity:1; }
 .section-card i { font-size:40px; margin-bottom:12px; color:var(--primary); transition:0.3s; }
 .section-card:hover i { color:#00ffff; transform:scale(1.3); }
 .section-card a { text-decoration:none; color:var(--primary); font-weight:bold; display:block; font-size:16px; transition:0.3s; }
 .section-card:hover a { color:#00ffff; }
-
-/* Futuristic background */
-#stars {
-  position:fixed;
-  top:0; left:0; width:100%; height:100%;
-  background:#000 url('https://i.ibb.co/2n2VJwT/stars.png') repeat;
-  z-index:-1;
-  animation: moveStars 200s linear infinite;
-}
-@keyframes moveStars { 0% {background-position:0 0;} 100% {background-position:-10000px 5000px;} }
-
-/* Matrix Effect */
-.matrix { font-family: monospace; color:#0f0; position:fixed; top:0; left:0; width:100%; height:100%; overflow:hidden; pointer-events:none; z-index:-2; }
-.matrix span { position:absolute; font-size:16px; animation:matrixMove linear infinite; }
-@keyframes matrixMove { 0% {top:-20px;} 100% {top:100vh;} }
-
-/* Responsive */
+.ai-card { background: linear-gradient(135deg,#00f6ff,#ff00ff); color:#fff; padding:15px 25px; border-radius:25px; display:inline-flex; align-items:center; gap:12px; font-weight:bold; cursor:pointer; margin:20px auto; text-align:center; transition:0.3s; box-shadow:0 6px 20px rgba(0,0,0,0.7); }
+.ai-card:hover { transform:scale(1.1); box-shadow:0 10px 30px rgba(0,0,0,0.8); }
+.ai-card i { font-size:24px; }
+.ai-popup { position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:var(--ai-bg); color:var(--primary); border-radius:20px; padding:25px; box-shadow:0 8px 30px rgba(0,0,0,0.9); display:none; z-index:1000; width:400px; text-align:center; }
+.ai-popup h3 { margin-bottom:20px; }
+.ai-popup ul { list-style:none; padding:0; margin:0 0 20px 0; }
+.ai-popup li { margin:10px 0; }
+.ai-popup a { color:var(--accent); text-decoration:none; font-weight:bold; }
+.ai-popup a:hover { color:#0ff; text-decoration:underline; }
+.ai-popup button { padding:10px 20px; border:none; border-radius:15px; background:#00f6ff; color:#111; font-weight:bold; cursor:pointer; }
+.ai-popup button:hover { background:#ff00ff; color:#fff; }
+.loading-screen { position:fixed; inset:0; background:radial-gradient(circle,#0f0c29,#000); z-index:9999; display:flex; align-items:center; justify-content:center; flex-direction:column; color:#0ff; font-size:24px; font-weight:bold; }
+.matrix { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; }
 @media (max-width:480px) { .section-grid { grid-template-columns:repeat(2,1fr); } }
 </style>
 </head>
-
 <body>
 
-<div id="stars"></div>
-<div class="matrix" id="matrix"></div>
+<div class="loading-screen" id="loadingScreen">جاري التحميل...</div>
+<canvas class="matrix" id="matrixCanvas"></canvas>
 
-<header>HAMO & TRIPLE M</header>
+<header>HAMO & TRIPLE M
+  <div class="language-selector">
+    <select id="langSelect">
+      <option value="ar">العربية</option>
+      <option value="en">English</option>
+      <option value="fr">Français</option>
+      <option value="it">Italiano</option>
+      <option value="de">Deutsch</option>
+      <option value="hi">हिन्दी</option>
+      <option value="zh">中文</option>
+      <option value="he">עברית</option>
+    </select>
+  </div>
+</header>
+
+<div class="ai-card" onclick="toggleAI()">
+  <i class="fa-solid fa-robot"></i>
+  <span>HAMO & TRIPLE M</span>
+</div>
+
+<div id="aiPopup" class="ai-popup">
+  <h3>مساعد HAMO & TRIPLE M الذكي</h3>
+  <ul>
+    <li>يحلل كل سؤال حرفياً</li>
+    <li>يستعرض بيانات من أكثر من 300 AI</li>
+    <li>يكتب الرد حرف حرف ويقرأه بصوت AI</li>
+  </ul>
+  <button onclick="toggleAI()">اغلق</button>
+</div>
 
 <div class="section-grid">
   <div class="section-card">
@@ -212,44 +134,43 @@ header {
   </div>
 </div>
 
-<!-- AI Button -->
-<div class="ai-card" onclick="toggleAI()">
-  <i class="fa-solid fa-robot"></i>
-  <span>HAMO & TRIPLE M</span>
-</div>
-
-<!-- AI Popup -->
-<div id="aiPopup" class="ai-popup">
-  <h3>HAMO & TRIPLE M AI</h3>
-  <p>الذكاء الاصطناعي يقوم بتحليل كل شيء ويقترح لك أفضل المحتوى.</p>
-  <button onclick="toggleAI()">اغلق</button>
-</div>
-
 <script>
-// Toggle AI Popup
+// AI Popup
 function toggleAI(){
   const popup = document.getElementById('aiPopup');
   popup.style.display = (popup.style.display === 'block') ? 'none' : 'block';
 }
 
-// Matrix effect
-const matrix = document.getElementById('matrix');
-const cols = window.innerWidth / 20;
-for(let i=0;i<cols;i++){
-  const span = document.createElement('span');
-  span.innerText = String.fromCharCode(33+Math.random()*94);
-  span.style.left = (i*20)+'px';
-  span.style.top = Math.random()*window.innerHeight + 'px';
-  span.style.fontSize = '14px';
-  matrix.appendChild(span);
+// Loading Screen
+window.addEventListener('load', ()=>{
+  setTimeout(()=>{ document.getElementById('loadingScreen').style.display='none'; }, 2000);
+});
+
+// Matrix Effect
+const canvas = document.getElementById('matrixCanvas');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+<>?";
+const fontSize = 16;
+const columns = canvas.width/fontSize;
+const drops = [];
+for(let x=0;x<columns;x++){ drops[x]=1; }
+function drawMatrix(){
+  ctx.fillStyle="rgba(0,0,0,0.05)";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle="#0ff";
+  ctx.font=fontSize+"px monospace";
+  for(let i=0;i<drops.length;i++){
+    const text = letters.charAt(Math.floor(Math.random()*letters.length));
+    ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+    if(drops[i]*fontSize>canvas.height || Math.random()>0.975) drops[i]=0;
+    drops[i]++;
+  }
+  requestAnimationFrame(drawMatrix);
 }
-setInterval(()=>{
-  matrix.querySelectorAll('span').forEach(s=>{
-    s.style.top = (parseFloat(s.style.top)+2) + 'px';
-    if(parseFloat(s.style.top)>window.innerHeight) s.style.top='-20px';
-  })
-},50);
+drawMatrix();
 </script>
 
 </body>
-  </html>
+</html>
