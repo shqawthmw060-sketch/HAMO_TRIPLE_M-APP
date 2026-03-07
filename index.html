@@ -1,386 +1,352 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HAMO & TRIPLE M - 3030 Future Pro</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<title>HAMO & TRIPLE M AI</title>
 
 <style>
-/* Root Colors */
-:root {
-  --bg: #0a0a12;
-  --neon1: #00f6ff;
-  --neon2: #ff00ff;
-  --card: #111;
-  --text: #fff;
-  --glow: #00ffff33;
+
+body{
+margin:0;
+font-family:Arial;
+background:black;
+color:#00ffff;
+overflow:hidden;
 }
 
-/* Global */
-* { box-sizing: border-box; margin:0; padding:0; font-family: 'Orbitron', sans-serif; }
-body { background: radial-gradient(circle at top,#0a0a12 0%,#000 100%); color: var(--text); overflow-x:hidden; }
+/* MATRIX EFFECT */
 
-/* Animated Background Particles */
-#particles { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; }
-
-/* Header */
-header {
-  padding: 30px;
-  text-align: center;
-  font-size: 36px;
-  font-weight:900;
-  color: var(--neon1);
-  text-shadow: 0 0 10px var(--neon1), 0 0 20px var(--neon2), 0 0 30px var(--neon1);
-  background: linear-gradient(90deg,#0f0c29,#302b63,#24243e);
-  box-shadow:0 0 30px #00f6ff88;
-  border-bottom: 2px solid var(--neon2);
-  position:sticky;
-  top:0;
-  z-index:100;
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
 }
 
-/* Section Grid */
-.section-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(160px,1fr));
-  gap: 20px;
-  padding: 30px;
-  perspective: 1500px;
+/* كوكب */
+
+.planet{
+
+position:absolute;
+top:10%;
+right:10%;
+
+width:200px;
+height:200px;
+
+background:radial-gradient(circle,#00ffff,#001133);
+
+border-radius:50%;
+
+box-shadow:0 0 80px cyan;
+
+animation:rotatePlanet 30s linear infinite;
+
 }
 
-/* Cards */
-.section-card {
-  background: var(--card);
-  border-radius: 20px;
-  padding: 25px 15px;
-  text-align: center;
-  cursor:pointer;
-  box-shadow: 0 0 15px var(--neon1), 0 0 25px var(--neon2);
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
-  transform-style: preserve-3d;
-  position: relative;
-  overflow: hidden;
+@keyframes rotatePlanet{
+
+from{transform:rotate(0)}
+to{transform:rotate(360deg)}
+
 }
 
-.section-card:hover {
-  transform: rotateY(15deg) rotateX(5deg) scale(1.1);
-  box-shadow: 0 0 25px var(--neon1), 0 0 35px var(--neon2), 0 0 45px var(--neon1);
+/* جسيمات */
+
+.particle{
+
+position:absolute;
+width:4px;
+height:4px;
+background:#00ffff;
+border-radius:50%;
+animation:float 10s linear infinite;
+
 }
 
-/* Card Glow Effect */
-.section-card::after {
-  content:"";
-  position:absolute;
-  inset:0;
-  background: linear-gradient(120deg,var(--neon1),var(--neon2));
-  opacity:0.15;
-  filter: blur(15px);
-  transition: opacity 0.4s;
-  border-radius:20px;
+@keyframes float{
+
+from{transform:translateY(0)}
+to{transform:translateY(-100vh)}
+
 }
 
-.section-card:hover::after { opacity:0.5; }
+/* زر */
 
-/* Icons */
-.section-card i {
-  font-size: 48px;
-  margin-bottom:12px;
-  color: var(--neon1);
-  transition: 0.3s;
-}
-.section-card:hover i { color: var(--neon2); transform: rotate(20deg) scale(1.3); }
+.ai-btn{
 
-/* Text */
-.section-card a {
-  color: var(--neon1);
-  font-weight: bold;
-  text-decoration: none;
-  display: block;
-  font-size:16px;
-  transition: 0.3s;
-}
-.section-card:hover a { color: var(--neon2); }
+position:absolute;
+top:50%;
+left:50%;
 
-/* AI Button */
-.ai-card {
-  background: linear-gradient(135deg,#00f6ff,#ff00ff);
-  color:#fff;
-  padding:15px 30px;
-  border-radius:50px;
-  display:inline-flex;
-  align-items:center;
-  gap:12px;
-  font-weight:bold;
-  cursor:pointer;
-  margin:30px auto;
-  text-align:center;
-  transition:0.3s;
-  box-shadow:0 8px 25px rgba(0,0,0,0.8);
-}
-.ai-card:hover { transform:scale(1.1); box-shadow:0 12px 40px rgba(0,0,0,0.9); }
-.ai-card i { font-size:28px; }
+transform:translate(-50%,-50%);
 
-/* AI Popup */
-.ai-popup {
-  position:fixed;
-  top:50%; left:50%;
-  transform:translate(-50%,-50%);
-  background:#111;
-  color:#0ff;
-  border-radius:25px;
-  padding:30px;
-  box-shadow:0 10px 40px rgba(0,0,0,0.95);
-  display:none;
-  z-index:2000;
-  width:350px;
-  text-align:center;
-}
-.ai-popup h3 { margin-bottom:20px; }
-.ai-popup ul { list-style:none; padding:0; margin:0 0 20px 0; }
-.ai-popup li { margin:12px 0; }
-.ai-popup a { color:#ff00ff; text-decoration:none; font-weight:bold; }
-.ai-popup a:hover { color:#0ff; text-decoration:underline; }
-.ai-popup button {
-  padding:12px 25px;
-  border:none;
-  border-radius:20px;
-  background:#00f6ff;
-  color:#111;
-  font-weight:bold;
-  cursor:pointer;
-}
-.ai-popup button:hover { background:#ff00ff; color:#fff; }
+padding:20px 40px;
 
-/* Media */
-@media(max-width:480px) { .section-grid { grid-template-columns: repeat(2,1fr); } }
+background:linear-gradient(45deg,#00ffff,#ff00ff);
+
+border-radius:50px;
+
+font-size:22px;
+
+cursor:pointer;
+
+box-shadow:0 0 40px cyan;
+
+}
+
+/* نافذة الشات */
+
+.panel{
+
+position:fixed;
+
+bottom:0;
+left:0;
+right:0;
+
+height:80%;
+
+background:#000814;
+
+border-top-left-radius:30px;
+border-top-right-radius:30px;
+
+display:none;
+
+flex-direction:column;
+
+}
+
+.header{
+
+padding:15px;
+text-align:center;
+
+background:#001d3d;
+
+font-size:20px;
+
+}
+
+.chat{
+
+flex:1;
+
+overflow:auto;
+
+padding:20px;
+
+}
+
+.inputbox{
+
+display:flex;
+
+}
+
+.inputbox input{
+
+flex:1;
+
+padding:15px;
+
+background:#111;
+
+border:none;
+
+color:white;
+
+}
+
+.inputbox button{
+
+background:#00ffff;
+
+border:none;
+
+padding:15px;
+
+cursor:pointer;
+
+}
+
 </style>
+
 </head>
+
 <body>
 
-<header>HAMO & TRIPLE M</header>
+<div class="planet"></div>
 
-<!-- Sections -->
-<div class="section-grid">
-  <div class="section-card"><i class="fa-solid fa-tv"></i><a href="sections/1.html">مسلسلات عربية</a></div>
-  <div class="section-card"><i class="fa-solid fa-clapperboard"></i><a href="sections/2.html">مسلسلات أجنبية</a></div>
-  <div class="section-card"><i class="fa-solid fa-film"></i><a href="sections/3.html">أفلام عربية</a></div>
-  <div class="section-card"><i class="fa-solid fa-video"></i><a href="sections/4.html">أفلام أجنبية</a></div>
-  <div class="section-card"><i class="fa-solid fa-dragon"></i><a href="sections/5.html">أنمي</a></div>
-  <div class="section-card"><i class="fa-solid fa-newspaper"></i><a href="sections/6.html">أخبار</a></div>
-  <div class="section-card"><i class="fa-solid fa-futbol"></i><a href="sections/7.html">رياضة</a></div>
-  <div class="section-card"><i class="fa-solid fa-star"></i><a href="sections/8.html">مسلسلات رمضان</a></div>
-  <div class="section-card"><i class="fa-solid fa-child"></i><a href="sections/9.html">أفلام كرتون</a></div>
-  <div class="section-card"><i class="fa-solid fa-book"></i><a href="sections/10.html">وثائقيات</a></div>
-  <div class="section-card"><i class="fa-solid fa-music"></i><a href="sections/11.html">موسيقى</a></div>
-  <div class="section-card"><i class="fa-solid fa-baby"></i><a href="sections/12.html">أطفال</a></div>
-  <div class="section-card"><i class="fa-solid fa-earth-africa"></i><a href="sections/13.html">وثائقيات تعليمية</a></div>
+<div class="ai-btn" onclick="openAI()">
+HAMO & TRIPLE M AI
 </div>
 
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HAMO & TRIPLE M - Pro Max 3030</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<style>
-:root {
-  --bg:#0a0a0f;
-  --card:#1b1b2f;
-  --primary:#00f6ff;
-  --secondary:#ff00ff;
-  --hover:#00f6ff44;
-  --text:#ffffff;
-}
+<canvas id="matrix"></canvas>
 
-*{box-sizing:border-box;margin:0;padding:0;font-family:'Arial',sans-serif;}
-body{background:var(--bg);color:var(--text);overflow-x:hidden;}
+<div class="panel" id="panel">
 
-/* Header */
-header{
-  padding:30px;
-  text-align:center;
-  font-size:32px;
-  font-weight:bold;
-  background:linear-gradient(90deg,#0f0c29,#302b63,#24243e);
-  color:var(--primary);
-  box-shadow:0 6px 20px rgba(0,0,0,0.7);
-  text-shadow: 0 0 10px #00f6ff,0 0 20px #ff00ff;
-  animation: neonHeader 3s infinite alternate;
-}
-@keyframes neonHeader {
-  0% {text-shadow:0 0 10px #00f6ff,0 0 20px #ff00ff;}
-  50% {text-shadow:0 0 20px #ff00ff,0 0 30px #00f6ff;}
-  100%{text-shadow:0 0 10px #00f6ff,0 0 20px #ff00ff;}
-}
-
-/* Sections Grid */
-.section-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
-  gap:25px;
-  padding:25px;
-}
-
-.section-card{
-  background:var(--card);
-  border-radius:20px;
-  padding:30px 15px;
-  text-align:center;
-  transition:all 0.4s ease;
-  cursor:pointer;
-  box-shadow:0 6px 20px rgba(0,0,0,0.5);
-  position:relative;
-  overflow:hidden;
-}
-.section-card::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: linear-gradient(120deg,#00f6ff66,#ff00ff66);
-  opacity:0;
-  transition:0.5s;
-  border-radius:20px;
-}
-.section-card:hover::after{opacity:1;}
-
-.section-card i{
-  font-size:45px;
-  margin-bottom:15px;
-  color:var(--primary);
-  transition:0.3s;
-}
-.section-card:hover i{
-  transform:scale(1.4);
-  color:#ff00ff;
-}
-
-.section-card a{
-  text-decoration:none;
-  color:var(--primary);
-  font-weight:bold;
-  display:block;
-  font-size:18px;
-  transition:0.3s;
-}
-.section-card:hover a{
-  color:#00ffff;
-}
-
-/* AI Button */
-.ai-card{
-  background:linear-gradient(135deg,#00f6ff,#ff00ff);
-  color:#111;
-  padding:18px 28px;
-  border-radius:30px;
-  display:inline-flex;
-  align-items:center;
-  gap:15px;
-  font-weight:bold;
-  cursor:pointer;
-  margin:20px auto;
-  text-align:center;
-  transition:0.3s;
-  box-shadow:0 8px 30px rgba(0,0,0,0.7);
-}
-.ai-card:hover{
-  transform:scale(1.1);
-  box-shadow:0 12px 40px rgba(0,0,0,0.9);
-}
-.ai-card i{font-size:26px;}
-
-/* AI Popup */
-.ai-popup{
-  position:fixed;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  background:#111;
-  color:#0ff;
-  border-radius:25px;
-  padding:30px;
-  box-shadow:0 10px 50px rgba(0,0,0,0.9);
-  display:none;
-  z-index:1000;
-  width:320px;
-  text-align:center;
-  animation:fadeIn 0.5s ease;
-}
-.ai-popup h3{margin-bottom:20px;font-size:20px;color:#ff00ff;text-shadow:0 0 5px #00f6ff;}
-.ai-popup ul{list-style:none;padding:0;margin:0 0 20px 0;}
-.ai-popup li{margin:10px 0;}
-.ai-popup a{
-  color:#00ffff;
-  text-decoration:none;
-  font-weight:bold;
-  font-size:16px;
-  transition:0.3s;
-}
-.ai-popup a:hover{text-decoration:underline;color:#ff00ff;}
-.ai-popup button{
-  padding:12px 25px;
-  border:none;
-  border-radius:20px;
-  background:#00f6ff;
-  color:#111;
-  font-weight:bold;
-  cursor:pointer;
-}
-.ai-popup button:hover{background:#ff00ff;color:#fff;}
-
-@keyframes fadeIn{
-  0%{opacity:0;transform:translate(-50%,-48%);}
-  100%{opacity:1;transform:translate(-50%,-50%);}
-}
-
-@media(max-width:480px){.section-grid{grid-template-columns:repeat(2,1fr);}}
-</style>
-</head>
-<body>
-
-<header>HAMO & TRIPLE M</header>
-
-<!-- AI Button -->
-<div class="ai-card" onclick="toggleAI()">
-  <i class="fa-solid fa-robot"></i>
-  <span>HAMO & TRIPLE M</span>
+<div class="header">
+HAMO & TRIPLE M INTELLIGENCE SYSTEM
 </div>
 
-<!-- AI Popup -->
-<div id="aiPopup" class="ai-popup">
-  <h3>ذكاء اصطناعي فائق</h3>
-  <ul>
-    <li><a href="https://chat.openai.com/" target="_blank">تشغيل الذكاء الاصطناعي</a></li>
-    <li><a href="#" target="_blank">تشغيل Grok</a></li>
-    <li><a href="#" target="_blank">تشغيل DeepSeek</a></li>
-    <li><a href="#" target="_blank">تشغيل AI آخر</a></li>
-  </ul>
-  <button onclick="toggleAI()">اغلق</button>
+<div class="chat" id="chat"></div>
+
+<div class="inputbox">
+
+<input id="input" placeholder="اكتب سؤالك">
+
+<button onclick="send()">ارسال</button>
+
 </div>
 
-<div class="section-grid">
-  <div class="section-card"><i class="fa-solid fa-tv"></i><a href="sections/1.html">مسلسلات عربية</a></div>
-  <div class="section-card"><i class="fa-solid fa-clapperboard"></i><a href="sections/2.html">مسلسلات أجنبية</a></div>
-  <div class="section-card"><i class="fa-solid fa-film"></i><a href="sections/3.html">أفلام عربية</a></div>
-  <div class="section-card"><i class="fa-solid fa-video"></i><a href="sections/4.html">أفلام أجنبية</a></div>
-  <div class="section-card"><i class="fa-solid fa-dragon"></i><a href="sections/5.html">أنمي</a></div>
-  <div class="section-card"><i class="fa-solid fa-newspaper"></i><a href="sections/6.html">أخبار</a></div>
-  <div class="section-card"><i class="fa-solid fa-futbol"></i><a href="sections/7.html">رياضة</a></div>
-  <div class="section-card"><i class="fa-solid fa-star"></i><a href="sections/8.html">مسلسلات رمضان</a></div>
-  <div class="section-card"><i class="fa-solid fa-child"></i><a href="sections/9.html">أفلام كرتون</a></div>
-  <div class="section-card"><i class="fa-solid fa-book"></i><a href="sections/10.html">وثائقيات</a></div>
-  <div class="section-card"><i class="fa-solid fa-music"></i><a href="sections/11.html">موسيقى</a></div>
-  <div class="section-card"><i class="fa-solid fa-baby"></i><a href="sections/12.html">أطفال</a></div>
-  <div class="section-card"><i class="fa-solid fa-earth-africa"></i><a href="sections/13.html">وثائقيات تعليمية</a></div>
 </div>
 
 <script>
-function toggleAI(){
-  const popup=document.getElementById('aiPopup');
-  popup.style.display=(popup.style.display==='block')?'none':'block';
+
+/* MATRIX EFFECT */
+
+let canvas=document.getElementById("matrix")
+
+let ctx=canvas.getContext("2d")
+
+canvas.height=window.innerHeight
+canvas.width=window.innerWidth
+
+let letters="HAMOAI0123456789"
+
+letters=letters.split("")
+
+let fontSize=14
+
+let columns=canvas.width/fontSize
+
+let drops=[]
+
+for(let x=0;x<columns;x++)
+drops[x]=1
+
+function draw(){
+
+ctx.fillStyle="rgba(0,0,0,0.05)"
+ctx.fillRect(0,0,canvas.width,canvas.height)
+
+ctx.fillStyle="#0f0"
+ctx.font=fontSize+"px monospace"
+
+for(let i=0;i<drops.length;i++){
+
+let text=letters[Math.floor(Math.random()*letters.length)]
+
+ctx.fillText(text,i*fontSize,drops[i]*fontSize)
+
+if(drops[i]*fontSize>canvas.height && Math.random()>0.975)
+drops[i]=0
+
+drops[i]++
+
 }
+
+}
+
+setInterval(draw,33)
+
+
+/* particles */
+
+for(let i=0;i<40;i++){
+
+let p=document.createElement("div")
+
+p.className="particle"
+
+p.style.left=Math.random()*100+"%"
+
+p.style.animationDuration=(5+Math.random()*10)+"s"
+
+document.body.appendChild(p)
+
+}
+
+/* فتح AI */
+
+function openAI(){
+
+document.getElementById("panel").style.display="flex"
+
+speak("مرحبا بك في نظام الذكاء الاصطناعي المتطور")
+
+}
+
+/* صوت */
+
+function speak(t){
+
+let s=new SpeechSynthesisUtterance(t)
+
+s.lang="ar"
+
+speechSynthesis.speak(s)
+
+}
+
+/* كتابة حرف حرف */
+
+function typeWriter(text){
+
+let chat=document.getElementById("chat")
+
+let div=document.createElement("div")
+
+chat.appendChild(div)
+
+let i=0
+
+let timer=setInterval(function(){
+
+div.innerHTML+=text.charAt(i)
+
+i++
+
+if(i>=text.length) clearInterval(timer)
+
+},30)
+
+}
+
+/* ارسال */
+
+function send(){
+
+let input=document.getElementById("input")
+
+let chat=document.getElementById("chat")
+
+let q=input.value
+
+if(q==="") return
+
+chat.innerHTML+=`<div>👤 ${q}</div>`
+
+typeWriter("🤖 تحليل السؤال عبر شبكة HAMO AI ...")
+
+setTimeout(()=>{
+
+typeWriter("تم تحليل السؤال عبر شبكة ذكاء اصطناعي متقدمة.")
+
+speak("تم تحليل السؤال")
+
+},2000)
+
+input.value=""
+
+}
+
 </script>
 
 </body>
-  </html>
+</html>
