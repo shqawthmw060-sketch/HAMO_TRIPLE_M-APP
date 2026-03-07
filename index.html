@@ -1,173 +1,255 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>HAMO & TRIPLE M • FUTURE IPTV 2026</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Cairo:wght@700;900&display=swap');
-    body { font-family: 'Cairo', sans-serif; }
-    .matrix { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
-    .neon-text { text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #ff00ff; }
-    .holo-card { transition: all 0.4s cubic-bezier(0.23,1,0.32,1); }
-    .holo-card:hover { transform: translateY(-20px) scale(1.05) rotateX(10deg); box-shadow: 0 0 80px #00ffff; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HAMO & TRIPLE M - Pro Max Ultra</title>
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root {
+  --bg: #0b0c10;
+  --card: #1f2833;
+  --primary: #00f6ff;
+  --hover: #00f6ff44;
+  --text: #ffffff;
+  --accent: #ff00ff;
+}
+
+/* Reset */
+* { margin:0; padding:0; box-sizing:border-box; font-family: 'Arial', sans-serif; }
+
+/* Body */
+body {
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* Header */
+header {
+  padding: 25px;
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  background: linear-gradient(90deg,#0f0c29,#302b63,#24243e);
+  color: var(--primary);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.7);
+  position: relative;
+  z-index: 100;
+}
+
+/* AI Button */
+.ai-card {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg,#00f6ff,#ff00ff);
+  color:#fff;
+  padding:15px 25px;
+  border-radius:25px;
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  font-weight:bold;
+  cursor:pointer;
+  text-align:center;
+  transition:0.3s;
+  box-shadow:0 6px 20px rgba(0,0,0,0.7);
+  z-index: 200;
+}
+.ai-card:hover {
+  transform:scale(1.1);
+  box-shadow:0 10px 30px rgba(0,0,0,0.8);
+}
+.ai-card i { font-size:24px; }
+
+/* AI Popup */
+.ai-popup {
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:#111;
+  color:#0ff;
+  border-radius:20px;
+  padding:25px;
+  box-shadow:0 8px 30px rgba(0,0,0,0.9);
+  display:none;
+  z-index:1000;
+  width:90%;
+  max-width:400px;
+  text-align:center;
+}
+.ai-popup h3 { margin-bottom:20px; }
+.ai-popup p { font-size:14px; margin-bottom:15px; }
+.ai-popup button {
+  padding:10px 20px;
+  border:none;
+  border-radius:15px;
+  background:var(--primary);
+  color:#111;
+  font-weight:bold;
+  cursor:pointer;
+}
+.ai-popup button:hover { background: var(--accent); color:#fff; }
+
+/* Section Grid */
+.section-grid {
+  display:grid;
+  grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
+  gap:20px;
+  padding:20px;
+  margin-top: 20px;
+}
+.section-card {
+  background: var(--card);
+  border-radius: 15px;
+  padding: 25px 15px;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  position: relative;
+  overflow: hidden;
+}
+.section-card::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background: var(--hover);
+  opacity:0;
+  transition:0.4s;
+  border-radius:15px;
+}
+.section-card:hover::after { opacity:1; }
+.section-card i { font-size:40px; margin-bottom:12px; color:var(--primary); transition:0.3s; }
+.section-card:hover i { color:#00ffff; transform:scale(1.3); }
+.section-card a { text-decoration:none; color:var(--primary); font-weight:bold; display:block; font-size:16px; transition:0.3s; }
+.section-card:hover a { color:#00ffff; }
+
+/* Futuristic background */
+#stars {
+  position:fixed;
+  top:0; left:0; width:100%; height:100%;
+  background:#000 url('https://i.ibb.co/2n2VJwT/stars.png') repeat;
+  z-index:-1;
+  animation: moveStars 200s linear infinite;
+}
+@keyframes moveStars { 0% {background-position:0 0;} 100% {background-position:-10000px 5000px;} }
+
+/* Matrix Effect */
+.matrix { font-family: monospace; color:#0f0; position:fixed; top:0; left:0; width:100%; height:100%; overflow:hidden; pointer-events:none; z-index:-2; }
+.matrix span { position:absolute; font-size:16px; animation:matrixMove linear infinite; }
+@keyframes matrixMove { 0% {top:-20px;} 100% {top:100vh;} }
+
+/* Responsive */
+@media (max-width:480px) { .section-grid { grid-template-columns:repeat(2,1fr); } }
+</style>
 </head>
-<body class="bg-[#05080f] text-white overflow-x-hidden">
 
-  <!-- MATRIX RAIN BACKGROUND -->
-  <canvas id="matrix" class="matrix"></canvas>
+<body>
 
-  <!-- NAVBAR -->
-  <nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-2xl border-b border-cyan-500/30">
-    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-      <div class="flex items-center gap-4">
-        <div class="w-10 h-10 bg-gradient-to-br from-cyan-400 to-pink-500 rounded-full flex items-center justify-center text-2xl font-black">H</div>
-        <h1 class="text-3xl font-black tracking-widest neon-text">HAMO & TRIPLE M</h1>
-      </div>
-      <div class="flex gap-8 text-lg">
-        <a href="#" onclick="showSection('live')" class="hover:text-cyan-400 transition">LIVE</a>
-        <a href="#" onclick="showSection('movies')" class="hover:text-cyan-400 transition">أفلام</a>
-        <a href="#" onclick="showSection('series')" class="hover:text-cyan-400 transition">مسلسلات</a>
-        <a href="#" onclick="showSection('anime')" class="hover:text-cyan-400 transition">أنمي</a>
-      </div>
-      <div class="flex items-center gap-4">
-        <button onclick="toggleAI()" class="px-6 py-3 bg-gradient-to-r from-cyan-500 to-pink-500 rounded-2xl font-bold flex items-center gap-3 hover:scale-110 transition">
-          <i class="fa-solid fa-brain"></i> HAMO AI
-        </button>
-        <button onclick="showLogin()" class="px-8 py-3 border border-cyan-400 rounded-2xl hover:bg-cyan-400 hover:text-black transition">تسجيل الدخول</button>
-      </div>
-    </div>
-  </nav>
+<div id="stars"></div>
+<div class="matrix" id="matrix"></div>
 
-  <!-- HERO -->
-  <section class="min-h-screen flex items-center justify-center relative pt-20">
-    <div class="text-center z-10">
-      <h1 class="text-8xl font-black neon-text mb-6 tracking-widest">FUTURE IPTV</h1>
-      <p class="text-4xl text-cyan-300 mb-12">2026 • الجيل الجديد من البث</p>
-      <button onclick="showLogin()" class="px-16 py-8 text-3xl font-black bg-gradient-to-r from-cyan-400 to-pink-500 rounded-3xl hover:scale-110 transition shadow-2xl">
-        ابدأ المشاهدة الآن
-      </button>
-    </div>
-  </section>
+<header>HAMO & TRIPLE M</header>
 
-  <!-- AI CHATBOT -->
-  <div id="aiModal" class="hidden fixed bottom-8 left-8 bg-black/90 border border-cyan-400 rounded-3xl w-96 h-[520px] flex flex-col shadow-2xl overflow-hidden">
-    <div class="bg-gradient-to-r from-cyan-500 to-pink-500 p-5 flex items-center gap-3">
-      <i class="fa-solid fa-brain text-3xl"></i>
-      <div>
-        <p class="font-bold">HAMO AI • الذكاء الاصطناعي</p>
-        <p class="text-xs">مستشارك الشخصي</p>
-      </div>
-    </div>
-    <div id="chatBody" class="flex-1 p-6 overflow-y-auto text-sm"></div>
-    <div class="p-4 border-t border-cyan-500/30">
-      <input id="aiInput" type="text" placeholder="اكتب سؤالك..." 
-             class="w-full bg-black border border-cyan-400 rounded-2xl px-6 py-4 focus:outline-none" onkeypress="if(event.key==='Enter') sendAI()">
-    </div>
+<div class="section-grid">
+  <div class="section-card">
+    <i class="fa-solid fa-tv"></i>
+    <a href="sections/1.html">مسلسلات عربية</a>
   </div>
-
-  <!-- CHANNEL GRID -->
-  <section id="live" class="py-20">
-    <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-5xl font-black mb-12 text-center neon-text">القنوات الحية</h2>
-      <div class="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-6" id="channelGrid">
-        <!-- JS will fill this -->
-      </div>
-    </div>
-  </section>
-
-  <!-- SUBSCRIPTION BAR -->
-  <div class="fixed bottom-0 left-0 right-0 bg-black/90 border-t border-pink-500 p-4 flex items-center justify-between px-8 z-50">
-    <div class="flex items-center gap-6">
-      <div class="text-cyan-400">اشتراكك: <span id="subStatus" class="font-bold text-pink-400">VIP ∞</span></div>
-      <div class="text-xs text-gray-400">ينتهي في 12 يوم</div>
-    </div>
-    <button onclick="upgradeSub()" class="bg-gradient-to-r from-pink-500 to-cyan-500 px-10 py-4 rounded-2xl font-bold">ترقية الاشتراك</button>
+  <div class="section-card">
+    <i class="fa-solid fa-clapperboard"></i>
+    <a href="sections/2.html">مسلسلات أجنبية</a>
   </div>
+  <div class="section-card">
+    <i class="fa-solid fa-film"></i>
+    <a href="sections/3.html">أفلام عربية</a>
+  </div>
+  <div class="section-card">
+    <i class="fa-solid fa-video"></i>
+    <a href="sections/4.html">أفلام أجنبية</a>
+  </div>
+  <div class="section-card">
+    <i class="fa-solid fa-dragon"></i>
+    <a href="sections/5.html">أنمي</a>
+  </div>
+  <div class="section-card">
+    <i class="fa-solid fa-newspaper"></i>
+    <a href="sections/6.html">أخبار</a>
+  </div>
+  <div class="section-card">
+    <i class="fa-solid fa-futbol"></i>
+    <a href="sections/7.html">رياضة</a>
+  </div>
+  <div class="section-card">
+    <i class="fa-solid fa-star"></i>
+    <a href="sections/8.html">مسلسلات رمضان</a>
+  </div>
+  <div class="section-card">
+    <i class="fa-solid fa-child"></i>
+    <a href="sections/9.html">أفلام كرتون</a>
+  </div>
+  <div class="section-card">
+    <i class="fa-solid fa-book"></i>
+    <a href="sections/10.html">وثائقيات</a>
+  </div>
+  <div class="section-card">
+    <i class="fa-solid fa-music"></i>
+    <a href="sections/11.html">موسيقى</a>
+  </div>
+  <div class="section-card">
+    <i class="fa-solid fa-baby"></i>
+    <a href="sections/12.html">أطفال</a>
+  </div>
+  <div class="section-card">
+    <i class="fa-solid fa-earth-africa"></i>
+    <a href="sections/13.html">وثائقيات تعليمية</a>
+  </div>
+</div>
 
-  <script>
-    // Matrix Rain
-    const canvas = document.getElementById('matrix');
-    const ctx = canvas.getContext('2d');
-    canvas.height = window.innerHeight;
-    canvas.width = window.innerWidth;
-    const chars = "01アイウエオ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const fontSize = 14;
-    const columns = canvas.width / fontSize;
-    const drops = Array(Math.floor(columns)).fill(1);
+<!-- AI Button -->
+<div class="ai-card" onclick="toggleAI()">
+  <i class="fa-solid fa-robot"></i>
+  <span>HAMO & TRIPLE M</span>
+</div>
 
-    function drawMatrix() {
-      ctx.fillStyle = 'rgba(5,8,15,0.05)';
-      ctx.fillRect(0,0,canvas.width,canvas.height);
-      ctx.fillStyle = '#00ffff';
-      ctx.font = `${fontSize}px monospace`;
-      for(let i=0; i<drops.length; i++) {
-        const text = chars[Math.floor(Math.random()*chars.length)];
-        ctx.fillText(text, i*fontSize, drops[i]*fontSize);
-        if(drops[i]*fontSize > canvas.height && Math.random()>0.975) drops[i]=0;
-        drops[i]++;
-      }
-    }
-    setInterval(drawMatrix, 35);
+<!-- AI Popup -->
+<div id="aiPopup" class="ai-popup">
+  <h3>HAMO & TRIPLE M AI</h3>
+  <p>الذكاء الاصطناعي يقوم بتحليل كل شيء ويقترح لك أفضل المحتوى.</p>
+  <button onclick="toggleAI()">اغلق</button>
+</div>
 
-    // Fake Channels
-    const channels = [
-      {name:"Al Jazeera", icon:"📺"}, {name:"beIN Sports 1", icon:"⚽"},
-      {name:"MBC Drama", icon:"🎥"}, {name:"Netflix Live", icon:"📺"},
-      {name:"Anime TV", icon:"🌸"}, {name:"Music HD", icon:"🎵"}
-    ];
+<script>
+// Toggle AI Popup
+function toggleAI(){
+  const popup = document.getElementById('aiPopup');
+  popup.style.display = (popup.style.display === 'block') ? 'none' : 'block';
+}
 
-    function loadChannels() {
-      const grid = document.getElementById('channelGrid');
-      grid.innerHTML = '';
-      channels.forEach(ch => {
-        const div = document.createElement('div');
-        div.className = 'holo-card bg-zinc-900/70 border border-cyan-500/30 rounded-3xl p-6 text-center cursor-pointer';
-        div.innerHTML = `<div class="text-6xl mb-4">\( {ch.icon}</div><p class="font-bold"> \){ch.name}</p>`;
-        div.onclick = () => alert(`جاري تشغيل ${ch.name}... (Pro Max Mode)`);
-        grid.appendChild(div);
-      });
-    }
-    loadChannels();
+// Matrix effect
+const matrix = document.getElementById('matrix');
+const cols = window.innerWidth / 20;
+for(let i=0;i<cols;i++){
+  const span = document.createElement('span');
+  span.innerText = String.fromCharCode(33+Math.random()*94);
+  span.style.left = (i*20)+'px';
+  span.style.top = Math.random()*window.innerHeight + 'px';
+  span.style.fontSize = '14px';
+  matrix.appendChild(span);
+}
+setInterval(()=>{
+  matrix.querySelectorAll('span').forEach(s=>{
+    s.style.top = (parseFloat(s.style.top)+2) + 'px';
+    if(parseFloat(s.style.top)>window.innerHeight) s.style.top='-20px';
+  })
+},50);
+</script>
 
-    // AI Chatbot
-    function toggleAI() {
-      document.getElementById('aiModal').classList.toggle('hidden');
-    }
-    function sendAI() {
-      const input = document.getElementById('aiInput');
-      const body = document.getElementById('chatBody');
-      if(!input.value) return;
-      body.innerHTML += `<p class="text-right text-cyan-400">${input.value}</p>`;
-      setTimeout(() => {
-        body.innerHTML += `<p class="text-pink-400">HAMO AI: مرحبا! أي محتوى تحب تشوفه اليوم؟</p>`;
-        body.scrollTop = body.scrollHeight;
-      }, 800);
-      input.value = '';
-    }
-
-    // Fake Login
-    function showLogin() {
-      const name = prompt("MAC Address أو Username:");
-      if(name) alert(`مرحباً ${name} 👾\nاشتراكك نشط - Pro Max Mode`);
-    }
-
-    // Fake Upgrade
-    function upgradeSub() {
-      alert("تم ترقية اشتراكك إلى ∞ Pro Max Edition");
-    }
-
-    // Section Switch
-    function showSection(sec) {
-      alert(`فتح قسم ${sec} - النسخة المستقبلية 2026`);
-    }
-
-    window.onload = () => {
-      console.log("%c🚀 HAMO & TRIPLE M - Pro Max Futuristic Edition Loaded", "color:#00ffff; font-size:18px; font-weight:bold");
-    };
-  </script>
 </body>
-</html>
+  </html>
