@@ -347,34 +347,242 @@
         </div>`).join('')}
     </div>
 </section>
-// 25 قسم عالمي Pro Max Plus
-const sections25 = [
-    'home', 'movies', 'series', 'live', 'asutra', 'shahid', 'anime', 'kids', 
-    'sports', 'tennis', 'boxing', 'ai', 'music', 'doc', 'horror', 'romance', 
-    'comedy', 'trend', 'arabic', 'korean', 'turkish', 'bollywood', 'talkshow', 'admin'
-];
 
-// Tab Navigation لكل الأقسام
-document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.onclick = () => {
-        // إخفاء كل الأقسام
-        sections25.forEach(sec => {
-            const section = document.getElementById(sec + '-section');
-            if (section) section.classList.add('hidden');
-        });
-        
-        // إظهار القسم المختار
-        const targetSection = document.getElementById(btn.dataset.tab + '-section');
-        if (targetSection) {
-            targetSection.classList.remove('hidden');
-            btn.classList.add('bg-gradient-to-r', 'from-purple-500', 'to-pink-500', 'text-white');
-        }
-        
-        // تحديث باقي الأزرار
-        document.querySelectorAll('.tab-btn').forEach(b => {
-            if (b !== btn) {
-                b.classList.remove('bg-gradient-to-r', 'from-purple-500', 'to-pink-500', 'text-white');
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAMO TRIPLE M - 25 قسم مرئي Pro Max Plus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Cairo', sans-serif; }
+        .glass { background: rgba(255,255,255,0.1); backdrop-filter: blur(20px); }
+        .section-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+        .section-card { transition: all 0.3s ease; }
+        .section-card:hover { transform: translateY(-10px) scale(1.02); }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; }
+        .fade-in-up:nth-child(1) { animation-delay: 0.1s; }
+        .fade-in-up:nth-child(2) { animation-delay: 0.2s; }
+        .fade-in-up:nth-child(3) { animation-delay: 0.3s; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-purple-900 to-black text-white min-h-screen p-4">
+
+<!-- Header بسيط -->
+<header class="glass p-6 rounded-3xl mb-8 max-w-7xl mx-auto">
+    <div class="flex items-center justify-between">
+        <h1 class="text-4xl font-black bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            🔥 HAMO TRIPLE M
+        </h1>
+        <div class="flex items-center gap-4">
+            <span class="px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-2xl font-bold">25 قسم مرئي</span>
+            <a href="https://wa.me/20158536392" class="bg-green-500 p-3 rounded-2xl hover:scale-110 transition-all">💬</a>
+        </div>
+    </div>
+</header>
+
+<!-- 25 قسم مرئي كامل - كلهم باينين -->
+<main class="max-w-7xl mx-auto space-y-8">
+    
+    <!-- القسم 1: الأفلام 🎬 -->
+    <section class="glass p-8 rounded-4xl fade-in-up section-card">
+        <h2 class="text-4xl font-black mb-8 flex items-center">
+            <i class="fas fa-film text-yellow-400 mr-6 text-3xl"></i>🎬 الأفلام الجديدة 2026
+        </h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            ${Array.from({length: 12}, (_, i) => `
+            <div class="bg-gray-800 rounded-3xl p-4 hover:scale-105 cursor-pointer group transition-all" onclick="playContent('movie-${i+1}')">
+                <div class="w-full h-32 rounded-2xl bg-gradient-to-br from-blue-600 to-purple-600 group-hover:brightness-110 mb-3"></div>
+                <h4 class="font-bold mb-1">فيلم ${i+1}</h4>
+                <p class="text-xs opacity-75">⭐ 8.7 • 2h 30m</p>
+            </div>`).join('')}
+        </div>
+    </section>
+
+    <!-- القسم 2: المسلسلات 📺 -->
+    <section class="glass p-8 rounded-4xl fade-in-up section-card">
+        <h2 class="text-4xl font-black mb-8 flex items-center">
+            <i class="fas fa-tv text-green-400 mr-6 text-3xl"></i>📺 المسلسلات العالمية
+        </h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            ${Array.from({length: 12}, (_, i) => `
+            <div class="bg-gray-800 rounded-3xl p-4 hover:scale-105 cursor-pointer group transition-all" onclick="playContent('series-${i+1}')">
+                <div class="w-full h-28 rounded-2xl bg-gradient-to-r from-purple-600 to-pink-600 group-hover:brightness-110 mb-3"></div>
+                <h4 class="font-bold mb-1">مسلسل ${i+1}</h4>
+                <p class="text-xs opacity-75 flex items-center">
+                    <span>S${Math.floor(i/4)+1}</span>
+                    <span class="mx-2">•</span>
+                    <span>12 حلقة</span>
+                </p>
+            </div>`).join('')}
+        </div>
+    </section>
+
+    <!-- القسم 3: بث مباشر 🔴 -->
+    <section class="glass p-8 rounded-4xl fade-in-up section-card border-4 border-red-500/30">
+        <h2 class="text-4xl font-black mb-8 flex items-center">
+            <i class="fas fa-broadcast-tower text-red-400 mr-6 text-3xl animate-pulse"></i>🔴 بث مباشر الآن
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="relative group">
+                <div class="w-6 h-6 bg-red-500 rounded-full absolute top-4 right-4 z-10 animate-ping"></div>
+                <div class="w-full h-48 rounded-3xl bg-gradient-to-br from-red-600 to-orange-500 group-hover:brightness-110 mb-4"></div>
+                <h4 class="font-bold text-xl mb-2">⚽ مانشستر vs ليفربول</h4>
+                <p class="text-lg opacity-90 mb-4">الدوري الإنجليزي • 1080p</p>
+                <button class="w-full py-4 bg-gradient-to-r from-red-500 to-orange-500 font-bold rounded-2xl hover:scale-105 transition-all">🔴 شاهد الآن</button>
+            </div>
+            ${Array.from({length: 5}, (_, i) => `
+            <div class="glass p-6 rounded-3xl hover:scale-105 group relative">
+                <div class="w-5 h-5 bg-red-400 rounded-full absolute top-4 right-4 animate-ping"></div>
+                <div class="w-full h-32 rounded-2xl bg-gradient-to-br from-orange-500 to-yellow-500 group-hover:brightness-110 mb-4"></div>
+                <h4 class="font-bold">قناة ${i+1}</h4>
+                <p class="text-sm opacity-75">رياضة • LIVE</p>
+            </div>`).join('')}
+        </div>
+    </section>
+
+    <!-- القسم 4: الأسطورة 🏆 -->
+    <section class="glass p-8 rounded-4xl fade-in-up section-card bg-gradient-to-br from-yellow-500/10 to-orange-500/10 border-4 border-yellow-400/30">
+        <h2 class="text-4xl font-black mb-8 flex items-center">
+            <i class="fas fa-trophy text-yellow-400 mr-6 text-3xl"></i>🏆 الأسطورة
+        </h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+            ${Array.from({length: 9}, (_, i) => `
+            <div class="bg-gradient-to-br from-yellow-500 to-orange-500 text-white p-6 rounded-3xl hover:scale-105 cursor-pointer">
+                <h3 class="text-xl font-bold mb-4">دوري ${i+1}</h3>
+                <div class="space-y-3 text-sm">
+                    <div class="flex justify-between py-2 border-b border-yellow-300/50">
+                        <span>النادي الأول</span>
+                        <span class="font-bold">2-1</span>
+                    </div>
+                    <div class="flex justify-between py-2 border-b border-yellow-300/50">
+                        <span>النادي الثاني</span>
+                        <span class="font-bold">1-3</span>
+                    </div>
+                </div>
+                <button class="w-full mt-6 bg-black/50 py-3 rounded-xl font-bold hover:bg-black/70 transition-all">⚽ شاهد المباريات</button>
+            </div>`).join('')}
+        </div>
+    </section>
+
+    <!-- القسم 5: شاهد VIP 👑 -->
+    <section class="glass p-8 rounded-4xl fade-in-up section-card">
+        <h2 class="text-4xl font-black mb-8 flex items-center">
+            <i class="fas fa-crown text-purple-400 mr-6 text-3xl"></i>👑 شاهد VIP
+        </h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            ${Array.from({length: 12}, (_, i) => `
+            <div class="bg-gray-800 rounded-3xl overflow-hidden hover:scale-105 cursor-pointer group" onclick="playContent('vip-${i+1}')">
+                <div class="w-full h-36 bg-gradient-to-r from-purple-600 to-pink-600 group-hover:brightness-110 transition-all relative">
+                    <div class="absolute top-3 right-3 bg-white/20 px-2 py-1 rounded-lg text-xs font-bold">VIP</div>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold mb-1">VIP ${i+1}</h4>
+                    <p class="text-xs opacity-75">⭐ 9.2 • 2026</p>
+                </div>
+            </div>`).join('')}
+        </div>
+    </section>
+
+    <!-- القسم 6: الأنيمي 🎌 -->
+    <section class="glass p-8 rounded-4xl fade-in-up section-card bg-gradient-to-br from-pink-500/10 to-purple-500/10">
+        <h2 class="text-4xl font-black mb-8 flex items-center">
+            <i class="fas fa-dragon text-pink-400 mr-6 text-3xl"></i>🎌 الأنيمي الياباني
+        </h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            ${Array.from({length: 12}, (_, i) => `
+            <div class="bg-gradient-to-br from-purple-600 to-pink-600 text-white p-6 rounded-3xl hover:scale-105 cursor-pointer group" onclick="playContent('anime-${i+1}')">
+                <div class="w-full h-32 rounded-2xl bg-gradient-to-r from-indigo-500 to-purple-500 group-hover:brightness-110 mb-4"></div>
+                <h4 class="font-bold mb-2">أنيمي ${i+1}</h4>
+                <p class="text-xs opacity-90">الموسم ${Math.floor(i/4)+1} • 24 حلقة</p>
+            </div>`).join('')}
+        </div>
+    </section>
+
+    <!-- القسم 7: الأطفال 👶 -->
+    <section class="glass p-8 rounded-4xl fade-in-up section-card bg-gradient-to-br from-blue-500/10 to-cyan-500/10">
+        <h2 class="text-4xl font-black mb-8 flex items-center">
+            <i class="fas fa-child text-blue-400 mr-6 text-3xl"></i>👶 محتوى الأطفال
+        </h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            ${Array.from({length: 12}, (_, i) => `
+            <div class="bg-gradient-to-br from-blue-500 to-cyan-500 text-white p-6 rounded-3xl hover:scale-105 cursor-pointer">
+                <div class="w-full h-32 rounded-2xl bg-gradient-to-r from-sky-400 to-blue-400 mb-4"></div>
+                <h4 class="font-bold mb-2">كرتون ${i+1}</h4>
+                <p class="text-xs opacity-90">رسوم متحركة • مناسب للأطفال</p>
+            </div>`).join('')}
+        </div>
+    </section>
+
+    <!-- باقي الأقسام 18 قسم (رياضة، AI، موسيقى، رعب، إلخ...) -->
+    ${Array.from({length: 18}, (_, i) => `
+    <section class="glass p-8 rounded-4xl fade-in-up section-card">
+        <h2 class="text-4xl font-black mb-8 flex items-center">
+            <i class="fas fa-${['trophy','robot','music','book','ghost','heart','laughing','fire','flag','flag-checkered','flag-alt','flag','users','cog'][i%14]} text-${['yellow','blue','green','orange','red','pink','purple','emerald','indigo','rose','violet','sky','cyan'][i%13]}-400 mr-6 text-3xl"></i>
+            قسم ${i+9} 🔥
+        </h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            ${Array.from({length: 12}, (_, j) => `
+            <div class="bg-gray-800 rounded-3xl p-4 hover:scale-105 cursor-pointer group transition-all">
+                <div class="w-full h-32 rounded-2xl bg-gradient-to-br from-${['blue','purple','green','orange','red','pink','emerald','indigo','rose','violet','sky','cyan'][j%12]}-500 to-${['purple','pink','emerald','red','orange','rose','indigo','violet','sky','cyan','blue','green'][j%12]}-500 group-hover:brightness-110 mb-3"></div>
+                <h4 class="font-bold mb-1">محتوى ${j+1}</h4>
+                <p class="text-xs opacity-75">⭐ ${Math.floor(Math.random()*2)+8}.5</p>
+            </div>`).join('')}
+        </div>
+    </section>`).join('')}
+
+</main>
+
+<!-- Video Player Modal -->
+<div id="videoModal" class="fixed inset-0 bg-black/95 z-50 hidden flex items-center justify-center p-8">
+    <div class="max-w-4xl w-full mx-auto">
+        <div class="flex items-center mb-8">
+            <button onclick="closePlayer()" class="text-4xl hover:text-red-400 mr-8 p-4 rounded-2xl hover:bg-white/20">✕</button>
+            <h2 id="playerTitle" class="text-3xl font-bold flex-1">المحتوى Pro Max</h2>
+        </div>
+        <video id="mainPlayer" class="w-full h-96 object-contain rounded-3xl" controls>
+            <source src="https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_5mb.mp4" type="video/mp4">
+        </video>
+    </div>
+</div>
+
+<script>
+    // تشغيل الفيديو
+    function playContent(id) {
+        document.getElementById('playerTitle').textContent = `${id} - Pro Max Plus`;
+        document.getElementById('mainPlayer').load();
+        document.getElementById('videoModal').classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closePlayer() {
+        document.getElementById('videoModal').classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+
+    // إظهار الأقسام بالتدريج
+    document.querySelectorAll('section').forEach((sec, index) => {
+        setTimeout(() => {
+            sec.classList.add('fade-in-up');
+            sec.style.opacity = '1';
+        }, index * 100);
+    });
+
+    // Scroll animations
+    window.addEventListener('scroll', () => {
+        document.querySelectorAll('.section-card').forEach(card => {
+            const rect = card.getBoundingClientRect();
+            if (rect.top < window.innerHeight) {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
             }
         });
-    }
-});
+    });
+</script>
+
+</body>
+    </html>
