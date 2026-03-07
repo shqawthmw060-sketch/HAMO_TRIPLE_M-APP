@@ -283,3 +283,67 @@
             <div class="flex items-center space-x-4 space-x-reverse">
                 <button class="p-4 bg-white/20 rounded-2xl hover:bg-white/30"><i class="fas fa-expand text-xl"></i></button>
                 <button class="p-4 bg-white/20 rounded-2xl hover:bg-white/30"><i 
+
+<!-- Navigation Tabs - 25 قسم عالمي -->
+<nav class="glass sticky top-20 z-40 p-4 mx-6 lg:mx-12 rounded-3xl backdrop-blur-md">
+    <div class="flex overflow-x-auto space-x-2 pb-2 scrollbar-hide" id="navTabs25">
+        <button class="tab-btn px-4 py-3 rounded-xl text-xs font-bold bg-gradient-to-r from-purple-500 to-pink-500 text-white whitespace-nowrap" data-tab="home">🏠 الرئيسية</button>
+        <button class="tab-btn px-4 py-3 rounded-xl text-xs font-bold text-white whitespace-nowrap" data-tab="movies">🎬 أفلام</button>
+        <button class="tab-btn px-4 py-3 rounded-xl text-xs font-bold text-white whitespace-nowrap" data-tab="series">📺 مسلسلات</button>
+        <button class="tab-btn px-4 py-3 rounded-xl text-xs font-bold text-white whitespace-nowrap" data-tab="live">🔴 مباشر</button>
+        <button class="tab-btn px-4 py-3 rounded-xl text-xs font-bold text-white whitespace-nowrap" data-tab="asutra">🏆 الأسطورة</button>
+        <button class="tab-btn px-4 py-3 rounded-xl text-xs font-bold text-white whitespace-nowrap" data-tab="shahid">👑 شاهد VIP</button>
+        <button class="tab-btn px-4 py-3 rounded-xl text-xs font-bold text-white whitespace-nowrap" data-tab="anime">🎌 أنيمي</button>
+        <button class="tab-btn px-4 py-3 rounded-xl text-xs font-bold text-white whitespace-nowrap" data-tab="kids">👶 أطفال</button>
+        <button class="tab-btn px-4 py-3 rounded-xl text-xs font-bold text-white whitespace-nowrap" data-tab="sports">⚽ رياضة</button>
+        <button class="tab-btn px-4 py-3 rounded-xl text-xs font-bold text-white whitespace-nowrap" data-tab="tennis">🎾 تنس</button>
+        <button class="tab-btn px-4 py-3 rounded-xl text-xs font-bold text-white whitespace-nowrap" data-tab="boxing">🥊 ملاكمة</button>
+        <button class="tab-btn px-4 py-3 rounded-xl text-xs font-bold text-white whitespace-nowrap" data-tab="ai">🤖 AI مساعد</button>
+        <button class="tab-btn px-4 py-3 rounded-xl text-xs font-bold text-white whitespace-nowrap" data-tab="music">🎵 موسيقى</button>
+        <button class="tab-btn px-4 py-3 rounded-xl text-xs font-bold text-white whitespace-nowrap" data-tab="doc">📚 وثائقي</button>
+        <button class="tab-btn px-4 py-3 rounded-xl text-xs font-bold text-white whitespace-nowrap" data-tab="horror">👻 رعب</button>
+        <button class="tab-btn px-4 py-3 rounded-xl text-xs font-bold text-white whitespace-nowrap" data-tab="romance">💕 رومانسي</button>
+        <button class="tab-btn px-4 py-3 rounded-xl text-xs font-bold text-white whitespace-nowrap" data-tab="comedy">😂 كوميدي</button>
+        <button class="tab-btn px-4 py-3 rounded-xl text-xs font-bold text-white whitespace-nowrap" data-tab="trend">🎪 ترند</button>
+        <button class="tab-btn px-4 py-3 rounded-xl text-xs font-bold text-white whitespace-nowrap" data-tab="arabic">🇸🇦 عربي</button>
+        <button class="tab-btn px-4 py-3 rounded-xl text-xs font-bold text-white whitespace-nowrap" data-tab="korean">🇰🇷 كوري</button>
+        <button class="tab-btn px-4 py-3 rounded-xl text-xs font-bold text-white whitespace-nowrap" data-tab="turkish">🇹🇷 تركي</button>
+        <button class="tab-btn px-4 py-3 rounded-xl text-xs font-bold text-white whitespace-nowrap" data-tab="bollywood">🇮🇳 بوليوود</button>
+        <button class="tab-btn px-4 py-3 rounded-xl text-xs font-bold text-white whitespace-nowrap" data-tab="talkshow">👥 توك شو</button>
+        <button class="tab-btn px-4 py-3 rounded-xl text-xs font-bold text-white whitespace-nowrap" data-tab="admin">⚙️ Admin</button>
+    </div>
+</nav>
+
+<!-- مثال قسم واحد من الـ25 -->
+<section id="sports-section" class="tab-content hidden">
+    <h2 class="text-5xl font-black mb-12 flex items-center"><i class="fas fa-trophy mr-6 text-yellow-400 text-4xl"></i>⚽ الرياضة كاملة</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
+        ${Array.from({length: 24}, (_, i) => `
+        <div class="glass p-6 rounded-3xl hover:scale-105 transition-all cursor-pointer relative group">
+            <div class="w-6 h-6 bg-red-500 rounded-full absolute top-4 right-4 animate-ping"></div>
+            <div class="w-full h-40 rounded-2xl bg-gradient-to-br from-orange-500 to-red-500 mb-4 group-hover:brightness-110"></div>
+            <h4 class="font-bold mb-2">دوري ${i+1}</h4>
+            <div class="flex justify-between text-sm opacity-75">
+                <span>🔴 LIVE</span>
+                <span>النادي ${i+1} vs نادي ${i+2}</span>
+            </div>
+        </div>`).join('')}
+    </div>
+</section>
+
+<!-- قسم الأنيمي -->
+<section id="anime-section" class="tab-content hidden">
+    <h2 class="text-5xl font-black mb-12 flex items-center"><i class="fas fa-dragon mr-6 text-pink-400 text-4xl"></i>🎌 الأنيمي الياباني</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+        ${Array.from({length: 36}, (_, i) => `
+        <div class="bg-gradient-to-br from-purple-600 to-pink-600 text-white p-6 rounded-3xl hover:scale-105 cursor-pointer" onclick="playContent('anime-${i+1}')">
+            <div class="w-full h-44 rounded-2xl bg-gradient-to-r from-indigo-500 to-purple-500 mb-4"></div>
+            <h4 class="font-bold mb-2">أنيمي ${i+1}</h4>
+            <div class="flex text-xs opacity-90">
+                <span>الموسم ${Math.floor(i/6)+1}</span>
+                <span class="mx-2">•</span>
+                <span>24 حلقة</span>
+            </div>
+        </div>`).join('')}
+    </div>
+</section>
