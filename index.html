@@ -1,176 +1,221 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HAMO & TRIPLE M - Pro Max Plus</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<style>
-:root {
-  --bg: #0b0c10;
-  --card: #1f2833;
-  --primary: #00f6ff;
-  --hover: #00f6ff44;
-  --text: #ffffff;
-  --accent: #ff00ff;
-  --ai-bg: #111;
-}
-* { box-sizing: border-box; margin:0; padding:0; }
-body { font-family:'Arial',sans-serif; background:var(--bg); color:var(--text); overflow-x:hidden; }
-header { padding:25px; text-align:center; font-size:30px; font-weight:bold; background:linear-gradient(90deg,#0f0c29,#302b63,#24243e); color:var(--primary); box-shadow:0 4px 8px rgba(0,0,0,0.5); position:relative; z-index:10; }
-.language-selector { position:absolute; top:20px; right:20px; }
-.language-selector select { padding:5px 10px; border-radius:10px; border:none; background:#222; color:#fff; font-weight:bold; }
-.section-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:20px; padding:20px; }
-.section-card { background:var(--card); border-radius:15px; padding:25px 15px; text-align:center; transition:all 0.3s ease; cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,0.3); position:relative; overflow:hidden; }
-.section-card::after { content:""; position:absolute; inset:0; background:var(--hover); opacity:0; transition:0.4s; border-radius:15px; }
-.section-card:hover::after { opacity:1; }
-.section-card i { font-size:40px; margin-bottom:12px; color:var(--primary); transition:0.3s; }
-.section-card:hover i { color:#00ffff; transform:scale(1.3); }
-.section-card a { text-decoration:none; color:var(--primary); font-weight:bold; display:block; font-size:16px; transition:0.3s; }
-.section-card:hover a { color:#00ffff; }
-.ai-card { background: linear-gradient(135deg,#00f6ff,#ff00ff); color:#fff; padding:15px 25px; border-radius:25px; display:inline-flex; align-items:center; gap:12px; font-weight:bold; cursor:pointer; margin:20px auto; text-align:center; transition:0.3s; box-shadow:0 6px 20px rgba(0,0,0,0.7); }
-.ai-card:hover { transform:scale(1.1); box-shadow:0 10px 30px rgba(0,0,0,0.8); }
-.ai-card i { font-size:24px; }
-.ai-popup { position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:var(--ai-bg); color:var(--primary); border-radius:20px; padding:25px; box-shadow:0 8px 30px rgba(0,0,0,0.9); display:none; z-index:1000; width:400px; text-align:center; }
-.ai-popup h3 { margin-bottom:20px; }
-.ai-popup ul { list-style:none; padding:0; margin:0 0 20px 0; }
-.ai-popup li { margin:10px 0; }
-.ai-popup a { color:var(--accent); text-decoration:none; font-weight:bold; }
-.ai-popup a:hover { color:#0ff; text-decoration:underline; }
-.ai-popup button { padding:10px 20px; border:none; border-radius:15px; background:#00f6ff; color:#111; font-weight:bold; cursor:pointer; }
-.ai-popup button:hover { background:#ff00ff; color:#fff; }
-.loading-screen { position:fixed; inset:0; background:radial-gradient(circle,#0f0c29,#000); z-index:9999; display:flex; align-items:center; justify-content:center; flex-direction:column; color:#0ff; font-size:24px; font-weight:bold; }
-.matrix { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; }
-@media (max-width:480px) { .section-grid { grid-template-columns:repeat(2,1fr); } }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAMO TRIPLE M - Pro Max Plus Global Edition</title>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://unpkg.com/i18next@23/i18next.min.js"></script>
+    <script src="https://unpkg.com/i18next-browser-languagedetector@7/i18next-browser-languagedetector.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7"></script>
+    <script src="https://unpkg.com/@google/generative-ai"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;700&display=swap');
+        
+        * { font-family: 'Cairo', 'Noto Sans Arabic', sans-serif; }
+        .rtl { direction: rtl; }
+        .ltr { direction: ltr; }
+        
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        @keyframes shimmer { 0% { background-position: -468px 0; } 100% { background-position: 468px 0; } }
+        
+        .fade-in-up { animation: fadeInUp 0.8s ease-out; }
+        .hero-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); }
+        .glass { background: rgba(255,255,255,0.1); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.2); }
+        .shimmer { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 400px 100%; animation: shimmer 1.5s infinite; }
+        .neon-glow { box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+        
+        .section-hero { min-height: 100vh; }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        
+        .floating-whatsapp { position: fixed; width: 60px; height: 60px; bottom: 80px; right: 20px; background: #25D366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 2px 2px 3px #999; z-index: 1000; animation: pulse 2s infinite; }
+        .floating-whatsapp:hover { background: #128C7E; }
+        
+        .pwa-install { position: fixed; top: 20px; right: 20px; background: linear-gradient(45deg, #ff6b6b, #feca57); padding: 15px 25px; border-radius: 50px; color: white; font-weight: bold; z-index: 10000; display: none; }
+        
+        @media (max-width: 768px) { .floating-whatsapp { width: 55px; height: 55px; font-size: 25px; bottom: 70px; right: 15px; } }
+    </style>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiSEFNTyBUUklQTEUgTSBQcm8gTWF4IFBsdXMiLCJzaG9ydF9uYW1lIjoiSEFNTyBUUkkgTSIsInN0YXJ0X3VybCI6Ii8iLCJkaXNwbGF5Ijoic3RhbmRhbG9uZSIsImJhY2tncm91bmRfY29sb3IiOiIjMTExODI2IiwidGhlbWVfY29sb3IiOiIjNjY3ZWVhIiwiaWNvbnMiOlt7InNyYyI6ImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVBOR0...","splash_screens":[{"src":"data:image/png;base64,iVBORw0KG...","sizes":"192x192"}]}">
+    
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="HAMO TRIPLE M">
 </head>
-<body>
 
-<div class="loading-screen" id="loadingScreen">جاري التحميل...</div>
-<canvas class="matrix" id="matrixCanvas"></canvas>
+<body class="bg-gradient-to-br from-gray-900 via-purple-900 to-black text-white overflow-x-hidden">
+    
+    <!-- PWA Install Banner -->
+    <div class="pwa-install" id="pwa-install">
+        <i class="fas fa-download mr-2"></i>تثبيت التطبيق
+        <button id="pwa-close" class="ml-2 text-lg">&times;</button>
+    </div>
+    
+    <!-- Header Pro Max -->
+    <header class="glass fixed top-0 w-full z-50 px-6 py-4 transition-all duration-300">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-4 space-x-reverse">
+                <h1 class="text-3xl font-black bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent drop-shadow-lg">
+                    <i class="fas fa-fire mr-2"></i><span data-i18n="appTitle">HAMO TRIPLE M</span>
+                </h1>
+                <span class="px-3 py-1 bg-gradient-to-r from-green-500 to-blue-500 rounded-full text-xs font-bold animate-pulse">Pro Max Plus</span>
+            </div>
+            
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <!-- Search Pro -->
+                <div class="relative group">
+                    <input id="globalSearch" type="text" placeholder="🔍 البحث العالمي..." 
+                           class="w-64 lg:w-80 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 focus:border-purple-400 focus:outline-none transition-all duration-300 group-hover:shadow-lg">
+                    <div id="searchResults" class="absolute top-full left-0 w-full bg-white/5 backdrop-blur-md rounded-2xl mt-2 p-3 hidden border border-white/10 max-h-80 overflow-auto z-50"></div>
+                </div>
+                
+                <!-- Language Selector Pro -->
+                <div class="relative">
+                    <select id="languageSelect" class="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 focus:border-purple-400 focus:outline-none appearance-none bg-no-repeat bg-right">
+                        <option value="ar">🇸🇦 العربية</option>
+                        <option value="en">🇺🇸 English</option>
+                        <option value="fr">🇫🇷 Français</option>
+                        <option value="it">🇮🇹 Italiano</option>
+                        <option value="de">🇩🇪 Deutsch</option>
+                        <option value="hi">🇮🇳 हिंदी</option>
+                        <option value="zh">🇨🇳 中文</option>
+                        <option value="he">🇮🇱 עברית</option>
+                    </select>
+                </div>
+                
+                <!-- User Profile -->
+                <div id="userProfile" class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center cursor-pointer hover:scale-110 transition-transform duration-200 hidden">
+                    <i class="fas fa-user text-xl"></i>
+                </div>
+                
+                <!-- Google Sign In -->
+                <div id="g_id_onload" 
+                     data-client_id="YOUR_GOOGLE_CLIENT_ID_HERE"
+                     data-callback="handleGoogleSignIn"
+                     data-auto_prompt="false"
+                     data-size="large"></div>
+                <div class="g_id_signin hidden" data-type="standard" data-size="large" data-theme="outline" data-text="sign_in_with" data-shape="rectangular" data-logo_alignment="left"></div>
+                
+                <!-- Notifications -->
+                <button id="notificationsBtn" class="p-3 bg-white/10 backdrop-blur-sm rounded-2xl hover:bg-white/20 transition-all duration-200 relative">
+                    <i class="fas fa-bell text-xl"></i>
+                    <span class="absolute -top-1 -right-1 bg-red-500 text-xs rounded-full w-5 h-5 flex items-center justify-center animate-pulse">3</span>
+                </button>
+                
+                <!-- Settings -->
+                <button id="settingsBtn" class="p-3 bg-white/10 backdrop-blur-sm rounded-2xl hover:bg-white/20 transition-all duration-200">
+                    <i class="fas fa-cog text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
 
-<header>HAMO & TRIPLE M
-  <div class="language-selector">
-    <select id="langSelect">
-      <option value="ar">العربية</option>
-      <option value="en">English</option>
-      <option value="fr">Français</option>
-      <option value="it">Italiano</option>
-      <option value="de">Deutsch</option>
-      <option value="hi">हिन्दी</option>
-      <option value="zh">中文</option>
-      <option value="he">עברית</option>
-    </select>
-  </div>
-</header>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/20158536392?text=مرحبا!%20عايز%20مساعدة%20في%20HAMO%20TRIPLE%20M%20Pro%20Max%20Plus%20🚀" 
+       class="floating-whatsapp z-1000" target="_blank" rel="noopener noreferrer" title="دردشة واتساب">
+        <i class="fab fa-whatsapp mb-1"></i>
+    </a>
 
-<div class="ai-card" onclick="toggleAI()">
-  <i class="fa-solid fa-robot"></i>
-  <span>HAMO & TRIPLE M</span>
-</div>
+    <!-- Hero Section Pro Max Plus -->
+    <section class="section-hero hero-gradient flex items-center justify-center text-center px-6 pt-24 overflow-hidden relative">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="relative z-10 max-w-4xl mx-auto fade-in-up">
+            <div class="mb-12">
+                <h1 class="text-7xl lg:text-8xl font-black bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent mb-6 drop-shadow-2xl">
+                    <span data-i18n="heroTitle1">HAMO</span><br>
+                    <span data-i18n="heroTitle2">TRIPLE M</span>
+                </h1>
+                <div class="flex justify-center items-center space-x-4 space-x-reverse mb-8">
+                    <span class="px-6 py-3 bg-white/20 backdrop-blur-sm rounded-3xl text-2xl font-bold glass">Pro Max Plus</span>
+                    <span class="px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-3xl text-2xl font-bold shadow-2xl">Global Edition</span>
+                </div>
+            </div>
+            
+            <p class="text-2xl lg:text-3xl mb-12 opacity-90 max-w-3xl mx-auto leading-relaxed" data-i18n="heroSubtitle">
+                أسطورة الستريمينج العالمي - كل المحتوى في مكان واحد بجودة 8K مع AI ذكي
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                <button id="getProBtn" class="px-12 py-6 bg-gradient-to-r from-emerald-500 via-teal-500 to-blue-500 text-2xl font-bold rounded-3xl shadow-2xl hover:shadow-purple-500/50 hover:scale-105 transition-all duration-300 neon-glow">
+                    <i class="fas fa-crown mr-3"></i><span data-i18n="getPro">احصل على Pro Max</span>
+                </button>
+                <button id="freeTrialBtn" class="px-12 py-6 bg-white/20 backdrop-blur-sm text-2xl font-bold rounded-3xl glass hover:bg-white/30 transition-all duration-300 hover:scale-105">
+                    <i class="fas fa-play-circle mr-3"></i><span data-i18n="freeTrial">تجربة مجانية 30 يوم</span>
+                </button>
+            </div>
+            
+            <!-- Live Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center mb-12">
+                <div class="p-6 glass rounded-3xl">
+                    <div class="text-4xl font-black text-emerald-400 mb-2" id="liveUsers">127,847</div>
+                    <div class="text-sm opacity-75" data-i18n="liveUsers">مستخدمين الآن</div>
+                </div>
+                <div class="p-6 glass rounded-3xl">
+                    <div class="text-4xl font-black text-purple-400 mb-2" id="totalMovies">156K+</div>
+                    <div class="text-sm opacity-75" data-i18n="totalMovies">فيلم ومسلسل</div>
+                </div>
+                <div class="p-6 glass rounded-3xl">
+                    <div class="text-4xl font-black text-blue-400 mb-2" id="liveStreams">2,847</div>
+                    <div class="text-sm opacity-75" data-i18n="liveStreams">بث مباشر</div>
+                </div>
+                <div class="p-6 glass rounded-3xl">
+                    <div class="text-4xl font-black text-pink-400 mb-2" id="countries">197</div>
+                    <div class="text-sm opacity-75" data-i18n="countries">دولة مدعومة</div>
+                </div>
+            </div>
+            
+            <!-- Supported Platforms -->
+            <div class="flex flex-wrap justify-center gap-4 pt-8 border-t border-white/20">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjUiIGN5PSIyNSIgcj0iMjUiIGZpbGw9IiNGRkYiLz4KPHRleHQgeD0iNTAlIiB5PSI1NSUiIGRvZG1pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMDAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjAiPjx0c3Bhbj5O</t3NjYXQ+PC90ZXh0Pgo8L3N2Zz4K" class="w-12 h-12 rounded-2xl" alt="Netflix">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjUiIGN5PSIyNSIgcj0iMjUiIGZpbGw9IiNGRkYiLz4KPHRleHQgeD0iNTAlIiB5PSI1NSUiIGRvZG1pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMDAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjAiPjx0c3Bhbj5EaXNuPC90c3Bhbj48L3RleHQ+Cjwvc3ZnPgo=" class="w-12 h-12 rounded-2xl" alt="Disney">
+                <!-- أضف المزيد -->
+            </div>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="absolute top-20 left-10 w-32 h-32 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-20 right-20 w-48 h-48 bg-pink-500/20 rounded-full blur-3xl animation-delay-1000"></div>
+    </section>
 
-<div id="aiPopup" class="ai-popup">
-  <h3>مساعد HAMO & TRIPLE M الذكي</h3>
-  <ul>
-    <li>يحلل كل سؤال حرفياً</li>
-    <li>يستعرض بيانات من أكثر من 300 AI</li>
-    <li>يكتب الرد حرف حرف ويقرأه بصوت AI</li>
-  </ul>
-  <button onclick="toggleAI()">اغلق</button>
-</div>
-
-<div class="section-grid">
-  <div class="section-card">
-    <i class="fa-solid fa-tv"></i>
-    <a href="sections/1.html">مسلسلات عربية</a>
-  </div>
-  <div class="section-card">
-    <i class="fa-solid fa-clapperboard"></i>
-    <a href="sections/2.html">مسلسلات أجنبية</a>
-  </div>
-  <div class="section-card">
-    <i class="fa-solid fa-film"></i>
-    <a href="sections/3.html">أفلام عربية</a>
-  </div>
-  <div class="section-card">
-    <i class="fa-solid fa-video"></i>
-    <a href="sections/4.html">أفلام أجنبية</a>
-  </div>
-  <div class="section-card">
-    <i class="fa-solid fa-dragon"></i>
-    <a href="sections/5.html">أنمي</a>
-  </div>
-  <div class="section-card">
-    <i class="fa-solid fa-newspaper"></i>
-    <a href="sections/6.html">أخبار</a>
-  </div>
-  <div class="section-card">
-    <i class="fa-solid fa-futbol"></i>
-    <a href="sections/7.html">رياضة</a>
-  </div>
-  <div class="section-card">
-    <i class="fa-solid fa-star"></i>
-    <a href="sections/8.html">مسلسلات رمضان</a>
-  </div>
-  <div class="section-card">
-    <i class="fa-solid fa-child"></i>
-    <a href="sections/9.html">أفلام كرتون</a>
-  </div>
-  <div class="section-card">
-    <i class="fa-solid fa-book"></i>
-    <a href="sections/10.html">وثائقيات</a>
-  </div>
-  <div class="section-card">
-    <i class="fa-solid fa-music"></i>
-    <a href="sections/11.html">موسيقى</a>
-  </div>
-  <div class="section-card">
-    <i class="fa-solid fa-baby"></i>
-    <a href="sections/12.html">أطفال</a>
-  </div>
-  <div class="section-card">
-    <i class="fa-solid fa-earth-africa"></i>
-    <a href="sections/13.html">وثائقيات تعليمية</a>
-  </div>
-</div>
-
-<script>
-// AI Popup
-function toggleAI(){
-  const popup = document.getElementById('aiPopup');
-  popup.style.display = (popup.style.display === 'block') ? 'none' : 'block';
-}
-
-// Loading Screen
-window.addEventListener('load', ()=>{
-  setTimeout(()=>{ document.getElementById('loadingScreen').style.display='none'; }, 2000);
-});
-
-// Matrix Effect
-const canvas = document.getElementById('matrixCanvas');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+<>?";
-const fontSize = 16;
-const columns = canvas.width/fontSize;
-const drops = [];
-for(let x=0;x<columns;x++){ drops[x]=1; }
-function drawMatrix(){
-  ctx.fillStyle="rgba(0,0,0,0.05)";
-  ctx.fillRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle="#0ff";
-  ctx.font=fontSize+"px monospace";
-  for(let i=0;i<drops.length;i++){
-    const text = letters.charAt(Math.floor(Math.random()*letters.length));
-    ctx.fillText(text,i*fontSize,drops[i]*fontSize);
-    if(drops[i]*fontSize>canvas.height || Math.random()>0.975) drops[i]=0;
-    drops[i]++;
-  }
-  requestAnimationFrame(drawMatrix);
-}
-drawMatrix();
-</script>
-
-</body>
-</html>
+    <!-- Exclusive Offers Pro Max -->
+    <section class="py-24 px-6 bg-gradient-to-b from-transparent to-black/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20 fade-in-up">
+                <h2 class="text-5xl lg:text-6xl font-black mb-6" data-i18n="exclusiveOffers">عروض حصرية Pro Max Plus</h2>
+                <p class="text-xl opacity-90 max-w-2xl mx-auto" data-i18n="exclusiveSubtitle">أفضل العروض لفترة محدودة - وفر الآن!</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Offer 1: Ultimate Pro Max -->
+                <div class="group card-hover glass p-8 rounded-3xl cursor-pointer border-2 border-transparent hover:border-purple-400 transition-all duration-500">
+                    <div class="w-24 h-24 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-crown text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-center" data-i18n="ultimatePro">Ultimate Pro Max</h3>
+                    <div class="text-4xl font-black text-emerald-400 mb-6 text-center">$<span id="offer1-price">9</span><span class="text-2xl">.99</span>/شهر</div>
+                    <ul class="space-y-3 mb-8 text-sm">
+                        <li class="flex items-center"><i class="fas fa-check text-emerald-400 mr-3"></i><span data-i18n="unlimited4k">4K غير محدود</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-emerald-400 mr-3"></i><span data-i18n="allPlatforms">كل المنصات</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-emerald-400 mr-3"></i><span data-i18n="aiAssistant">AI مساعد ذكي</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-emerald-400 mr-3"></i><span data-i18n="offlineDownload">تحميل غير متصل</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-emerald-400 mr-3"></i><span data-i18n="multiDevice">8 أجهزة متزامن</span></li>
+                    </ul>
+                    <button class="w-full py-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl font-bold text-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300" data-plan="ultimate">
+                        <span data-i18n="getOffer">احصل على العرض</span>
+                    </button>
+                    <div class="mt-4 pt-4 border-t border-white/20 text-center text-sm opacity-75" data-i18n="save50">وفر 50% الآن</div>
+                </div>
+                
+                <!-- أضف 7 عروض أخرى بنفس الطريقة -->
+                <!-- Offer 2: Family Pack -->
+                <div class="group card-hover glass p-8
