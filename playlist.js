@@ -91,3 +91,21 @@ favDiv.appendChild(div)
 }
 
 renderFavorites()
+let searchInput = document.getElementById("search")
+
+searchInput.addEventListener("input", function(){
+
+let value = this.value.toLowerCase()
+
+let posters = document.querySelectorAll(".poster")
+
+posters.forEach(p=>{
+
+if(p.innerText.toLowerCase().includes(value))
+p.style.display="flex"
+else
+p.style.display="none"
+
+})
+
+})
