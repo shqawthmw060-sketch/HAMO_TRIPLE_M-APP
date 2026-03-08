@@ -12,142 +12,180 @@
     :root {
       --neon-cyan: #00f6ff;
       --neon-pink: #ff00ff;
-      --neon-purple: #9d00ff;
+      --neon-purple: #c300ff;
     }
     body {
       font-family: 'Cairo', sans-serif;
+      background: linear-gradient(-45deg, #0f001a, #1a0033, #26004d, #0f001a);
+      background-size: 400% 400%;
+      animation: gradient 18s ease infinite;
       color: white;
-      overflow-x: hidden;
-      background: #000;
+      min-height: 100vh;
     }
-    #bg-video {
-      position: fixed;
-      right: 0; bottom: 0;
-      min-width: 100%; min-height: 100%;
-      z-index: -2;
-      object-fit: cover;
-      opacity: 0.4;
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(10,0,20,0.8));
-      z-index: -1;
-    }
-    .neon-glow { text-shadow: 0 0 15px var(--neon-cyan), 0 0 30px var(--neon-pink); }
-    .glass { background: rgba(30,30,50,0.25); backdrop-filter: blur(12px); border: 1px solid rgba(0,246,255,0.18); }
-    .card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-    .card:hover { transform: translateY(-18px) scale(1.06) rotate(1deg); box-shadow: 0 30px 60px rgba(0,246,255,0.25); }
-    .section-title { font-size: 2.5rem; font-weight: 900; margin-bottom: 2rem; background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink), var(--neon-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .neon-glow { text-shadow: 0 0 12px var(--neon-cyan), 0 0 24px var(--neon-pink), 0 0 36px var(--neon-purple); }
+    .glass { background: rgba(20,10,50,0.4); backdrop-filter: blur(14px); border: 1px solid rgba(0,246,255,0.25); }
+    .card:hover { transform: translateY(-14px) scale(1.07); box-shadow: 0 30px 60px rgba(0,246,255,0.35); transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1); }
+    body[dir="ltr"] { direction: ltr; text-align: left; font-family: 'Inter', sans-serif; }
+    .lang-ar { font-family: 'Cairo', sans-serif; }
+    .lang-en, .lang-fr, .lang-es, .lang-de, .lang-ru, .lang-tr, .lang-hi { font-family: 'Inter', sans-serif; }
   </style>
 </head>
-<body class="relative">
+<body class="lang-ar" dir="rtl">
 
-  <video autoplay muted loop id="bg-video" playsinline>
-    <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-neon-lights-moving-in-the-dark-10735-large.mp4" type="video/mp4">
-    <!-- بديل إذا ما اشتغلش: https://player.vimeo.com/external/370331493.sd.mp4?s=... (ابحث عن free cyberpunk loop) -->
-  </video>
-  <div class="overlay"></div>
-
-  <!-- Header معقد -->
-  <header class="fixed top-0 left-0 right-0 z-50 glass border-b border-cyan-500/30 backdrop-blur-xl">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+  <!-- Header -->
+  <header class="fixed top-0 inset-x-0 z-50 glass border-b border-cyan-500/40">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
       <div class="flex items-center gap-4">
-        <div class="text-4xl font-black neon-glow tracking-tighter">HAMO</div>
-        <span class="text-sm text-pink-400 font-medium tracking-widest">PRO MAX PLUS</span>
+        <div class="text-5xl font-black neon-glow">HAMO</div>
+        <span class="text-pink-400 font-semibold tracking-wide">PRO MAX PLUS</span>
       </div>
 
-      <div class="hidden md:flex items-center gap-8">
-        <a href="#trending" class="hover:text-[var(--neon-cyan)] transition">تريندينج</a>
-        <a href="#movies" class="hover:text-[var(--neon-cyan)] transition">أفلام</a>
-        <a href="#series" class="hover:text-[var(--neon-cyan)] transition">مسلسلات</a>
-        <a href="#anime" class="hover:text-[var(--neon-cyan)] transition">أنمي</a>
-        <a href="#sports" class="hover:text-[var(--neon-cyan)] transition">رياضة</a>
-        <a href="#bollywood" class="hover:text-[var(--neon-cyan)] transition">بوليوود</a>
-        <a href="#turkish" class="hover:text-[var(--neon-cyan)] transition">تركي</a>
-        <a href="#kids" class="hover:text-[var(--neon-cyan)] transition">أطفال</a>
-      </div>
+      <div class="flex items-center gap-6">
+        <select id="langSelect" class="bg-black/50 border border-cyan-500/40 rounded px-3 py-2 text-sm outline-none">
+          <option value="ar">العربية</option>
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+          <option value="es">Español</option>
+          <option value="de">Deutsch</option>
+          <option value="ru">Русский</option>
+          <option value="tr">Türkçe</option>
+          <option value="hi">हिन्दी</option>
+        </select>
 
-      <div class="flex items-center gap-5">
-        <!-- بحث -->
-        <div class="relative group">
-          <input type="text" placeholder="ابحث..." class="bg-black/40 border border-cyan-500/30 focus:border-[var(--neon-cyan)] rounded-full py-2.5 px-5 pl-10 w-56 outline-none transition-all group-focus-within:w-72">
-          <i class="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-cyan-400 text-lg"></i>
-        </div>
-
-        <!-- إعدادات -->
-        <button onclick="document.getElementById('settingsModal').classList.remove('hidden')" class="p-3 rounded-full hover:bg-white/10 transition">
-          <i class="fas fa-cog text-xl text-cyan-300"></i>
+        <button onclick="openLogin()" class="flex items-center gap-2 bg-gradient-to-r from-red-500 to-orange-600 px-6 py-2.5 rounded-full font-medium shadow-xl hover:scale-105 transition">
+          <i class="fab fa-google"></i> تسجيل الدخول
         </button>
 
-        <!-- تسجيل دخول Google mock -->
-        <button onclick="alert('تسجيل الدخول عبر جوجل قيد التطوير – سيتم ربطه بـ Firebase لاحقًا')" class="flex items-center gap-2 bg-white/10 hover:bg-white/20 px-5 py-2.5 rounded-full transition">
-          <i class="fab fa-google text-red-400"></i>
-          <span class="font-medium">تسجيل الدخول</span>
+        <button onclick="openSubscriptions()" class="bg-gradient-to-r from-cyan-500 via-purple-600 to-pink-600 text-white px-8 py-3 rounded-full font-bold shadow-2xl hover:scale-110 transition">
+          اشترك الآن
         </button>
       </div>
     </div>
   </header>
 
   <!-- Hero -->
-  <section class="pt-32 pb-24 text-center relative">
-    <div class="max-w-5xl mx-auto px-6">
-      <h1 class="text-7xl md:text-9xl font-black neon-glow mb-6 leading-none">HAMO STREAM</h1>
-      <p class="text-3xl md:text-4xl text-gray-300 mb-12 font-light">عالم كامل من الترفيه • 4K • نيون • بدون حدود</p>
-      <button class="bg-gradient-to-r from-cyan-500 via-pink-500 to-purple-600 text-white font-bold text-2xl px-16 py-6 rounded-full shadow-2xl hover:scale-110 transition-transform">
-        ابدأ المشاهدة الآن
+  <section class="pt-40 pb-24 text-center">
+    <div class="max-w-6xl mx-auto px-6">
+      <h1 class="text-7xl md:text-9xl font-black neon-glow mb-8 leading-tight">HAMO STREAM</h1>
+      <p id="heroText" class="text-3xl md:text-4xl text-gray-200 mb-12">أكبر مكتبة أفلام ومسلسلات • 4K • نيون • عالمي</p>
+      <button onclick="openSubscriptions()" class="text-2xl bg-white text-black font-bold px-16 py-6 rounded-full shadow-2xl hover:bg-cyan-300 transition">
+        ابدأ تجربتك المجانية
       </button>
     </div>
   </section>
 
-  <!-- أقسام متعددة (grid معقد) -->
-  <section id="trending" class="py-16">
-    <h2 class="section-title text-center">تريندينج الآن</h2>
-    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 max-w-7xl mx-auto px-6">
-      <!-- كروت وهمية – يمكن تكرارها -->
-      <div class="card glass rounded-2xl overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1536440136625-cc4289864a3c?w=500" alt="" class="w-full h-72 object-cover">
-        <div class="p-4 bg-gradient-to-t from-black/80 via-black/40 to-transparent absolute bottom-0 left-0 right-0">
-          <h3 class="text-xl font-bold">فيلم 1</h3>
-        </div>
+  <!-- Subscriptions Modal -->
+  <div id="subsModal" class="fixed inset-0 bg-black/90 hidden flex items-center justify-center z-50">
+    <div class="glass rounded-3xl p-10 w-full max-w-6xl mx-6 overflow-y-auto max-h-[90vh]">
+      <div class="flex justify-between items-center mb-10">
+        <h2 class="text-4xl font-bold neon-glow">اختر خطتك</h2>
+        <button onclick="closeModal('subsModal')" class="text-5xl text-gray-400 hover:text-white">&times;</button>
       </div>
-      <!-- كرر 5–11 مرة حسب العدد المطلوب -->
-      <!-- ... -->
-    </div>
-  </section>
-
-  <section id="movies" class="py-16 bg-black/30">
-    <h2 class="section-title text-center">أفلام</h2>
-    <div class="grid grid-cols-2 md:grid-cols-5 gap-6 max-w-7xl mx-auto px-6">
-      <!-- نفس الكروت الوهمية، يمكن إضافة المزيد -->
-    </div>
-  </section>
-
-  <!-- كرر لـ series, anime, sports, bollywood, turkish, kids بنفس الطريقة -->
-
-  <!-- Settings Modal -->
-  <div id="settingsModal" class="fixed inset-0 bg-black/80 hidden flex items-center justify-center z-50">
-    <div class="glass rounded-3xl p-10 w-full max-w-lg mx-6">
-      <div class="flex justify-between mb-8">
-        <h2 class="text-3xl font-bold neon-glow">الإعدادات</h2>
-        <button onclick="document.getElementById('settingsModal').classList.add('hidden')" class="text-4xl text-gray-400 hover:text-white">&times;</button>
-      </div>
-      <div class="space-y-6">
-        <div class="flex justify-between items-center">
-          <span>الوضع الداكن</span>
-          <label class="switch">
-            <input type="checkbox" checked>
-            <span class="slider round"></span>
-          </label>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- خطة 1: جنيه مصري -->
+        <div class="glass p-8 rounded-2xl text-center border-2 border-cyan-500/50 hover:border-cyan-400 transition">
+          <h3 class="text-3xl font-bold mb-4">خطة HAMO</h3>
+          <p class="text-5xl font-black text-cyan-400 mb-2">٤٩٩ ج.م</p>
+          <p class="text-gray-300 mb-6">شهريًا</p>
+          <ul class="text-left space-y-3 mb-8">
+            <li><i class="fas fa-check text-green-400 mr-2"></i>4K + HDR</li>
+            <li><i class="fas fa-check text-green-400 mr-2"></i>مشاهدة على 4 أجهزة</li>
+            <li><i class="fas fa-check text-green-400 mr-2"></i>بدون إعلانات</li>
+            <li><i class="fas fa-check text-green-400 mr-2"></i>تحميل للمشاهدة دون اتصال</li>
+          </ul>
+          <button class="w-full bg-cyan-500 text-black py-4 rounded-full font-bold text-xl hover:bg-cyan-300">اشترك الآن</button>
         </div>
-        <!-- إضافات أخرى: جودة افتراضية، ترجمة، إلخ -->
+
+        <!-- خطة 2: دولار -->
+        <div class="glass p-8 rounded-2xl text-center border-2 border-pink-500/50 hover:border-pink-400 transition">
+          <h3 class="text-3xl font-bold mb-4">HAMO Plan</h3>
+          <p class="text-5xl font-black text-pink-400 mb-2">$12.99</p>
+          <p class="text-gray-300 mb-6">per month</p>
+          <ul class="text-left space-y-3 mb-8">
+            <li><i class="fas fa-check text-green-400 mr-2"></i>4K + HDR</li>
+            <li><i class="fas fa-check text-green-400 mr-2"></i>Watch on 4 devices</li>
+            <li><i class="fas fa-check text-green-400 mr-2"></i>Ad-free</li>
+            <li><i class="fas fa-check text-green-400 mr-2"></i>Offline downloads</li>
+          </ul>
+          <button class="w-full bg-pink-500 text-black py-4 rounded-full font-bold text-xl hover:bg-pink-300">Subscribe Now</button>
+        </div>
+
+        <!-- خطة 3: يورو -->
+        <div class="glass p-8 rounded-2xl text-center border-2 border-purple-500/50 hover:border-purple-400 transition">
+          <h3 class="text-3xl font-bold mb-4">Plan HAMO</h3>
+          <p class="text-5xl font-black text-purple-400 mb-2">€11.99</p>
+          <p class="text-gray-300 mb-6">par mois</p>
+          <ul class="text-left space-y-3 mb-8">
+            <li><i class="fas fa-check text-green-400 mr-2"></i>4K + HDR</li>
+            <li><i class="fas fa-check text-green-400 mr-2"></i>Regarder sur 4 appareils</li>
+            <li><i class="fas fa-check text-green-400 mr-2"></i>Sans publicité</li>
+            <li><i class="fas fa-check text-green-400 mr-2"></i>Téléchargements hors ligne</li>
+          </ul>
+          <button class="w-full bg-purple-500 text-black py-4 rounded-full font-bold text-xl hover:bg-purple-300">S'abonner</button>
+        </div>
+
+        <!-- خطة 4: ريال سعودي -->
+        <div class="glass p-8 rounded-2xl text-center border-2 border-green-500/50 hover:border-green-400 transition">
+          <h3 class="text-3xl font-bold mb-4">خطة هامو</h3>
+          <p class="text-5xl font-black text-green-400 mb-2">٤٩ ر.س</p>
+          <p class="text-gray-300 mb-6">شهريًا</p>
+          <ul class="text-left space-y-3 mb-8">
+            <li><i class="fas fa-check text-green-400 mr-2"></i>4K + HDR</li>
+            <li><i class="fas fa-check text-green-400 mr-2"></i>مشاهدة على 4 أجهزة</li>
+            <li><i class="fas fa-check text-green-400 mr-2"></i>بدون إعلانات</li>
+            <li><i class="fas fa-check text-green-400 mr-2"></i>تحميل بدون نت</li>
+          </ul>
+          <button class="w-full bg-green-500 text-black py-4 rounded-full font-bold text-xl hover:bg-green-300">اشترك</button>
+        </div>
       </div>
     </div>
   </div>
 
+  <!-- Login Modal (mock) -->
+  <div id="loginModal" class="fixed inset-0 bg-black/90 hidden flex items-center justify-center z-50">
+    <div class="glass rounded-3xl p-12 w-full max-w-md">
+      <h2 class="text-4xl font-bold neon-glow mb-8 text-center">تسجيل الدخول</h2>
+      <button class="w-full flex items-center justify-center gap-4 bg-white text-black py-4 rounded-full font-bold text-xl hover:bg-gray-200 mb-6">
+        <i class="fab fa-google text-red-500 text-2xl"></i> المتابعة بجوجل
+      </button>
+      <p class="text-center text-gray-400">سيتم تفعيل الحساب تلقائيًا بعد التسجيل</p>
+      <button onclick="closeModal('loginModal')" class="mt-8 w-full bg-red-600 py-3 rounded-full">إغلاق</button>
+    </div>
+  </div>
+
   <script>
-    // يمكن إضافة JS لتفاعل أكثر (بحث، إلخ)
-    // حاليًا الخلفية + الـ modals شغالة
+    // لغات أساسية (يمكن توسيعها)
+    const translations = {
+      ar: { hero: "أكبر مكتبة أفلام ومسلسلات • 4K • نيون • عالمي" },
+      en: { hero: "Biggest Library of Movies & Series • 4K • Neon • Global" },
+      fr: { hero: "La plus grande bibliothèque de films et séries • 4K • Néon • Mondial" },
+      es: { hero: "La biblioteca más grande de películas y series • 4K • Neón • Global" },
+      de: { hero: "Größte Bibliothek für Filme & Serien • 4K • Neon • Global" },
+      ru: { hero: "Самая большая библиотека фильмов и сериалов • 4K • Неон • Глобально" },
+      tr: { hero: "En büyük film ve dizi kütüphanesi • 4K • Neon • Küresel" },
+      hi: { hero: "सबसे बड़ी फिल्मों और सीरीज़ की लाइब्रेरी • 4K • नियॉन • वैश्विक" }
+    };
+
+    function changeLanguage(lang) {
+      document.body.className = `lang-${lang}`;
+      document.body.dir = (lang === 'ar' || lang === 'hi' || lang === 'tr' || lang === 'ru') ? 'rtl' : 'ltr';
+      document.getElementById('heroText').textContent = translations[lang].hero || translations.ar.hero;
+    }
+
+    document.getElementById('langSelect').addEventListener('change', e => changeLanguage(e.target.value));
+
+    function openSubscriptions() { document.getElementById('subsModal').classList.remove('hidden'); document.getElementById('subsModal').classList.add('flex'); }
+    function openLogin() { document.getElementById('loginModal').classList.remove('hidden'); document.getElementById('loginModal').classList.add('flex'); }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+      document.getElementById(id).classList.remove('flex');
+    }
   </script>
 </body>
             </html>
