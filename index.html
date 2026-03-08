@@ -3,183 +3,310 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAMO TRIPLE M - شغال 100%</title>
+    <title>HAMO TRIPLE M 🔥 Pro Max Plus</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
         * { font-family: 'Cairo', sans-serif; }
-        .glass { background: rgba(255,255,255,0.1); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.2); }
-        .content-card { transition: all 0.3s ease; }
-        .content-card:hover { transform: translateY(-10px) scale(1.05); }
-        .live-dot { background: #ef4444; animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+        
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 45px rgba(0,0,0,0.3);
+        }
+        
+        .gradient-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .neon-glow {
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.6), 0 0 40px rgba(236, 72, 153, 0.4);
+        }
+        
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .card-hover:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 35px 60px rgba(0,0,0,0.4);
+        }
+        
+        .live-pulse {
+            animation: livePulse 2s infinite;
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.8);
+        }
+        @keyframes livePulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+        
+        .floating { animation: float 6s ease-in-out infinite; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
     </style>
 </head>
-<body class="bg-gradient-to-br from-gray-900 to-black text-white min-h-screen p-6">
+<body class="bg-gray-900 overflow-x-hidden">
 
-<!-- Header -->
-<div class="glass p-8 rounded-4xl mb-12 max-w-6xl mx-auto text-center">
-    <h1 class="text-6xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 bg-clip-text text-transparent mb-4">
-        🔥 HAMO TRIPLE M Pro Max
-    </h1>
-    <p class="text-2xl opacity-90">كل الأزرار شغالة 100% - اضغط على أي محتوى 🎬⚽📺</p>
-    <div class="flex justify-center gap-4 mt-8">
-        <a href="https://wa.me/20158536392" class="bg-green-500 hover:bg-green-600 px-8 py-4 rounded-3xl text-xl font-bold transition-all">💬 واتساب</a>
-        <button onclick="testAll()" class="bg-blue-500 hover:bg-blue-600 px-8 py-4 rounded-3xl text-xl font-bold transition-all">اختبار سريع</button>
+<!-- Hero Section 🔥 -->
+<section class="gradient-hero min-h-screen relative overflow-hidden">
+    <!-- Background particles -->
+    <div class="absolute inset-0">
+        <div class="absolute top-20 left-20 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl floating"></div>
+        <div class="absolute top-1/2 right-20 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl floating" style="animation-delay: -2s;"></div>
+        <div class="absolute bottom-20 left-1/2 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl floating" style="animation-delay: -4s;"></div>
     </div>
-</div>
-
-<!-- الأفلام العربية -->
-<div class="max-w-6xl mx-auto mb-16">
-    <h2 class="text-5xl font-bold text-red-400 mb-12 text-center">🎬 الأفلام العربية</h2>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-        <div class="glass p-6 rounded-3xl content-card text-center cursor-pointer" onclick="playVideo('الفيل الأزرق 3')">
-            <div class="w-full h-40 bg-gradient-to-r from-red-500 to-orange-500 rounded-2xl mb-4"></div>
-            <h3 class="font-bold text-xl mb-2">الفيل الأزرق 3</h3>
-            <p>⭐ 8.7 • 4K</p>
-        </div>
-        <div class="glass p-6 rounded-3xl content-card text-center cursor-pointer" onclick="playVideo('كابتن هيما 2')">
-            <div class="w-full h-40 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-2xl mb-4"></div>
-            <h3 class="font-bold text-xl mb-2">كابتن هيما 2</h3>
-            <p>⭐ 8.5 • مترجم</p>
-        </div>
-        <div class="glass p-6 rounded-3xl content-card text-center cursor-pointer" onclick="playVideo('الإنس والنمس 2')">
-            <div class="w-full h-40 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl mb-4"></div>
-            <h3 class="font-bold text-xl mb-2">الإنس والنمس 2</h3>
-            <p>⭐ 9.1 • HD</p>
-        </div>
-        <div class="glass p-6 rounded-3xl content-card text-center cursor-pointer" onclick="playVideo('بيت الروبي 2')">
-            <div class="w-full h-40 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl mb-4"></div>
-            <h3 class="font-bold text-xl mb-2">بيت الروبي 2</h3>
-            <p>⭐ 8.9 • 2026</p>
-        </div>
-        <div class="glass p-6 rounded-3xl content-card text-center cursor-pointer" onclick="playVideo('الاختيار')">
-            <div class="w-full h-40 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl mb-4"></div>
-            <h3 class="font-bold text-xl mb-2">الاختيار</h3>
-            <p>⭐ 9.3 • فيلم</p>
-        </div>
-    </div>
-</div>
-
-<!-- المباريات LIVE -->
-<div class="max-w-6xl mx-auto mb-16">
-    <h2 class="text-5xl font-bold text-green-400 mb-12 text-center">⚽ مباريات مباشرة</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="glass p-8 rounded-4xl relative content-card cursor-pointer" onclick="playLive('الأهلي vs الزمالك')" style="border: 3px solid rgba(34,197,94,0.5);">
-            <div class="live-dot w-6 h-6 rounded-full absolute top-6 right-6"></div>
-            <div class="w-full h-48 bg-gradient-to-r from-green-500 to-emerald-500 rounded-3xl mb-6"></div>
-            <h3 class="text-2xl font-bold mb-4 text-center">الأهلي vs الزمالك</h3>
-            <div class="flex justify-between items-center mb-6">
-                <span class="bg-green-500 px-4 py-2 rounded-2xl font-bold">🔴 LIVE</span>
-                <span class="text-xl">الدوري المصري</span>
+    
+    <div class="relative z-20 pt-32 pb-20">
+        <div class="max-w-6xl mx-auto text-center px-6">
+            <div class="glassmorphism inline-block px-12 py-6 rounded-3xl mb-12 neon-glow">
+                <h1 class="text-7xl md:text-8xl lg:text-9xl font-black bg-gradient-to-r from-white via-yellow-300 to-pink-300 bg-clip-text text-transparent mb-6">
+                    HAMO TRIPLE M
+                </h1>
+                <div class="text-3xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text">
+                    Pro Max Plus Ultimate 2026 🔥
+                </div>
             </div>
-            <button class="w-full bg-green-600 hover:bg-green-700 py-4 rounded-3xl font-bold text-xl transition-all">شاهد الآن</button>
-        </div>
-        <div class="glass p-8 rounded-4xl relative content-card cursor-pointer" onclick="playLive('مانشستر vs ليفربول')" style="border: 3px solid rgba(59,130,246,0.5);">
-            <div class="live-dot w-6 h-6 rounded-full absolute top-6 right-6" style="background: #3b82f6;"></div>
-            <div class="w-full h-48 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-3xl mb-6"></div>
-            <h3 class="text-2xl font-bold mb-4 text-center">مانشستر vs ليفربول</h3>
-            <div class="flex justify-between items-center mb-6">
-                <span class="bg-blue-500 px-4 py-2 rounded-2xl font-bold">🔴 LIVE</span>
-                <span class="text-xl">Premier League</span>
+            
+            <p class="text-2xl md:text-3xl opacity-90 max-w-4xl mx-auto mb-16 leading-relaxed">
+                أسطورة الستريمينج العالمي • 4K/8K • بث مباشر • AI Pro
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20">
+                <button onclick="scrollToContent()" class="px-20 py-8 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-3xl font-black rounded-4xl neon-glow text-white hover:scale-105 transition-all shadow-2xl">
+                    <i class="fas fa-rocket mr-4"></i>ابدأ الآن
+                </button>
+                <a href="https://wa.me/20158536392" class="px-20 py-8 glassmorphism text-3xl font-bold rounded-4xl border-2 border-white/30 hover:bg-white/20 transition-all">
+                    <i class="fab fa-whatsapp mr-4 text-green-400"></i>تواصل
+                </a>
             </div>
-            <button class="w-full bg-blue-600 hover:bg-blue-700 py-4 rounded-3xl font-bold text-xl transition-all">شاهد الآن</button>
-        </div>
-        <div class="glass p-8 rounded-4xl relative content-card cursor-pointer" onclick="playLive('ريال مدريد vs برشلونة')" style="border: 3px solid rgba(251,191,36,0.5);">
-            <div class="live-dot w-6 h-6 rounded-full absolute top-6 right-6" style="background: #fbbf24;"></div>
-            <div class="w-full h-48 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-3xl mb-6"></div>
-            <h3 class="text-2xl font-bold mb-4 text-center">ريال مدريد vs برشلونة</h3>
-            <div class="flex justify-between items-center mb-6">
-                <span class="bg-yellow-500 px-4 py-2 rounded-2xl font-bold">🔴 LIVE</span>
-                <span class="text-xl">La Liga</span>
+            
+            <!-- Live Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+                <div class="glassmorphism p-8 rounded-4xl text-center">
+                    <div class="text-5xl font-black text-emerald-400 mb-2" id="liveUsers">289K</div>
+                    <div class="text-xl opacity-90">مشاهدين الآن</div>
+                </div>
+                <div class="glassmorphism p-8 rounded-4xl text-center">
+                    <div class="text-5xl font-black text-purple-400 mb-2">3.2M</div>
+                    <div class="text-xl opacity-90">محتوى VIP</div>
+                </div>
+                <div class="glassmorphism p-8 rounded-4xl text-center">
+                    <div class="text-5xl font-black text-blue-400 mb-2" id="liveMatches">23</div>
+                    <div class="text-xl opacity-90">مباريات LIVE</div>
+                </div>
+                <div class="glassmorphism p-8 rounded-4xl text-center">
+                    <div class="text-5xl font-black text-pink-400 mb-2">197</div>
+                    <div class="text-xl opacity-90">دول مدعومة</div>
+                </div>
             </div>
-            <button class="w-full bg-yellow-600 hover:bg-yellow-700 py-4 rounded-3xl font-bold text-xl transition-all">شاهد الآن</button>
         </div>
     </div>
-</div>
+</section>
 
-<!-- المسلسلات -->
-<div class="max-w-6xl mx-auto mb-16">
-    <h2 class="text-5xl font-bold text-purple-400 mb-12 text-center">📺 المسلسلات</h2>
-    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-        <div class="glass p-6 rounded-3xl content-card text-center cursor-pointer" onclick="playVideo('الاختيار 5 - الموسم 1')">
-            <div class="w-full h-32 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl mb-4"></div>
-            <h3 class="font-bold mb-2">الاختيار 5</h3>
-            <p class="text-sm">الموسم 1 • 30 حلقة</p>
-        </div>
-        <div class="glass p-6 rounded-3xl content-card text-center cursor-pointer" onclick="playVideo('Stranger Things S5')">
-            <div class="w-full h-32 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl mb-4"></div>
-            <h3 class="font-bold mb-2">Stranger Things</h3>
-            <p class="text-sm">Season 5 • 4K</p>
-        </div>
-        <div class="glass p-6 rounded-3xl content-card text-center cursor-pointer" onclick="playVideo('لن أعيش في جلباب أبي 3')">
-            <div class="w-full h-32 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-2xl mb-4"></div>
-            <h3 class="font-bold mb-2">لن أعيش في جلباب أبي 3</h3>
-            <p class="text-sm">الموسم 3</p>
-        </div>
+<!-- Navigation Pro -->
+<nav class="glassmorphism sticky top-0 z-50 p-4 mx-8 lg:mx-16 rounded-4xl mt-8 max-w-7xl mx-auto shadow-2xl">
+    <div class="flex overflow-x-auto gap-3 pb-2 scrollbar-hide" id="navTabs">
+        <button class="nav-btn px-8 py-4 rounded-3xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-xl whitespace-nowrap flex items-center gap-3 hover:scale-105 transition-all" data-tab="all">🏠 الرئيسية</button>
+        <button class="nav-btn px-8 py-4 rounded-3xl font-bold text-white glassmorphism hover:bg-white/20 whitespace-nowrap flex items-center gap-3 transition-all" data-tab="movies">🎬 أفلام</button>
+        <button class="nav-btn px-8 py-4 rounded-3xl font-bold text-white glassmorphism hover:bg-white/20 whitespace-nowrap flex items-center gap-3 transition-all" data-tab="series">📺 مسلسلات</button>
+        <button class="nav-btn px-8 py-4 rounded-3xl font-bold text-white glassmorphism hover:bg-white/20 whitespace-nowrap flex items-center gap-3 transition-all" data-tab="live">⚽ مباشر</button>
+        <button class="nav-btn px-8 py-4 rounded-3xl font-bold text-white glassmorphism hover:bg-white/20 whitespace-nowrap flex items-center gap-3 transition-all" data-tab="kids">👶 أطفال</button>
+        <button class="nav-btn px-8 py-4 rounded-3xl font-bold text-white glassmorphism hover:bg-white/20 whitespace-nowrap flex items-center gap-3 transition-all" data-tab="anime">🎌 أنيمي</button>
     </div>
-</div>
+</nav>
 
-<!-- Video Player -->
-<div id="player" class="fixed inset-0 bg-black/95 z-50 hidden flex items-center justify-center p-6">
-    <div class="max-w-5xl w-full mx-auto">
-        <div class="glass p-6 rounded-t-3xl flex items-center mb-4">
-            <button onclick="closePlayer()" class="text-4xl mr-6 hover:text-red-400">✕</button>
-            <h2 id="videoTitle" class="text-3xl font-bold flex-1 text-center">HAMO TRIPLE M Player</h2>
+<!-- Content Sections -->
+<main class="max-w-7xl mx-auto px-8 py-20 space-y-24 pb-32" id="mainContent">
+    
+    <!-- Featured Movies 🔥 -->
+    <section class="glassmorphism p-12 rounded-5xl card-hover">
+        <h2 class="text-6xl font-black mb-16 flex items-center text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">
+            <i class="fas fa-crown mr-8 text-5xl"></i>الأفلام المميزة
+        </h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-8">
+            <div class="group relative overflow-hidden rounded-4xl bg-gradient-to-br from-red-600 to-orange-500 text-white p-8 card-hover cursor-pointer" onclick="playContent('الفيل الأزرق 3')">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                <div class="w-full h-52 rounded-3xl bg-gradient-to-r from-red-400 to-orange-300 mb-6 relative z-10"></div>
+                <div class="relative z-10">
+                    <h3 class="text-2xl font-bold mb-3">الفيل الأزرق 3</h3>
+                    <div class="flex items-center text-lg opacity-90 mb-4">
+                        <i class="fas fa-star text-yellow-400 mr-3"></i>⭐ 8.7
+                    </div>
+                    <div class="flex items-center gap-4 text-sm opacity-80">
+                        <span class="px-3 py-1 bg-white/20 rounded-full">4K</span>
+                        <span>2:45:30</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="group relative overflow-hidden rounded-4xl bg-gradient-to-br from-blue-600 to-purple-500 text-white p-8 card-hover cursor-pointer" onclick="playContent('Avengers 6')">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                <div class="w-full h-52 rounded-3xl bg-gradient-to-r from-blue-400 to-purple-300 mb-6 relative z-10"></div>
+                <div class="relative z-10">
+                    <h3 class="text-2xl font-bold mb-3">Avengers 6</h3>
+                    <div class="flex items-center text-lg opacity-90 mb-4">
+                        <i class="fas fa-star text-yellow-400 mr-3"></i>⭐ 9.2
+                    </div>
+                    <div class="flex items-center gap-4 text-sm opacity-80">
+                        <span class="px-3 py-1 bg-white/20 rounded-full">8K</span>
+                        <span>3:12:45</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 4 أفلام أخرى بنفس الطريقة -->
+            <div class="group relative overflow-hidden rounded-4xl bg-gradient-to-br from-emerald-600 to-teal-500 text-white p-8 card-hover cursor-pointer" onclick="playContent('الاختيار')">
+                <div class="w-full h-52 rounded-3xl bg-gradient-to-r from-emerald-400 to-teal-300 mb-6"></div>
+                <h3 class="text-2xl font-bold mb-3">الاختيار</h3>
+                <div class="flex items-center text-lg opacity-90 mb-4">
+                    <i class="fas fa-star text-yellow-400 mr-3"></i>⭐ 9.4
+                </div>
+            </div>
+            
+            <div class="group relative overflow-hidden rounded-4xl bg-gradient-to-br from-purple-600 to-pink-500 text-white p-8 card-hover cursor-pointer" onclick="playContent('Squid Game 3')">
+                <div class="w-full h-52 rounded-3xl bg-gradient-to-r from-purple-400 to-pink-300 mb-6"></div>
+                <h3 class="text-2xl font-bold mb-3">Squid Game 3</h3>
+                <div class="flex items-center text-lg opacity-90 mb-4">
+                    <i class="fas fa-star text-yellow-400 mr-3"></i>⭐ 9.1
+                </div>
+            </div>
         </div>
-        <video id="videoPlayer" class="w-full h-96 rounded-3xl" controls>
-            <source src="" type="video/mp4">
-            المتصفح لا يدعم الفيديو
+    </section>
+
+    <!-- Live Matches ⚽ -->
+    <section class="glassmorphism p-12 rounded-5xl card-hover relative overflow-hidden">
+        <div class="absolute top-12 right-12">
+            <div class="live-pulse w-8 h-8 bg-red-500 rounded-full"></div>
+        </div>
+        <h2 class="text-6xl font-black mb-16 flex items-center text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400">
+            <i class="fas fa-futbol mr-8 text-5xl"></i>مباريات مباشرة
+        </h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-12">
+            <div class="group relative bg-gradient-to-br from-red-600 to-orange-500 text-white p-12 rounded-5xl card-hover cursor-pointer overflow-hidden" onclick="playLive('الأهلي vs الزمالك')" style="border: 2px solid rgba(255,255,255,0.3);">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div class="live-pulse w-10 h-10 bg-white/30 rounded-full absolute top-8 right-8"></div>
+                <div class="w-full h-64 rounded-4xl bg-gradient-to-r from-red-400 to-orange-300 mb-12 relative z-10"></div>
+                <div class="relative z-10 text-center">
+                    <h3 class="text-4xl font-black mb-8">الأهلي vs الزمالك</h3>
+                    <div class="flex justify-center gap-8 mb-12 text-2xl opacity-90">
+                        <span class="px-8 py-4 bg-white/20 rounded-3xl font-bold">2 - 1</span>
+                        <span class="px-8 py-4 bg-red-400/30 rounded-3xl font-bold text-red-300">🔴 LIVE</span>
+                    </div>
+                    <button class="w-full px-12 py-6 bg-gradient-to-r from-white to-gray-100 text-gray-900 font-black text-2xl rounded-4xl hover:scale-105 transition-all shadow-2xl">شاهد المباراة الآن</button>
+                </div>
+            </div>
+            
+            <div class="group relative bg-gradient-to-br from-blue-600 to-indigo-500 text-white p-12 rounded-5xl card-hover cursor-pointer overflow-hidden" onclick="playLive('مانشستر vs ليفربول')" style="border: 2px solid rgba(255,255,255,0.3);">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div class="live-pulse w-10 h-10 bg-white/30 rounded-full absolute top-8 right-8" style="background: rgba(59,130,246,0.3) !important;"></div>
+                <div class="w-full h-64 rounded-4xl bg-gradient-to-r from-blue-400 to-indigo-300 mb-12 relative z-10"></div>
+                <div class="relative z-10 text-center">
+                    <h3 class="text-4xl font-black mb-8">مانشستر vs ليفربول</h3>
+                    <div class="flex justify-center gap-8 mb-12 text-2xl opacity-90">
+                        <span class="px-8 py-4 bg-white/20 rounded-3xl font-bold">0 - 0</span>
+                        <span class="px-8 py-4 bg-blue-400/30 rounded-3xl font-bold text-blue-200">🔴 LIVE</span>
+                    </div>
+                    <button class="w-full px-12 py-6 bg-gradient-to-r from-white to-gray-100 text-gray-900 font-black text-2xl rounded-4xl hover:scale-105 transition-all shadow-2xl">شاهد المباراة الآن</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- Pro Max Player -->
+<div id="playerModal" class="fixed inset-0 bg-black/98 z-50 hidden flex items-center justify-center p-8">
+    <div class="max-w-7xl w-full mx-auto glassmorphism rounded-5xl overflow-hidden shadow-4xl">
+        <div class="p-8 flex items-center border-b border-white/20">
+            <button onclick="closePlayer()" class="text-4xl hover:text-red-400 mr-8 p-4 rounded-3xl hover:bg-white/20 transition-all">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 id="playerTitle" class="text-4xl font-black flex-1 text-center bg-gradient-to-r from-white to-gray-200 bg-clip-text">Pro Max Player</h2>
+            <div class="flex items-center gap-4">
+                <select class="px-6 py-3 glassmorphism text-white rounded-3xl">
+                    <option>4K</option>
+                    <option>8K</option>
+                    <option>1080p</option>
+                </select>
+                <button class="p-4 glassmorphism rounded-3xl hover:bg-white/30"><i class="fas fa-expand"></i></button>
+            </div>
+        </div>
+        <video id="mainPlayer" class="w-full h-[500px] object-contain" controls preload="metadata">
+            <source src="https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_5mb.mp4" type="video/mp4">
         </video>
-        <div class="glass p-6 mt-4 rounded-b-3xl text-center">
-            <p class="text-xl mb-4">شغال 100% 🎉</p>
-            <button onclick="closePlayer()" class="bg-green-500 hover:bg-green-600 px-12 py-4 rounded-3xl font-bold text-xl mx-4">إغلاق</button>
-            <button onclick="downloadVideo()" class="bg-blue-500 hover:bg-blue-600 px-12 py-4 rounded-3xl font-bold text-xl mx-4">تحميل</button>
+        <div class="p-8 flex items-center justify-between border-t border-white/20">
+            <div class="flex items-center gap-4">
+                <button class="p-6 glassmorphism rounded-3xl hover:bg-white/30 text-2xl"><i class="fas fa-backward"></i></button>
+                <button class="p-6 glassmorphism rounded-3xl hover:bg-white/30 text-3xl"><i class="fas fa-play"></i></button>
+                <button class="p-6 glassmorphism rounded-3xl hover:bg-white/30 text-2xl"><i class="fas fa-forward"></i></button>
+            </div>
+            <div class="text-2xl opacity-90">
+                <span id="currentTime">00:00</span> / <span id="duration">03:45</span>
+            </div>
         </div>
     </div>
 </div>
+
+<!-- WhatsApp Pro Float -->
+<a href="https://wa.me/20158536392?text=مرحبا%20HAMO%20TRIPLE%20M%20Pro%20Max!%20🚀" 
+   class="fixed bottom-8 right-8 w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-500 text-3xl rounded-3xl flex items-center justify-center shadow-2xl hover:scale-110 transition-all live-pulse z-40" title="تواصل واتساب">
+    💬
+</a>
 
 <script>
-function playVideo(title) {
-    document.getElementById('videoTitle').innerText = title + ' | Pro Max';
-    document.getElementById('videoPlayer').src = 'https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_5mb.mp4';
-    document.getElementById('videoPlayer').load();
-    document.getElementById('player').classList.remove('hidden');
+function playContent(title) {
+    document.getElementById('playerTitle').innerHTML = `<i class="fas fa-film mr-4"></i>${title} | Pro Max 4K`;
+    document.getElementById('mainPlayer').load();
+    document.getElementById('playerModal').classList.remove('hidden');
     document.body.style.overflow = 'hidden';
-    console.log('✅ تشغيل: ' + title);
 }
 
 function playLive(title) {
-    document.getElementById('videoTitle').innerText = '🔴 LIVE: ' + title;
-    document.getElementById('videoPlayer').src = 'https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_5mb.mp4';
-    document.getElementById('videoPlayer').load();
-    document.getElementById('player').classList.remove('hidden');
+    document.getElementById('playerTitle').innerHTML = `<div class="live-pulse w-6 h-6 bg-red-500 rounded-full inline-block mr-4"></div>🔴 LIVE: ${title}`;
+    document.getElementById('mainPlayer').load();
+    document.getElementById('playerModal').classList.remove('hidden');
     document.body.style.overflow = 'hidden';
-    console.log('✅ بث مباشر: ' + title);
 }
 
 function closePlayer() {
-    document.getElementById('player').classList.add('hidden');
+    document.getElementById('playerModal').classList.add('hidden');
     document.body.style.overflow = 'auto';
 }
 
-function downloadVideo() {
-    alert('تحميل متاح للمشتركين Pro Max Plus 💎');
+function scrollToContent() {
+    document.getElementById('mainContent').scrollIntoView({ behavior: 'smooth' });
 }
 
-function testAll() {
-    alert('✅ كل الأزرار شغالة 100%!
-🎬 اضغط على أي فيلم أو مباراة
-🚀 Player Pro Max جاهز');
-}
+// Live counters
+setInterval(() => {
+    document.getElementById('liveUsers').textContent = (Math.floor(Math.random() * 100) + 280) + 'K';
+    document.getElementById('liveMatches').textContent = Math.floor(Math.random() * 10) + 20;
+}, 3000);
 
-// تشغيل تلقائي للاختبار
-window.onload = function() {
-    console.log('🚀 HAMO TRIPLE M شغال 100%');
-    document.querySelector('.content-card').style.border = '3px solid #10b981';
-};
+// Navigation
+document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.onclick = () => {
+        document.querySelectorAll('.nav-btn').forEach(b => {
+            b.classList.remove('bg-gradient-to-r', 'from-purple-500', 'to-pink-500');
+            b.classList.add('glassmorphism');
+        });
+        btn.classList.add('bg-gradient-to-r', 'from-purple-500', 'to-pink-500');
+        btn.classList.remove('glassmorphism');
+    }
+});
 </script>
 
 </body>
-    </html
+            </html>
