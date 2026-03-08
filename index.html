@@ -5,53 +5,127 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>HAMO TRIPLE M IPTV</title>
+<title>HAMO TRIPLE M</title>
 
-<link rel="stylesheet" href="style.css">
+<style>
 
-<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+body{
+background:#0b0b0b;
+color:white;
+font-family:sans-serif;
+margin:0;
+}
 
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 30px;
+background:#000;
+}
+
+.logo{
+font-size:24px;
+color:red;
+font-weight:bold;
+}
+
+.banner{
+height:350px;
+background:url("https://image.tmdb.org/t/p/original/9yBVqNruk6Ykrwc32qrK2TIE5xw.jpg");
+background-size:cover;
+display:flex;
+align-items:flex-end;
+padding:40px;
+}
+
+.banner h1{
+font-size:40px;
+}
+
+.row{
+margin:20px;
+}
+
+.row h2{
+margin-bottom:10px;
+}
+
+.row-posters{
+display:flex;
+overflow-x:auto;
+gap:10px;
+}
+
+.poster{
+width:160px;
+height:230px;
+background:#222;
+border-radius:6px;
+overflow:hidden;
+cursor:pointer;
+}
+
+.poster img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+</style>
 </head>
 
 <body>
 
 <header>
 
-<h1>HAMO TRIPLE M</h1>
+<div class="logo">HAMO TRIPLE M</div>
 
-<select id="language">
-<option value="ar">العربية</option>
-<option value="en">English</option>
-<option value="fr">Français</option>
-</select>
+<input placeholder="Search">
 
 </header>
 
-<div class="main">
+<div class="banner">
 
-<div class="player">
-
-<video id="video" controls></video>
+<h1>Featured Movie</h1>
 
 </div>
 
-<div class="channels" id="channels"></div>
+<div class="row">
+
+<h2>Live Channels</h2>
+
+<div class="row-posters">
+
+<div class="poster">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Al_Jazeera_Arabic.svg/512px-Al_Jazeera_Arabic.svg.png">
+</div>
+
+<div class="poster">
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/BBC_News_2022_%28Alt%29.svg">
+</div>
 
 </div>
 
-<div class="controls">
+</div>
 
-<input type="file" id="playlistFile">
-<button onclick="loadPlaylist()">Load Playlist</button>
+<div class="row">
 
-<button onclick="openAI()">AI</button>
+<h2>Movies</h2>
+
+<div class="row-posters">
+
+<div class="poster">
+<img src="https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg">
+</div>
+
+<div class="poster">
+<img src="https://image.tmdb.org/t/p/w500/r7XifzvtezNt31ypvsmb6Oqxw49.jpg">
+</div>
 
 </div>
 
-<script src="player.js"></script>
-<script src="playlist.js"></script>
-<script src="ai.js"></script>
-<script src="settings.js"></script>
+</div>
 
 </body>
-</html>
+  </html>
