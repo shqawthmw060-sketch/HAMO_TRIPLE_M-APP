@@ -1,139 +1,437 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAMO & TRIPLE M PRO MAX PLUS 🔥</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&amp;family=Inter:wght@400;600&amp;display=swap');
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        :root {
+            --neon-cyan: #00f6ff;
+            --neon-pink: #ff00ff;
+        }
 
-<title>HAMO TRIPLE M</title>
+        * { transition: all 0.3s ease; }
 
-<style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            overflow-x: hidden;
+        }
 
-body{
-background:#0b0b0b;
-color:white;
-font-family:sans-serif;
-margin:0;
-}
+        .neon-text {
+            text-shadow: 
+                0 0 10px var(--neon-cyan),
+                0 0 20px var(--neon-cyan),
+                0 0 40px var(--neon-pink);
+        }
 
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 30px;
-background:#000;
-}
+        .neon-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .neon-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent, rgba(0,246,255,0.15), transparent);
+            opacity: 0;
+            z-index: 1;
+        }
+        
+        .neon-card:hover::before {
+            opacity: 1;
+            animation: neonPulse 1.5s infinite;
+        }
 
-.logo{
-font-size:24px;
-color:red;
-font-weight:bold;
-}
+        @keyframes neonPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
 
-.banner{
-height:350px;
-background:url("https://image.tmdb.org/t/p/original/9yBVqNruk6Ykrwc32qrK2TIE5xw.jpg");
-background-size:cover;
-display:flex;
-align-items:flex-end;
-padding:40px;
-}
+        .hero-bg {
+            background: linear-gradient(180deg, rgba(10,10,10,0.85), rgba(10,10,10,0.95)), 
+                        url('https://picsum.photos/id/1015/1920/1080') center/cover no-repeat;
+            animation: heroShift 25s infinite alternate linear;
+        }
 
-.banner h1{
-font-size:40px;
-}
+        @keyframes heroShift {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
 
-.row{
-margin:20px;
-}
+        .scroll-row {
+            scrollbar-width: none;
+        }
+        
+        .scroll-row::-webkit-scrollbar {
+            display: none;
+        }
 
-.row h2{
-margin-bottom:10px;
-}
+        .glass {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
 
-.row-posters{
-display:flex;
-overflow-x:auto;
-gap:10px;
-}
-
-.poster{
-width:160px;
-height:230px;
-background:#222;
-border-radius:6px;
-overflow:hidden;
-cursor:pointer;
-}
-
-.poster img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-</style>
+        .ai-bubble {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
 </head>
+<body class="min-h-screen">
 
-<body>
+    <!-- HEADER -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-gradient-to-br from-cyan-400 to-pink-500 rounded-2xl flex items-center justify-center text-2xl font-black shadow-lg shadow-cyan-500/50">
+                    🔥
+                </div>
+                <div>
+                    <h1 class="text-3xl font-black tracking-tighter neon-text">HAMO</h1>
+                    <p class="text-[10px] text-pink-400 -mt-1 tracking-[4px]">TRIPLE M PRO MAX PLUS</p>
+                </div>
+            </div>
 
-<header>
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#" class="hover:text-cyan-400 flex items-center gap-1"><i class="fas fa-home"></i> الرئيسية</a>
+                <a href="#" class="hover:text-cyan-400 flex items-center gap-1"><i class="fas fa-tv"></i> لايف تي في</a>
+                <a href="#" class="hover:text-cyan-400 flex items-center gap-1"><i class="fas fa-film"></i> أفلام</a>
+                <a href="#" class="hover:text-cyan-400 flex items-center gap-1"><i class="fas fa-list"></i> مسلسلات</a>
+                <a href="#" class="hover:text-cyan-400 flex items-center gap-1"><i class="fas fa-futbol"></i> رياضة</a>
+            </nav>
 
-<div class="logo">HAMO TRIPLE M</div>
+            <div class="flex items-center gap-4">
+                <div class="relative w-72 hidden md:block">
+                    <input id="searchInput" 
+                           type="text" 
+                           placeholder="ابحث عن فيلم، مسلسل، قناة..." 
+                           class="w-full bg-white/10 border border-white/20 focus:border-cyan-400 rounded-3xl py-3 px-6 pl-12 text-sm outline-none">
+                    <i class="fas fa-search absolute left-5 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                </div>
+                
+                <button onclick="toggleAI()" 
+                        class="ai-bubble flex items-center gap-2 bg-gradient-to-r from-cyan-400 to-pink-500 text-black font-bold px-6 py-3 rounded-3xl shadow-xl shadow-pink-500/40 hover:scale-110">
+                    <i class="fa-solid fa-robot text-xl"></i>
+                    <span>AI PRO</span>
+                </button>
 
-<input placeholder="Search">
+                <div class="w-9 h-9 bg-white/10 rounded-2xl flex items-center justify-center cursor-pointer hover:bg-white/20">
+                    <i class="fas fa-user text-xl"></i>
+                </div>
+            </div>
+        </div>
+    </header>
 
-</header>
+    <!-- HERO BANNER -->
+    <section class="hero-bg h-screen flex items-center relative pt-20">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-xl px-6 py-2 rounded-3xl mb-6 border border-white/20">
+                <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                <span class="text-sm font-medium">LIVE • 4K • DOLBY VISION</span>
+            </div>
+            
+            <h1 class="text-7xl md:text-8xl font-black tracking-tighter neon-text leading-none mb-4">
+                HAMO STREAM
+            </h1>
+            <p class="text-3xl text-white/90 mb-8">Pro Max Plus • أقوى تجربة ستريمينج في مصر 🔥</p>
+            
+            <div class="flex items-center justify-center gap-4">
+                <button onclick="playTrailer()" 
+                        class="flex items-center gap-3 bg-white text-black font-bold text-xl px-10 py-5 rounded-3xl hover:bg-cyan-400 hover:text-black">
+                    <i class="fas fa-play"></i>
+                    شغل الآن
+                </button>
+                <button onclick="toggleAI()" 
+                        class="flex items-center gap-3 border-2 border-white/70 hover:border-white font-bold text-xl px-10 py-5 rounded-3xl">
+                    <i class="fas fa-robot"></i>
+                    اسأل الـ AI
+                </button>
+            </div>
 
-<div class="banner">
+            <div class="mt-16 flex justify-center gap-8 text-xs opacity-75">
+                <div>4K HDR</div>
+                <div>DOLBY ATMOS</div>
+                <div>100,000+ عنوان</div>
+                <div>بدون إعلانات</div>
+            </div>
+        </div>
 
-<h1>Featured Movie</h1>
+        <!-- floating badges -->
+        <div class="absolute bottom-12 right-12 flex flex-col gap-3">
+            <div class="glass px-5 py-2 rounded-2xl text-xs flex items-center gap-2">
+                <span class="text-cyan-400">★</span> Trending #1 في مصر
+            </div>
+        </div>
+    </section>
 
-</div>
+    <!-- TRENDING ROW -->
+    <section class="max-w-7xl mx-auto px-6 py-12">
+        <div class="flex items-center justify-between mb-6">
+            <h2 class="text-3xl font-bold flex items-center gap-3">
+                🔥 Trending Now 
+                <span class="text-pink-400 text-base font-normal">الأكثر مشاهدة</span>
+            </h2>
+            <a href="#" class="text-cyan-400 flex items-center gap-1 text-sm">الكل <i class="fas fa-chevron-left"></i></a>
+        </div>
+        
+        <div id="trendingRow" class="flex gap-6 overflow-x-auto scroll-row pb-6">
+            <!-- JS will fill cards -->
+        </div>
+    </section>
 
-<div class="row">
+    <!-- LIVE TV -->
+    <section class="max-w-7xl mx-auto px-6 py-12 bg-white/5">
+        <div class="flex items-center justify-between mb-6">
+            <h2 class="text-3xl font-bold flex items-center gap-3">
+                📡 Live TV 
+                <span class="bg-red-500 text-white text-xs px-3 py-1 rounded-full">LIVE</span>
+            </h2>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            <div onclick="openLive('beIN SPORTS 1')" class="neon-card bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer group">
+                <div class="relative">
+                    <img src="https://picsum.photos/id/201/400/220" class="w-full h-40 object-cover group-hover:scale-110">
+                    <div class="absolute top-3 right-3 bg-red-600 text-white text-[10px] px-3 py-1 rounded-xl font-bold">LIVE</div>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-bold text-lg">beIN SPORTS 1</h3>
+                    <p class="text-cyan-400 text-sm">الدوري الإنجليزي • مان سيتي × ليفربول</p>
+                </div>
+            </div>
+            <!-- 5 more similar cards added via JS below -->
+        </div>
+    </section>
 
-<h2>Live Channels</h2>
+    <!-- MOVIES ROW -->
+    <section class="max-w-7xl mx-auto px-6 py-12">
+        <h2 class="text-3xl font-bold mb-6">🍿 أفلام جديدة</h2>
+        <div id="moviesRow" class="flex gap-6 overflow-x-auto scroll-row pb-6">
+            <!-- JS filled -->
+        </div>
+    </section>
 
-<div class="row-posters">
+    <!-- AI FLOATING BUTTON -->
+    <div onclick="toggleAI()" 
+         class="fixed bottom-8 left-8 w-16 h-16 bg-gradient-to-br from-cyan-400 to-pink-500 rounded-3xl flex items-center justify-center text-4xl shadow-2xl shadow-pink-500/60 hover:scale-110 z-50 cursor-pointer ai-bubble">
+        <i class="fa-solid fa-robot"></i>
+    </div>
 
-<div class="poster">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Al_Jazeera_Arabic.svg/512px-Al_Jazeera_Arabic.svg.png">
-</div>
+    <!-- AI CHAT POPUP -->
+    <div id="aiPopup" class="hidden fixed bottom-24 left-8 w-96 bg-zinc-950 border border-cyan-400/30 rounded-3xl shadow-2xl z-[999] overflow-hidden">
+        <div class="bg-gradient-to-r from-cyan-500 to-pink-500 p-4 flex items-center justify-between text-black font-bold">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-robot text-2xl"></i>
+                <div>
+                    <span>HAMO AI</span>
+                    <div class="text-xs opacity-75">Pro Max • دقيق 100%</div>
+                </div>
+            </div>
+            <i onclick="toggleAI()" class="fas fa-times cursor-pointer text-2xl"></i>
+        </div>
+        
+        <div class="h-80 p-6 overflow-y-auto text-sm space-y-6" id="chatBody">
+            <div class="flex gap-3">
+                <div class="w-8 h-8 bg-cyan-400 rounded-2xl flex-shrink-0 flex items-center justify-center text-black">AI</div>
+                <div class="glass rounded-3xl px-5 py-3 max-w-[80%]">
+                    مرحبا يا حمو! عايز أي فيلم أو قناة دلوقتي؟ 🔥
+                </div>
+            </div>
+        </div>
+        
+        <div class="p-4 border-t border-white/10 flex gap-3">
+            <input id="chatInput" 
+                   type="text" 
+                   placeholder="اكتب رسالتك هنا..." 
+                   class="flex-1 bg-white/10 border border-white/20 rounded-3xl px-6 py-3 outline-none text-sm"
+                   onkeypress="if(event.key==='Enter') sendFakeMessage()">
+            <button onclick="sendFakeMessage()" 
+                    class="bg-cyan-400 text-black w-12 h-12 rounded-3xl flex items-center justify-center">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
 
-<div class="poster">
-<img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/BBC_News_2022_%28Alt%29.svg">
-</div>
+    <!-- VIDEO MODAL -->
+    <div id="videoModal" onclick="if(event.target.id==='videoModal') closeModal()" 
+         class="hidden fixed inset-0 bg-black/95 z-[9999] flex items-center justify-center">
+        <div class="max-w-5xl w-full mx-4 bg-zinc-900 rounded-3xl overflow-hidden">
+            <div class="aspect-video bg-black relative">
+                <iframe id="modalVideo" width="100%" height="100%" 
+                        src="https://www.youtube.com/embed/dQw4w9wgxcq" 
+                        frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                <button onclick="closeModal()" 
+                        class="absolute top-6 right-6 bg-black/70 hover:bg-red-600 text-white w-10 h-10 rounded-2xl flex items-center justify-center text-2xl">
+                    ✕
+                </button>
+            </div>
+            <div class="p-6 flex justify-between items-center">
+                <div>
+                    <h3 id="modalTitle" class="text-2xl font-bold">جاري التشغيل...</h3>
+                    <p class="text-cyan-400">4K • Dolby Vision • 60fps</p>
+                </div>
+                <button onclick="closeModal()" 
+                        class="px-8 py-3 bg-white/10 hover:bg-white/20 rounded-3xl font-medium">إغلاق</button>
+            </div>
+        </div>
+    </div>
 
-</div>
+    <script>
+        // Tailwind script already loaded via CDN
+        function initTailwind() {
+            // Already initialized by CDN
+        }
 
-</div>
+        // Fake data
+        const trending = [
+            {title:"سبايدر مان", img:"https://picsum.photos/id/29/300/400", year:"2024"},
+            {title:"النمر الأسود 2", img:"https://picsum.photos/id/30/300/400", year:"2024"},
+            {title:"أوبنهايمر", img:"https://picsum.photos/id/201/300/400", year:"2023"},
+            {title:"باربي", img:"https://picsum.photos/id/160/300/400", year:"2023"},
+            {title:"كريد 3", img:"https://picsum.photos/id/201/300/400", year:"2024"},
+        ];
 
-<div class="row">
+        const movies = [
+            {title:"ديدبول & وولفرين", img:"https://picsum.photos/id/201/300/400"},
+            {title:"جلادياتور 2", img:"https://picsum.photos/id/29/300/400"},
+            {title:"جوكر 2", img:"https://picsum.photos/id/160/300/400"},
+            {title:"فورزا", img:"https://picsum.photos/id/30/300/400"},
+            {title:"الملكة", img:"https://picsum.photos/id/201/300/400"},
+        ];
 
-<h2>Movies</h2>
+        function createCard(item) {
+            const card = document.createElement('div');
+            card.className = `neon-card min-w-[220px] bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer group`;
+            card.innerHTML = `
+                <div class="relative">
+                    <img src="${item.img}" class="w-full aspect-[9/13] object-cover group-hover:scale-110">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent h-2/3"></div>
+                    <div class="absolute bottom-4 right-4 bg-black/70 text-[10px] px-3 py-1 rounded-2xl">${item.year || '2024'}</div>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-bold text-lg line-clamp-1">${item.title}</h3>
+                </div>
+            `;
+            card.onclick = () => openVideo(item.title);
+            return card;
+        }
 
-<div class="row-posters">
+        function renderRows() {
+            const trendingRow = document.getElementById('trendingRow');
+            trending.forEach(item => trendingRow.appendChild(createCard(item)));
+            
+            const moviesRow = document.getElementById('moviesRow');
+            movies.forEach(item => moviesRow.appendChild(createCard(item)));
+            
+            // Add more live cards
+            const liveContainer = document.querySelector('.grid');
+            for (let i = 1; i < 5; i++) {
+                const liveCard = document.createElement('div');
+                liveCard.className = `neon-card bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer group`;
+                liveCard.innerHTML = `
+                    <div class="relative">
+                        <img src="https://picsum.photos/id/${200+i}/400/220" class="w-full h-40 object-cover group-hover:scale-110">
+                        <div class="absolute top-3 right-3 bg-red-600 text-white text-[10px] px-3 py-1 rounded-xl font-bold">LIVE</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg">قناة ${['OSN', 'MBC', 'Al Nahar', 'CBC'][i-1]}</h3>
+                        <p class="text-cyan-400 text-sm">مباشر • مباريات اليوم</p>
+                    </div>
+                `;
+                liveCard.onclick = () => openLive('قناة مباشرة');
+                liveContainer.appendChild(liveCard);
+            }
+        }
 
-<div class="poster">
-<img src="https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg">
-</div>
+        function openVideo(title) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalVideo').src = "https://www.youtube.com/embed/8g6o9V8K7kE?autoplay=1"; // fake trailer
+            document.getElementById('videoModal').classList.remove('hidden');
+            document.getElementById('videoModal').classList.add('flex');
+        }
 
-<div class="poster">
-<img src="https://image.tmdb.org/t/p/w500/r7XifzvtezNt31ypvsmb6Oqxw49.jpg">
-</div>
+        function openLive(channel) {
+            document.getElementById('modalTitle').textContent = channel;
+            document.getElementById('modalVideo').src = "https://www.youtube.com/embed/9Auq9mYxFEE?autoplay=1"; // fake live
+            document.getElementById('videoModal').classList.remove('hidden');
+            document.getElementById('videoModal').classList.add('flex');
+        }
 
-</div>
+        function closeModal() {
+            const modal = document.getElementById('videoModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.getElementById('modalVideo').src = "";
+        }
 
-</div>
+        function toggleAI() {
+            const popup = document.getElementById('aiPopup');
+            popup.classList.toggle('hidden');
+        }
 
-</body>
-  </html>
+        function sendFakeMessage() {
+            const input = document.getElementById('chatInput');
+            const msg = input.value.trim();
+            if (!msg) return;
 
-<div class="row">
+            const chatBody = document.getElementById('chatBody');
+            
+            // user message
+            const userDiv = document.createElement('div');
+            userDiv.className = 'flex justify-end';
+            userDiv.innerHTML = `<div class="max-w-[80%] glass rounded-3xl px-5 py-3">${msg}</div>`;
+            chatBody.appendChild(userDiv);
+            
+            input.value = '';
+            
+            // AI reply
+            setTimeout(() => {
+                const replies = [
+                    "تمام يا حمو! هذا الفيلم موجود بـ 4K HDR 🔥",
+                    "قناة beIN Sports 1 شغالة دلوقتي مباشرة!",
+                    "أحسن مسلسل حالياً: House of the Dragon 🔥",
+                    "عايز أقترحلك فيلم زي اللي بتحبه؟ قولي نوعه!"
+                ];
+                const randomReply = replies[Math.floor(Math.random() * replies.length)];
+                
+                const aiDiv = document.createElement('div');
+                aiDiv.className = 'flex gap-3';
+                aiDiv.innerHTML = `
+                    <div class="w-8 h-8 bg-cyan-400 rounded-2xl flex-shrink-0 flex items-center justify-center text-black">AI</div>
+                    <div class="glass rounded-3xl px-5 py-3 max-w-[80%]">${randomReply}</div>
+                `;
+                chatBody.appendChild(aiDiv);
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }, 800);
+        }
 
-<h2>Continue Watching</h2>
+        function playTrailer() {
+            document.getElementById('modalTitle').textContent = "HAMO STREAM Trailer";
+            document.getElementById('modalVideo').src = "https://www.youtube.com/embed/8g6o9V8K7kE?autoplay=1";
+            document.getElementById('videoModal').classList.remove('hidden');
+            document.getElementById('videoModal').classList.add('flex');
+        }
 
-<div class="row-posters" id="history"></div>
+        // Keyboard ESC close modal
+        document.addEventListener('keydown', e => {
+            if (e.key === "Escape") {
+                const modal = document.getElementById('videoModal');
+                if (!modal.classList.contains('hidden')) closeModal();
+            }
+        });
 
-</div>
+        // Search filter (simple demo)
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const term = this.value.toLowerCase();
+            // In real app would filter all cards, here just console
+            console.log('بحث عن:', term);
+        });
+
+        // Init everything
+        
