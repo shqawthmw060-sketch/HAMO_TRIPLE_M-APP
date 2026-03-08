@@ -1,211 +1,57 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IPTV Pro Max</title>
+
+<title>HAMO TRIPLE M IPTV</title>
+
+<link rel="stylesheet" href="style.css">
 
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
-<style>
-
-body{
-background:#0a0a0a;
-color:white;
-font-family:Arial;
-margin:0;
-}
-
-header{
-background:#111;
-padding:15px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-#player{
-width:100%;
-height:300px;
-background:black;
-}
-
-.container{
-display:flex;
-height:calc(100vh - 300px);
-}
-
-.channels{
-width:30%;
-overflow:auto;
-background:#111;
-}
-
-.channel{
-padding:10px;
-border-bottom:1px solid #333;
-cursor:pointer;
-}
-
-.channel:hover{
-background:#222;
-}
-
-.settings{
-position:fixed;
-right:10px;
-bottom:10px;
-background:#222;
-padding:10px;
-border-radius:10px;
-}
-
-.ai{
-position:fixed;
-left:10px;
-bottom:10px;
-background:#0ff;
-color:black;
-padding:10px;
-border-radius:10px;
-cursor:pointer;
-}
-
-</style>
 </head>
 
 <body>
 
 <header>
-<h2>IPTV PRO MAX</h2>
+
+<h1>HAMO TRIPLE M</h1>
 
 <select id="language">
 <option value="ar">العربية</option>
 <option value="en">English</option>
 <option value="fr">Français</option>
-<option value="de">Deutsch</option>
 </select>
 
 </header>
 
-<video id="player" controls></video>
+<div class="main">
 
-<div class="container">
+<div class="player">
+
+<video id="video" controls></video>
+
+</div>
 
 <div class="channels" id="channels"></div>
 
 </div>
 
-<div class="settings">
-
-<h4>Settings</h4>
+<div class="controls">
 
 <input type="file" id="playlistFile">
+<button onclick="loadPlaylist()">Load Playlist</button>
 
-<br><br>
-
-<button onclick="loadPlaylist()">Load M3U</button>
+<button onclick="openAI()">AI</button>
 
 </div>
 
-<div class="ai" onclick="aiHelp()">
-AI
-</div>
-
-<script>
-
-let video = document.getElementById("player")
-let channelsDiv = document.getElementById("channels")
-
-function playStream(url){
-
-if(Hls.isSupported()){
-
-let hls = new Hls()
-
-hls.loadSource(url)
-
-hls.attachMedia(video)
-
-}
-
-else{
-
-video.src = url
-
-}
-
-}
-
-function loadPlaylist(){
-
-let file = document.getElementById("playlistFile").files[0]
-
-let reader = new FileReader()
-
-reader.onload=function(e){
-
-parseM3U(e.target.result)
-
-}
-
-reader.readAsText(file)
-
-}
-
-function parseM3U(data){
-
-channelsDiv.innerHTML=""
-
-let lines=data.split("\n")
-
-for(let i=0;i<lines.length;i++){
-
-if(lines[i].startsWith("#EXTINF")){
-
-let name=lines[i].split(",")[1]
-
-let url=lines[i+1]
-
-let div=document.createElement("div")
-
-div.className="channel"
-
-div.innerText=name
-
-div.onclick=function(){
-
-playStream(url)
-
-saveHistory(name,url)
-
-}
-
-channelsDiv.appendChild(div)
-
-}
-
-}
-
-}
-
-function saveHistory(name,url){
-
-let history=JSON.parse(localStorage.getItem("history")||"[]")
-
-history.push({name,url})
-
-localStorage.setItem("history",JSON.stringify(history))
-
-}
-
-function aiHelp(){
-
-alert("AI Assistant:\n\nيمكنك تحميل قائمة M3U وتشغيل القنوات مباشرة.")
-
-}
-
-</script>
+<script src="player.js"></script>
+<script src="playlist.js"></script>
+<script src="ai.js"></script>
+<script src="settings.js"></script>
 
 </body>
 </html>
