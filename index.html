@@ -1,698 +1,211 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="HAMO Pro Max Ultra - ØªØ·Ø¨ÙŠÙ‚ Ø§Ù„Ø¨Ø« Ø§Ù„Ø¹Ø§Ù„Ù…ÙŠ Ø§Ù„Ø£ÙˆÙ„">
-    <meta name="theme-color" content="#0a0e27">
-    <title>HAMO Pro Max Ultra ðŸ”¥ - Ù…Ù†ØµØ© Ø§Ù„Ø¨Ø« Ø§Ù„Ø°ÙƒÙŠØ©</title>
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    
-    <style>
-        /* ============================================
-           DESIGN SYSTEM & VARIABLES
-           ============================================ */
-        
-        :root {
-            /* Primary Colors - Bold & Luxe */
-            --primary-dark: #0a0e27;
-            --primary-darker: #050810;
-            --primary-light: #1a1f3a;
-            
-            /* Accent Colors - Vibrant & Dynamic */
-            --accent-red: #ff1744;
-            --accent-cyan: #00e5ff;
-            --accent-purple: #9c27b0;
-            --accent-gold: #ffd700;
-            --accent-green: #00e676;
-            --accent-pink: #ff4081;
-            
-            /* Neutral Colors */
-            --text-primary: #ffffff;
-            --text-secondary: #b0b9c1;
-            --text-tertiary: #7a8a9a;
-            
-            /* Background Colors */
-            --bg-surface: rgba(26, 31, 58, 0.6);
-            --bg-overlay: rgba(5, 8, 16, 0.85);
-            --bg-glass: rgba(10, 14, 39, 0.7);
-            
-            /* Shadow System */
-            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
-            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
-            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
-            --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.6);
-            
-            /* Border Colors */
-            --border-color: rgba(255, 23, 68, 0.15);
-            --border-light: rgba(255, 255, 255, 0.1);
-            
-            /* Spacing */
-            --spacing-xs: 4px;
-            --spacing-sm: 8px;
-            --spacing-md: 12px;
-            --spacing-lg: 16px;
-            --spacing-xl: 24px;
-            --spacing-2xl: 32px;
-            --spacing-3xl: 48px;
-        }
-
-        /* ============================================
-           RESET & BASE STYLES
-           ============================================ */
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        *::selection {
-            background: var(--accent-red);
-            color: white;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, var(--primary-darker) 0%, var(--primary-dark) 50%, #1a0033 100%);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        /* Animated Background */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 200%;
-            height: 200%;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(255, 23, 68, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 50%, rgba(0, 229, 255, 0.05) 0%, transparent 50%);
-            animation: bgMove 20s ease infinite;
-            pointer-events: none;
-            z-index: -2;
-        }
-
-        @keyframes bgMove {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(-50px, -50px); }
-        }
-
-        /* ============================================
-           ANIMATIONS
-           ============================================ */
-
-        @keyframes slideInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        @keyframes glow {
-            0%, 100% { 
-                box-shadow: 0 0 20px rgba(255, 23, 68, 0.3);
-            }
-            50% { 
-                box-shadow: 0 0 40px rgba(255, 23, 68, 0.6);
-            }
-        }
-
-        @keyframes shimmer {
-            0% { background-position: -1000px 0; }
-            100% { background-position: 1000px 0; }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        /* ============================================
-           SCROLLBAR STYLING
-           ============================================ */
-
-        ::-webkit-scrollbar {
-            width: 10px;
-            height: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: rgba(10, 14, 39, 0.4);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, var(--accent-red), var(--accent-purple));
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-red));
-        }
-
-        /* ============================================
-           BUTTON STYLES
-           ============================================ */
-
-        .btn {
-            border: none;
-            border-radius: 12px;
-            padding: 12px 24px;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: relative;
-            overflow: hidden;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .btn:active::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent-red) 0%, var(--accent-pink) 100%);
-            color: white;
-            box-shadow: 0 8px 24px rgba(255, 23, 68, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 32px rgba(255, 23, 68, 0.5);
-        }
-
-        .btn-primary:active {
-            transform: translateY(-1px);
-        }
-
-        .btn-secondary {
-            background: rgba(0, 229, 255, 0.1);
-            border: 2px solid var(--accent-cyan);
-            color: var(--accent-cyan);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(0, 229, 255, 0.2);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 229, 255, 0.2);
-        }
-
-        .btn-ghost {
-            background: transparent;
-            border: 2px solid var(--text-secondary);
-            color: var(--text-secondary);
-        }
-
-        .btn-ghost:hover {
-            border-color: var(--accent-red);
-            color: var(--accent-red);
-        }
-
-        .btn-sm {
-            padding: 8px 16px;
-            font-size: 12px;
-        }
-
-        .btn-lg {
-            padding: 16px 32px;
-            font-size: 16px;
-        }
-
-        .btn-icon {
-            width: 48px;
-            height: 48px;
-            padding: 0;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 23, 68, 0.1);
-            border: 2px solid rgba(255, 23, 68, 0.3);
-            color: var(--accent-red);
-            font-size: 18px;
-        }
-
-        .btn-icon:hover {
-            background: rgba(255, 23, 68, 0.2);
-            border-color: var(--accent-red);
-            transform: scale(1.1);
-        }
-
-        /* ============================================
-           HEADER & NAVIGATION
-           ============================================ */
-
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 80px;
-            background: var(--bg-overlay);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-color);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 40px;
-            animation: slideInDown 0.6s ease-out;
-        }
-
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--accent-red), var(--accent-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: 3px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .logo:hover {
-            filter: drop-shadow(0 0 20px rgba(255, 23, 68, 0.5));
-        }
-
-        nav {
-            display: flex;
-            gap: 40px;
-            flex: 1;
-            margin: 0 60px;
-        }
-
-        .nav-link {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 13px;
-            padding: 8px 0;
-            border-bottom: 3px solid transparent;
-            transition: all 0.3s;
-            position: relative;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: linear-gradient(135deg, var(--accent-red), var(--accent-cyan));
-            transition: width 0.3s;
-        }
-
-        .nav-link:hover {
-            color: var(--text-primary);
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .nav-link.active {
-            color: var(--accent-red);
-        }
-
-        .nav-link.active::after {
-            width: 100%;
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .search-box {
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid var(--border-color);
-            padding: 10px 16px;
-            border-radius: 30px;
-            color: var(--text-primary);
-            width: 250px;
-            transition: all 0.3s;
-        }
-
-        .search-box::placeholder {
-            color: var(--text-tertiary);
-        }
-
-        .search-box:focus {
-            outline: none;
-            border-color: var(--accent-red);
-            background: rgba(255, 23, 68, 0.1);
-            box-shadow: 0 0 20px rgba(255, 23, 68, 0.3);
-        }
-
-        .user-menu {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .notification-badge {
-            position: relative;
-        }
-
-        .notification-badge::after {
-            content: '3';
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: var(--accent-red);
-            color: white;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-            font-weight: 700;
-        }
-
-        .avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent-red), var(--accent-purple));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .avatar:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 20px rgba(255, 23, 68, 0.5);
-        }
-
-        /* ============================================
-           HERO SECTION
-           ============================================ */
-
-        .hero {
-            margin-top: 80px;
-            height: 700px;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, rgba(255, 23, 68, 0.1) 0%, rgba(0, 229, 255, 0.1) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 60px 40px;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(255, 23, 68, 0.2), transparent);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            max-width: 600px;
-        }
-
-        .hero-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 72px;
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, var(--accent-red), var(--accent-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: slideInUp 0.8s ease-out;
-        }
-
-        .hero-subtitle {
-            font-size: 20px;
-            color: var(--text-secondary);
-            margin-bottom: 30px;
-            animation: slideInUp 0.8s ease-out 0.1s backwards;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            animation: slideInUp 0.8s ease-out 0.2s backwards;
-        }
-
-        .hero-image {
-            position: absolute;
-            right: 60px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 400px;
-            height: 500px;
-            background: linear-gradient(135deg, rgba(255, 23, 68, 0.2), rgba(0, 229, 255, 0.2));
-            border-radius: 20px;
-            border: 2px solid var(--border-color);
-            animation: slideInRight 0.8s ease-out;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 120px;
-        }
-
-        /* ============================================
-           CONTENT SECTIONS
-           ============================================ */
-
-        .section {
-            display: none;
-            padding: 80px 40px;
-            min-height: 100vh;
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        .section.active {
-            display: block;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 48px;
-            font-weight: 900;
-            margin-bottom: 50px;
-            background: linear-gradient(135deg, var(--accent-red), var(--accent-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            position: relative;
-            padding-bottom: 20px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(135deg, var(--accent-red), var(--accent-cyan));
-        }
-
-        /* ============================================
-           CARD COMPONENTS
-           ============================================ */
-
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 24px;
-            margin-top: 40px;
-        }
-
-        .card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            cursor: pointer;
-            position: relative;
-            group: card;
-            animation: slideInUp 0.6s ease-out;
-        }
-
-        .card:hover {
-            transform: translateY(-12px);
-            border-color: var(--accent-red);
-            box-shadow: 0 20px 50px rgba(255, 23, 68, 0.3);
-        }
-
-        .card-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, rgba(255, 23, 68, 0.15), rgba(0, 229, 255, 0.15));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card-image::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, transparent, rgba(255, 23, 68, 0.2));
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .card:hover .card-image::after {
-            opacity: 1;
-        }
-
-        .card-content {
-            padding: 24px;
-        }
-
-        .card-title {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--text-primary);
-        }
-
-        .card-desc {
-            font-size: 13px;
-            color: var(--text-tertiary);
-            margin-bottom: 12px;
-            line-height: 1.5;
-        }
-
-        .card-meta {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            display: inline-block;
-            background: rgba(255, 23, 68, 0.15);
-            color: var(--accent-red);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-           
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPTV Pro Max</title>
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+<style>
+
+body{
+background:#0a0a0a;
+color:white;
+font-family:Arial;
+margin:0;
+}
+
+header{
+background:#111;
+padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+#player{
+width:100%;
+height:300px;
+background:black;
+}
+
+.container{
+display:flex;
+height:calc(100vh - 300px);
+}
+
+.channels{
+width:30%;
+overflow:auto;
+background:#111;
+}
+
+.channel{
+padding:10px;
+border-bottom:1px solid #333;
+cursor:pointer;
+}
+
+.channel:hover{
+background:#222;
+}
+
+.settings{
+position:fixed;
+right:10px;
+bottom:10px;
+background:#222;
+padding:10px;
+border-radius:10px;
+}
+
+.ai{
+position:fixed;
+left:10px;
+bottom:10px;
+background:#0ff;
+color:black;
+padding:10px;
+border-radius:10px;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h2>IPTV PRO MAX</h2>
+
+<select id="language">
+<option value="ar">العربية</option>
+<option value="en">English</option>
+<option value="fr">Français</option>
+<option value="de">Deutsch</option>
+</select>
+
+</header>
+
+<video id="player" controls></video>
+
+<div class="container">
+
+<div class="channels" id="channels"></div>
+
+</div>
+
+<div class="settings">
+
+<h4>Settings</h4>
+
+<input type="file" id="playlistFile">
+
+<br><br>
+
+<button onclick="loadPlaylist()">Load M3U</button>
+
+</div>
+
+<div class="ai" onclick="aiHelp()">
+AI
+</div>
+
+<script>
+
+let video = document.getElementById("player")
+let channelsDiv = document.getElementById("channels")
+
+function playStream(url){
+
+if(Hls.isSupported()){
+
+let hls = new Hls()
+
+hls.loadSource(url)
+
+hls.attachMedia(video)
+
+}
+
+else{
+
+video.src = url
+
+}
+
+}
+
+function loadPlaylist(){
+
+let file = document.getElementById("playlistFile").files[0]
+
+let reader = new FileReader()
+
+reader.onload=function(e){
+
+parseM3U(e.target.result)
+
+}
+
+reader.readAsText(file)
+
+}
+
+function parseM3U(data){
+
+channelsDiv.innerHTML=""
+
+let lines=data.split("\n")
+
+for(let i=0;i<lines.length;i++){
+
+if(lines[i].startsWith("#EXTINF")){
+
+let name=lines[i].split(",")[1]
+
+let url=lines[i+1]
+
+let div=document.createElement("div")
+
+div.className="channel"
+
+div.innerText=name
+
+div.onclick=function(){
+
+playStream(url)
+
+saveHistory(name,url)
+
+}
+
+channelsDiv.appendChild(div)
+
+}
+
+}
+
+}
+
+function saveHistory(name,url){
+
+let history=JSON.parse(localStorage.getItem("history")||"[]")
+
+history.push({name,url})
+
+localStorage.setItem("history",JSON.stringify(history))
+
+}
+
+function aiHelp(){
+
+alert("AI Assistant:\n\nيمكنك تحميل قائمة M3U وتشغيل القنوات مباشرة.")
+
+}
+
+</script>
+
+</body>
+</html>
