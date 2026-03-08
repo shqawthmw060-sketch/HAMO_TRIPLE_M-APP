@@ -2,311 +2,692 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAMO TRIPLE M 🔥 Pro Max Plus</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="HAMO Pro Max Ultra - \u062a\u0637\u0628\u064a\u0642 \u0627\u0644\u0628\u062b \u0627\u0644\u0639\u0627\u0644\u0645\u064a \u0627\u0644\u0623\u0648\u0644">
+    <meta name="theme-color" content="#0a0e27">
+    <title>HAMO Pro Max Ultra \ud83d\udd25 - \u0645\u0646\u0635\u0629 \u0627\u0644\u0628\u062b \u0627\u0644\u0630\u0643\u064a\u0629</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
-        * { font-family: 'Cairo', sans-serif; }
+        /* ============================================
+           DESIGN SYSTEM & VARIABLES
+           ============================================ */
         
-        .glassmorphism {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 25px 45px rgba(0,0,0,0.3);
+        :root {
+            /* Primary Colors - Bold & Luxe */
+            --primary-dark: #0a0e27;
+            --primary-darker: #050810;
+            --primary-light: #1a1f3a;
+            
+            /* Accent Colors - Vibrant & Dynamic */
+            --accent-red: #ff1744;
+            --accent-cyan: #00e5ff;
+            --accent-purple: #9c27b0;
+            --accent-gold: #ffd700;
+            --accent-green: #00e676;
+            --accent-pink: #ff4081;
+            
+            /* Neutral Colors */
+            --text-primary: #ffffff;
+            --text-secondary: #b0b9c1;
+            --text-tertiary: #7a8a9a;
+            
+            /* Background Colors */
+            --bg-surface: rgba(26, 31, 58, 0.6);
+            --bg-overlay: rgba(5, 8, 16, 0.85);
+            --bg-glass: rgba(10, 14, 39, 0.7);
+            
+            /* Shadow System */
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+            --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.6);
+            
+            /* Border Colors */
+            --border-color: rgba(255, 23, 68, 0.15);
+            --border-light: rgba(255, 255, 255, 0.1);
+            
+            /* Spacing */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 12px;
+            --spacing-lg: 16px;
+            --spacing-xl: 24px;
+            --spacing-2xl: 32px;
+            --spacing-3xl: 48px;
         }
-        
-        .gradient-hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
+
+        /* ============================================
+           RESET & BASE STYLES
+           ============================================ */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+
+        *::selection {
+            background: var(--accent-red);
+            color: white;
         }
-        
-        .neon-glow {
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.6), 0 0 40px rgba(236, 72, 153, 0.4);
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        
-        .card-hover {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--primary-darker) 0%, var(--primary-dark) 50%, #1a0033 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
         }
-        .card-hover:hover {
-            transform: translateY(-15px) scale(1.05);
-            box-shadow: 0 35px 60px rgba(0,0,0,0.4);
+
+        /* Animated Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 23, 68, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(0, 229, 255, 0.05) 0%, transparent 50%);
+            animation: bgMove 20s ease infinite;
+            pointer-events: none;
+            z-index: -2;
         }
-        
-        .live-pulse {
-            animation: livePulse 2s infinite;
-            box-shadow: 0 0 20px rgba(239, 68, 68, 0.8);
+
+        @keyframes bgMove {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-50px, -50px); }
         }
-        @keyframes livePulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.1); }
+
+        /* ============================================
+           ANIMATIONS
+           ============================================ */
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
-        .floating { animation: float 6s ease-in-out infinite; }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes glow {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(255, 23, 68, 0.3);
+            }
+            50% { 
+                box-shadow: 0 0 40px rgba(255, 23, 68, 0.6);
+            }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-20px); }
         }
-    </style>
-</head>
-<body class="bg-gray-900 overflow-x-hidden">
 
-<!-- Hero Section 🔥 -->
-<section class="gradient-hero min-h-screen relative overflow-hidden">
-    <!-- Background particles -->
-    <div class="absolute inset-0">
-        <div class="absolute top-20 left-20 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl floating"></div>
-        <div class="absolute top-1/2 right-20 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl floating" style="animation-delay: -2s;"></div>
-        <div class="absolute bottom-20 left-1/2 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl floating" style="animation-delay: -4s;"></div>
-    </div>
-    
-    <div class="relative z-20 pt-32 pb-20">
-        <div class="max-w-6xl mx-auto text-center px-6">
-            <div class="glassmorphism inline-block px-12 py-6 rounded-3xl mb-12 neon-glow">
-                <h1 class="text-7xl md:text-8xl lg:text-9xl font-black bg-gradient-to-r from-white via-yellow-300 to-pink-300 bg-clip-text text-transparent mb-6">
-                    HAMO TRIPLE M
-                </h1>
-                <div class="text-3xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text">
-                    Pro Max Plus Ultimate 2026 🔥
-                </div>
-            </div>
-            
-            <p class="text-2xl md:text-3xl opacity-90 max-w-4xl mx-auto mb-16 leading-relaxed">
-                أسطورة الستريمينج العالمي • 4K/8K • بث مباشر • AI Pro
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20">
-                <button onclick="scrollToContent()" class="px-20 py-8 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-3xl font-black rounded-4xl neon-glow text-white hover:scale-105 transition-all shadow-2xl">
-                    <i class="fas fa-rocket mr-4"></i>ابدأ الآن
-                </button>
-                <a href="https://wa.me/20158536392" class="px-20 py-8 glassmorphism text-3xl font-bold rounded-4xl border-2 border-white/30 hover:bg-white/20 transition-all">
-                    <i class="fab fa-whatsapp mr-4 text-green-400"></i>تواصل
-                </a>
-            </div>
-            
-            <!-- Live Stats -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-                <div class="glassmorphism p-8 rounded-4xl text-center">
-                    <div class="text-5xl font-black text-emerald-400 mb-2" id="liveUsers">289K</div>
-                    <div class="text-xl opacity-90">مشاهدين الآن</div>
-                </div>
-                <div class="glassmorphism p-8 rounded-4xl text-center">
-                    <div class="text-5xl font-black text-purple-400 mb-2">3.2M</div>
-                    <div class="text-xl opacity-90">محتوى VIP</div>
-                </div>
-                <div class="glassmorphism p-8 rounded-4xl text-center">
-                    <div class="text-5xl font-black text-blue-400 mb-2" id="liveMatches">23</div>
-                    <div class="text-xl opacity-90">مباريات LIVE</div>
-                </div>
-                <div class="glassmorphism p-8 rounded-4xl text-center">
-                    <div class="text-5xl font-black text-pink-400 mb-2">197</div>
-                    <div class="text-xl opacity-90">دول مدعومة</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
 
-<!-- Navigation Pro -->
-<nav class="glassmorphism sticky top-0 z-50 p-4 mx-8 lg:mx-16 rounded-4xl mt-8 max-w-7xl mx-auto shadow-2xl">
-    <div class="flex overflow-x-auto gap-3 pb-2 scrollbar-hide" id="navTabs">
-        <button class="nav-btn px-8 py-4 rounded-3xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-xl whitespace-nowrap flex items-center gap-3 hover:scale-105 transition-all" data-tab="all">🏠 الرئيسية</button>
-        <button class="nav-btn px-8 py-4 rounded-3xl font-bold text-white glassmorphism hover:bg-white/20 whitespace-nowrap flex items-center gap-3 transition-all" data-tab="movies">🎬 أفلام</button>
-        <button class="nav-btn px-8 py-4 rounded-3xl font-bold text-white glassmorphism hover:bg-white/20 whitespace-nowrap flex items-center gap-3 transition-all" data-tab="series">📺 مسلسلات</button>
-        <button class="nav-btn px-8 py-4 rounded-3xl font-bold text-white glassmorphism hover:bg-white/20 whitespace-nowrap flex items-center gap-3 transition-all" data-tab="live">⚽ مباشر</button>
-        <button class="nav-btn px-8 py-4 rounded-3xl font-bold text-white glassmorphism hover:bg-white/20 whitespace-nowrap flex items-center gap-3 transition-all" data-tab="kids">👶 أطفال</button>
-        <button class="nav-btn px-8 py-4 rounded-3xl font-bold text-white glassmorphism hover:bg-white/20 whitespace-nowrap flex items-center gap-3 transition-all" data-tab="anime">🎌 أنيمي</button>
-    </div>
-</nav>
+        /* ============================================
+           SCROLLBAR STYLING
+           ============================================ */
 
-<!-- Content Sections -->
-<main class="max-w-7xl mx-auto px-8 py-20 space-y-24 pb-32" id="mainContent">
-    
-    <!-- Featured Movies 🔥 -->
-    <section class="glassmorphism p-12 rounded-5xl card-hover">
-        <h2 class="text-6xl font-black mb-16 flex items-center text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">
-            <i class="fas fa-crown mr-8 text-5xl"></i>الأفلام المميزة
-        </h2>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-8">
-            <div class="group relative overflow-hidden rounded-4xl bg-gradient-to-br from-red-600 to-orange-500 text-white p-8 card-hover cursor-pointer" onclick="playContent('الفيل الأزرق 3')">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                <div class="w-full h-52 rounded-3xl bg-gradient-to-r from-red-400 to-orange-300 mb-6 relative z-10"></div>
-                <div class="relative z-10">
-                    <h3 class="text-2xl font-bold mb-3">الفيل الأزرق 3</h3>
-                    <div class="flex items-center text-lg opacity-90 mb-4">
-                        <i class="fas fa-star text-yellow-400 mr-3"></i>⭐ 8.7
-                    </div>
-                    <div class="flex items-center gap-4 text-sm opacity-80">
-                        <span class="px-3 py-1 bg-white/20 rounded-full">4K</span>
-                        <span>2:45:30</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="group relative overflow-hidden rounded-4xl bg-gradient-to-br from-blue-600 to-purple-500 text-white p-8 card-hover cursor-pointer" onclick="playContent('Avengers 6')">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                <div class="w-full h-52 rounded-3xl bg-gradient-to-r from-blue-400 to-purple-300 mb-6 relative z-10"></div>
-                <div class="relative z-10">
-                    <h3 class="text-2xl font-bold mb-3">Avengers 6</h3>
-                    <div class="flex items-center text-lg opacity-90 mb-4">
-                        <i class="fas fa-star text-yellow-400 mr-3"></i>⭐ 9.2
-                    </div>
-                    <div class="flex items-center gap-4 text-sm opacity-80">
-                        <span class="px-3 py-1 bg-white/20 rounded-full">8K</span>
-                        <span>3:12:45</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 4 أفلام أخرى بنفس الطريقة -->
-            <div class="group relative overflow-hidden rounded-4xl bg-gradient-to-br from-emerald-600 to-teal-500 text-white p-8 card-hover cursor-pointer" onclick="playContent('الاختيار')">
-                <div class="w-full h-52 rounded-3xl bg-gradient-to-r from-emerald-400 to-teal-300 mb-6"></div>
-                <h3 class="text-2xl font-bold mb-3">الاختيار</h3>
-                <div class="flex items-center text-lg opacity-90 mb-4">
-                    <i class="fas fa-star text-yellow-400 mr-3"></i>⭐ 9.4
-                </div>
-            </div>
-            
-            <div class="group relative overflow-hidden rounded-4xl bg-gradient-to-br from-purple-600 to-pink-500 text-white p-8 card-hover cursor-pointer" onclick="playContent('Squid Game 3')">
-                <div class="w-full h-52 rounded-3xl bg-gradient-to-r from-purple-400 to-pink-300 mb-6"></div>
-                <h3 class="text-2xl font-bold mb-3">Squid Game 3</h3>
-                <div class="flex items-center text-lg opacity-90 mb-4">
-                    <i class="fas fa-star text-yellow-400 mr-3"></i>⭐ 9.1
-                </div>
-            </div>
-        </div>
-    </section>
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
 
-    <!-- Live Matches ⚽ -->
-    <section class="glassmorphism p-12 rounded-5xl card-hover relative overflow-hidden">
-        <div class="absolute top-12 right-12">
-            <div class="live-pulse w-8 h-8 bg-red-500 rounded-full"></div>
-        </div>
-        <h2 class="text-6xl font-black mb-16 flex items-center text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400">
-            <i class="fas fa-futbol mr-8 text-5xl"></i>مباريات مباشرة
-        </h2>
-        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-12">
-            <div class="group relative bg-gradient-to-br from-red-600 to-orange-500 text-white p-12 rounded-5xl card-hover cursor-pointer overflow-hidden" onclick="playLive('الأهلي vs الزمالك')" style="border: 2px solid rgba(255,255,255,0.3);">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div class="live-pulse w-10 h-10 bg-white/30 rounded-full absolute top-8 right-8"></div>
-                <div class="w-full h-64 rounded-4xl bg-gradient-to-r from-red-400 to-orange-300 mb-12 relative z-10"></div>
-                <div class="relative z-10 text-center">
-                    <h3 class="text-4xl font-black mb-8">الأهلي vs الزمالك</h3>
-                    <div class="flex justify-center gap-8 mb-12 text-2xl opacity-90">
-                        <span class="px-8 py-4 bg-white/20 rounded-3xl font-bold">2 - 1</span>
-                        <span class="px-8 py-4 bg-red-400/30 rounded-3xl font-bold text-red-300">🔴 LIVE</span>
-                    </div>
-                    <button class="w-full px-12 py-6 bg-gradient-to-r from-white to-gray-100 text-gray-900 font-black text-2xl rounded-4xl hover:scale-105 transition-all shadow-2xl">شاهد المباراة الآن</button>
-                </div>
-            </div>
-            
-            <div class="group relative bg-gradient-to-br from-blue-600 to-indigo-500 text-white p-12 rounded-5xl card-hover cursor-pointer overflow-hidden" onclick="playLive('مانشستر vs ليفربول')" style="border: 2px solid rgba(255,255,255,0.3);">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div class="live-pulse w-10 h-10 bg-white/30 rounded-full absolute top-8 right-8" style="background: rgba(59,130,246,0.3) !important;"></div>
-                <div class="w-full h-64 rounded-4xl bg-gradient-to-r from-blue-400 to-indigo-300 mb-12 relative z-10"></div>
-                <div class="relative z-10 text-center">
-                    <h3 class="text-4xl font-black mb-8">مانشستر vs ليفربول</h3>
-                    <div class="flex justify-center gap-8 mb-12 text-2xl opacity-90">
-                        <span class="px-8 py-4 bg-white/20 rounded-3xl font-bold">0 - 0</span>
-                        <span class="px-8 py-4 bg-blue-400/30 rounded-3xl font-bold text-blue-200">🔴 LIVE</span>
-                    </div>
-                    <button class="w-full px-12 py-6 bg-gradient-to-r from-white to-gray-100 text-gray-900 font-black text-2xl rounded-4xl hover:scale-105 transition-all shadow-2xl">شاهد المباراة الآن</button>
-                </div>
-            </div>
-        </div>
-    </section>
+        ::-webkit-scrollbar-track {
+            background: rgba(10, 14, 39, 0.4);
+        }
 
-</main>
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-purple));
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
 
-<!-- Pro Max Player -->
-<div id="playerModal" class="fixed inset-0 bg-black/98 z-50 hidden flex items-center justify-center p-8">
-    <div class="max-w-7xl w-full mx-auto glassmorphism rounded-5xl overflow-hidden shadow-4xl">
-        <div class="p-8 flex items-center border-b border-white/20">
-            <button onclick="closePlayer()" class="text-4xl hover:text-red-400 mr-8 p-4 rounded-3xl hover:bg-white/20 transition-all">
-                <i class="fas fa-times"></i>
-            </button>
-            <h2 id="playerTitle" class="text-4xl font-black flex-1 text-center bg-gradient-to-r from-white to-gray-200 bg-clip-text">Pro Max Player</h2>
-            <div class="flex items-center gap-4">
-                <select class="px-6 py-3 glassmorphism text-white rounded-3xl">
-                    <option>4K</option>
-                    <option>8K</option>
-                    <option>1080p</option>
-                </select>
-                <button class="p-4 glassmorphism rounded-3xl hover:bg-white/30"><i class="fas fa-expand"></i></button>
-            </div>
-        </div>
-        <video id="mainPlayer" class="w-full h-[500px] object-contain" controls preload="metadata">
-            <source src="https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_5mb.mp4" type="video/mp4">
-        </video>
-        <div class="p-8 flex items-center justify-between border-t border-white/20">
-            <div class="flex items-center gap-4">
-                <button class="p-6 glassmorphism rounded-3xl hover:bg-white/30 text-2xl"><i class="fas fa-backward"></i></button>
-                <button class="p-6 glassmorphism rounded-3xl hover:bg-white/30 text-3xl"><i class="fas fa-play"></i></button>
-                <button class="p-6 glassmorphism rounded-3xl hover:bg-white/30 text-2xl"><i class="fas fa-forward"></i></button>
-            </div>
-            <div class="text-2xl opacity-90">
-                <span id="currentTime">00:00</span> / <span id="duration">03:45</span>
-            </div>
-        </div>
-    </div>
-</div>
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-red));
+        }
 
-<!-- WhatsApp Pro Float -->
-<a href="https://wa.me/20158536392?text=مرحبا%20HAMO%20TRIPLE%20M%20Pro%20Max!%20🚀" 
-   class="fixed bottom-8 right-8 w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-500 text-3xl rounded-3xl flex items-center justify-center shadow-2xl hover:scale-110 transition-all live-pulse z-40" title="تواصل واتساب">
-    💬
-</a>
+        /* ============================================
+           BUTTON STYLES
+           ============================================ */
 
-<script>
-function playContent(title) {
-    document.getElementById('playerTitle').innerHTML = `<i class="fas fa-film mr-4"></i>${title} | Pro Max 4K`;
-    document.getElementById('mainPlayer').load();
-    document.getElementById('playerModal').classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-}
+        .btn {
+            border: none;
+            border-radius: 12px;
+            padding: 12px 24px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-function playLive(title) {
-    document.getElementById('playerTitle').innerHTML = `<div class="live-pulse w-6 h-6 bg-red-500 rounded-full inline-block mr-4"></div>🔴 LIVE: ${title}`;
-    document.getElementById('mainPlayer').load();
-    document.getElementById('playerModal').classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-}
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
 
-function closePlayer() {
-    document.getElementById('playerModal').classList.add('hidden');
-    document.body.style.overflow = 'auto';
-}
+        .btn:active::before {
+            width: 300px;
+            height: 300px;
+        }
 
-function scrollToContent() {
-    document.getElementById('mainContent').scrollIntoView({ behavior: 'smooth' });
-}
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-red) 0%, var(--accent-pink) 100%);
+            color: white;
+            box-shadow: 0 8px 24px rgba(255, 23, 68, 0.3);
+        }
 
-// Live counters
-setInterval(() => {
-    document.getElementById('liveUsers').textContent = (Math.floor(Math.random() * 100) + 280) + 'K';
-    document.getElementById('liveMatches').textContent = Math.floor(Math.random() * 10) + 20;
-}, 3000);
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(255, 23, 68, 0.5);
+        }
 
-// Navigation
-document.querySelectorAll('.nav-btn').forEach(btn => {
-    btn.onclick = () => {
-        document.querySelectorAll('.nav-btn').forEach(b => {
-            b.classList.remove('bg-gradient-to-r', 'from-purple-500', 'to-pink-500');
-            b.classList.add('glassmorphism');
-        });
-        btn.classList.add('bg-gradient-to-r', 'from-purple-500', 'to-pink-500');
-        btn.classList.remove('glassmorphism');
-    }
-});
-</script>
+        .btn-primary:active {
+            transform: translateY(-1px);
+        }
 
-</body>
-    </html>
+        .btn-secondary {
+            background: rgba(0, 229, 255, 0.1);
+            border: 2px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 229, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 229, 255, 0.2);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            border: 2px solid var(--text-secondary);
+            color: var(--text-secondary);
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--accent-red);
+            color: var(--accent-red);
+        }
+
+        .btn-sm {
+            padding: 8px 16px;
+            font-size: 12px;
+        }
+
+        .btn-lg {
+            padding: 16px 32px;
+            font-size: 16px;
+        }
+
+        .btn-icon {
+            width: 48px;
+            height: 48px;
+            padding: 0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 23, 68, 0.1);
+            border: 2px solid rgba(255, 23, 68, 0.3);
+            color: var(--accent-red);
+            font-size: 18px;
+        }
+
+        .btn-icon:hover {
+            background: rgba(255, 23, 68, 0.2);
+            border-color: var(--accent-red);
+            transform: scale(1.1);
+        }
+
+        /* ============================================
+           HEADER & NAVIGATION
+           ============================================ */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: var(--bg-overlay);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            animation: slideInDown 0.6s ease-out;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .logo:hover {
+            filter: drop-shadow(0 0 20px rgba(255, 23, 68, 0.5));
+        }
+
+        nav {
+            display: flex;
+            gap: 40px;
+            flex: 1;
+            margin: 0 60px;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            padding: 8px 0;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-cyan));
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--accent-red);
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .search-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--border-color);
+            padding: 10px 16px;
+            border-radius: 30px;
+            color: var(--text-primary);
+            width: 250px;
+            transition: all 0.3s;
+        }
+
+        .search-box::placeholder {
+            color: var(--text-tertiary);
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--accent-red);
+            background: rgba(255, 23, 68, 0.1);
+            box-shadow: 0 0 20px rgba(255, 23, 68, 0.3);
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .notification-badge {
+            position: relative;
+        }
+
+        .notification-badge::after {
+            content: '3';
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--accent-red);
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .avatar:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 23, 68, 0.5);
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+
+        .hero {
+            margin-top: 80px;
+            height: 700px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(255, 23, 68, 0.1) 0%, rgba(0, 229, 255, 0.1) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 40px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 23, 68, 0.2), transparent);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 600px;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 72px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            animation: slideInUp 0.8s ease-out 0.1s backwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            animation: slideInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 400px;
+            height: 500px;
+            background: linear-gradient(135deg, rgba(255, 23, 68, 0.2), rgba(0, 229, 255, 0.2));
+            border-radius: 20px;
+            border: 2px solid var(--border-color);
+            animation: slideInRight 0.8s ease-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+        }
+
+        /* ============================================
+           CONTENT SECTIONS
+           ============================================ */
+
+        .section {
+            display: none;
+            padding: 80px 40px;
+            min-height: 100vh;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 50px;
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-cyan));
+        }
+
+        /* ============================================
+           CARD COMPONENTS
+           ============================================ */
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            position: relative;
+            group: card;
+            animation: slideInUp 0.6s ease-out;
+        }
+
+        .card:hover {
+            transform: translateY(-12px);
+            border-color: var(--accent-red);
+            box-shadow: 0 20px 50px rgba(255, 23, 68, 0.3);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(255, 23, 68, 0.15), rgba(0, 229, 255, 0.15));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(255, 23, 68, 0.2));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover .card-image::after {
+            opacity: 1;
+        }
+
+        .card-content {
+            padding: 24px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .card-desc {
+            font-size: 13px;
+            color: var(--text-tertiary);
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .card-meta {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 23, 68, 0.15);
+            color: var(--accent-red);
+            padding: 4px 
