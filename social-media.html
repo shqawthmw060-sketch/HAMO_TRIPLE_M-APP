@@ -1,200 +1,192 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-
 <meta charset="UTF-8">
-<title>HAMO Social</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HAMO SOCIAL Pro Max Plus</title>
 
-<!-- icons -->
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- Font Awesome للآيقونات -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-
-body{
-margin:0;
-font-family:Arial;
-background:#0b0b0b;
-color:white;
-text-align:center;
+body {
+  margin:0;
+  font-family: 'Arial', sans-serif;
+  background: #0b0b0b;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-h1{
-margin-top:60px;
-font-size:40px;
-letter-spacing:2px;
+/* ===== Neon Header ===== */
+h1 {
+  margin-top: 50px;
+  font-size: 3em;
+  letter-spacing: 2px;
+  color: #0ff;
+  text-shadow: 0 0 15px #0ff, 0 0 25px #6a5acd;
+  animation: neon-glow 1.5s ease-in-out infinite alternate;
 }
 
-/* social buttons */
-
-.container{
-margin-top:50px;
-display:flex;
-flex-direction:column;
-align-items:center;
-gap:20px;
+@keyframes neon-glow {
+  0% { text-shadow: 0 0 15px #0ff, 0 0 25px #6a5acd; }
+  50% { text-shadow: 0 0 25px #ff00ff, 0 0 40px #ff00ff; }
+  100% { text-shadow: 0 0 15px #0ff, 0 0 25px #6a5acd; }
 }
 
-.social{
-width:260px;
-padding:18px;
-font-size:20px;
-font-weight:bold;
-text-decoration:none;
-color:white;
-border-radius:12px;
-transition:0.3s;
-display:flex;
-align-items:center;
-justify-content:center;
-gap:10px;
-box-shadow:0 0 15px rgba(0,0,0,0.5);
+/* ===== Social Buttons Container ===== */
+.container {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
 }
 
-.social:hover{
-transform:scale(1.1);
-box-shadow:0 0 25px rgba(255,255,255,0.5);
+/* ===== Social Buttons ===== */
+.social {
+  width: 280px;
+  padding: 18px;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0,0,0,0.6);
+  position: relative;
 }
 
-.whatsapp{background:#25D366;}
-.facebook{background:#1877F2;}
-.telegram{background:#0088cc;}
-
-.instagram{
-background:linear-gradient(
-45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+.social:hover {
+  transform: scale(1.15) rotate(-1deg);
+  box-shadow: 0 0 35px rgba(0,255,255,0.7), 0 0 50px rgba(255,0,255,0.5);
+  animation: pulse 1s infinite;
 }
 
-.tiktok{background:#111;}
-
-/* floating support */
-
-.support-container{
-position:fixed;
-bottom:20px;
-right:20px;
-z-index:999;
+/* Hover Pulse Neon */
+@keyframes pulse {
+  0% { box-shadow: 0 0 25px rgba(0,255,255,0.7), 0 0 50px rgba(255,0,255,0.5); }
+  50% { box-shadow: 0 0 35px rgba(0,255,255,1), 0 0 60px rgba(255,0,255,1); }
+  100% { box-shadow: 0 0 25px rgba(0,255,255,0.7), 0 0 50px rgba(255,0,255,0.5); }
 }
 
-.support-button{
-background:#111;
-color:white;
-padding:16px;
-border-radius:50%;
-font-size:22px;
-cursor:pointer;
-box-shadow:0 0 15px rgba(0,0,0,0.7);
+.whatsapp {background: #25D366;}
+.telegram {background: #0088cc;}
+.facebook {background: #1877F2;}
+.instagram {background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);}
+.tiktok {background: #111;}
+
+/* ===== Floating Support ===== */
+.support-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
 }
 
-.support-menu{
-display:none;
-flex-direction:column;
-margin-bottom:10px;
+.support-button {
+  background: #111;
+  color: white;
+  padding: 20px;
+  border-radius: 50%;
+  font-size: 28px;
+  cursor: pointer;
+  box-shadow: 0 0 25px rgba(0,0,0,0.8);
+  transition: all 0.3s ease;
 }
 
-.support-menu a{
-text-decoration:none;
-color:white;
-padding:10px 15px;
-margin-top:8px;
-border-radius:8px;
-font-size:14px;
-text-align:center;
+.support-button:hover {
+  transform: scale(1.3) rotate(-10deg);
+  box-shadow: 0 0 40px rgba(0,255,255,0.8), 0 0 60px rgba(255,0,255,0.5);
 }
 
-.livechat{background:#ff9800;}
+/* ===== Support Menu ===== */
+.support-menu {
+  display: none;
+  flex-direction: column;
+  margin-bottom: 10px;
+  align-items: center;
+}
 
+.support-menu a {
+  text-decoration: none;
+  color: white;
+  padding: 12px 20px;
+  margin-top: 8px;
+  border-radius: 10px;
+  font-size: 16px;
+  text-align: center;
+  width: 220px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.support-menu a:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0,255,255,0.8), 0 0 35px rgba(255,0,255,0.5);
+}
+
+.support-menu .whatsapp {background: #25D366;}
+.support-menu .telegram {background: #0088cc;}
+.support-menu .livechat {background: #ff9800;}
+.support-menu .ai {background: #6a5acd;}
 </style>
-
 </head>
 
 <body>
 
-<h1>HAMO SOCIAL</h1>
+<h1>HAMO SOCIAL Pro Max Plus</h1>
 
 <div class="container">
-
-<a class="social whatsapp"
-href="https://wa.me/201508536392"
-target="_blank">
-<i class="fa-brands fa-whatsapp"></i>
-WhatsApp
-</a>
-
-<a class="social telegram"
-href="https://t.me/"
-target="_blank">
-<i class="fa-brands fa-telegram"></i>
-Telegram
-</a>
-
-<a class="social facebook"
-href="https://facebook.com"
-target="_blank">
-<i class="fa-brands fa-facebook"></i>
-Facebook
-</a>
-
-<a class="social instagram"
-href="https://instagram.com"
-target="_blank">
-<i class="fa-brands fa-instagram"></i>
-Instagram
-</a>
-
-<a class="social tiktok"
-href="https://tiktok.com"
-target="_blank">
-<i class="fa-brands fa-tiktok"></i>
-TikTok
-</a>
-
+  <a class="social whatsapp" href="https://wa.me/201508536392" target="_blank">
+    <i class="fa-brands fa-whatsapp"></i> WhatsApp
+  </a>
+  <a class="social telegram" href="https://t.me/" target="_blank">
+    <i class="fa-brands fa-telegram"></i> Telegram
+  </a>
+  <a class="social facebook" href="https://facebook.com" target="_blank">
+    <i class="fa-brands fa-facebook"></i> Facebook
+  </a>
+  <a class="social instagram" href="https://instagram.com" target="_blank">
+    <i class="fa-brands fa-instagram"></i> Instagram
+  </a>
+  <a class="social tiktok" href="https://tiktok.com" target="_blank">
+    <i class="fa-brands fa-tiktok"></i> TikTok
+  </a>
 </div>
 
-
-<!-- floating support -->
-
+<!-- Floating Support -->
 <div class="support-container">
-
-<div class="support-menu" id="supportMenu">
-
-<a class="whatsapp"
-href="https://wa.me/201508536392"
-target="_blank">
-WhatsApp
-</a>
-
-<a class="telegram"
-href="https://t.me/"
-target="_blank">
-Telegram
-</a>
-
-<a class="livechat"
-href="#"
-onclick="openChat()">
-Live Chat
-</a>
-
+  <div class="support-menu" id="supportMenu">
+    <a class="whatsapp" href="https://wa.me/201508536392" target="_blank">WhatsApp</a>
+    <a class="telegram" href="https://t.me/" target="_blank">Telegram</a>
+    <a class="livechat" href="#" onclick="openChat()">Live Chat</a>
+    <a class="ai" href="#" onclick="openAI()">AI Assistant</a>
+  </div>
+  <div class="support-button" onclick="toggleSupport()">💬</div>
 </div>
-
-<div class="support-button"
-onclick="toggleSupport()">💬</div>
-
-</div>
-
 
 <script>
-
 function toggleSupport(){
-let menu=document.getElementById("supportMenu");
-menu.style.display=(menu.style.display=="flex")?"none":"flex";
+  let menu = document.getElementById("supportMenu");
+  menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
+  menu.style.flexDirection = "column";
 }
 
 function openChat(){
-alert("Live Chat Coming Soon");
+  alert("Live Chat Coming Soon!");
 }
 
+function openAI(){
+  alert("AI Assistant Coming Soon!");
+}
 </script>
 
 </body>
