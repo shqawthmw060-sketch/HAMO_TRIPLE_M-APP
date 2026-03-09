@@ -3,9 +3,11 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HAMO Social</title>
 
-<title>HAMO TV Social</title>
+<!-- icons -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 
@@ -14,68 +16,93 @@ margin:0;
 font-family:Arial;
 background:#0b0b0b;
 color:white;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-}
-
-.container{
 text-align:center;
 }
 
 h1{
+margin-top:60px;
 font-size:40px;
-margin-bottom:40px;
 letter-spacing:2px;
 }
 
-.social-grid{
-display:grid;
-grid-template-columns:repeat(2,200px);
+/* social buttons */
+
+.container{
+margin-top:50px;
+display:flex;
+flex-direction:column;
+align-items:center;
 gap:20px;
 }
 
 .social{
-padding:25px;
-border-radius:15px;
+width:260px;
+padding:18px;
+font-size:20px;
+font-weight:bold;
 text-decoration:none;
 color:white;
-font-size:18px;
-font-weight:bold;
+border-radius:12px;
 transition:0.3s;
-box-shadow:0 0 10px rgba(255,255,255,0.1);
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+box-shadow:0 0 15px rgba(0,0,0,0.5);
 }
 
 .social:hover{
-transform:scale(1.08);
-box-shadow:0 0 20px rgba(255,255,255,0.4);
+transform:scale(1.1);
+box-shadow:0 0 25px rgba(255,255,255,0.5);
 }
 
-/* colors */
-
-.whatsapp{
-background:#25D366;
-}
-
-.telegram{
-background:#0088cc;
-}
-
-.facebook{
-background:#1877F2;
-}
+.whatsapp{background:#25D366;}
+.facebook{background:#1877F2;}
+.telegram{background:#0088cc;}
 
 .instagram{
 background:linear-gradient(
-45deg,
-#f09433,
-#e6683c,
-#dc2743,
-#cc2366,
-#bc1888
-);
+45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
 }
+
+.tiktok{background:#111;}
+
+/* floating support */
+
+.support-container{
+position:fixed;
+bottom:20px;
+right:20px;
+z-index:999;
+}
+
+.support-button{
+background:#111;
+color:white;
+padding:16px;
+border-radius:50%;
+font-size:22px;
+cursor:pointer;
+box-shadow:0 0 15px rgba(0,0,0,0.7);
+}
+
+.support-menu{
+display:none;
+flex-direction:column;
+margin-bottom:10px;
+}
+
+.support-menu a{
+text-decoration:none;
+color:white;
+padding:10px 15px;
+margin-top:8px;
+border-radius:8px;
+font-size:14px;
+text-align:center;
+}
+
+.livechat{background:#ff9800;}
 
 </style>
 
@@ -83,39 +110,92 @@ background:linear-gradient(
 
 <body>
 
+<h1>HAMO SOCIAL</h1>
+
 <div class="container">
-
-<h1>Connect With HAMO</h1>
-
-<div class="social-grid">
 
 <a class="social whatsapp"
 href="https://wa.me/201508536392"
 target="_blank">
+<i class="fa-brands fa-whatsapp"></i>
 WhatsApp
 </a>
 
 <a class="social telegram"
 href="https://t.me/"
 target="_blank">
+<i class="fa-brands fa-telegram"></i>
 Telegram
 </a>
 
 <a class="social facebook"
-href="https://facebook.com/"
+href="https://facebook.com"
 target="_blank">
+<i class="fa-brands fa-facebook"></i>
 Facebook
 </a>
 
 <a class="social instagram"
-href="https://instagram.com/"
+href="https://instagram.com"
 target="_blank">
+<i class="fa-brands fa-instagram"></i>
 Instagram
+</a>
+
+<a class="social tiktok"
+href="https://tiktok.com"
+target="_blank">
+<i class="fa-brands fa-tiktok"></i>
+TikTok
 </a>
 
 </div>
 
+
+<!-- floating support -->
+
+<div class="support-container">
+
+<div class="support-menu" id="supportMenu">
+
+<a class="whatsapp"
+href="https://wa.me/201508536392"
+target="_blank">
+WhatsApp
+</a>
+
+<a class="telegram"
+href="https://t.me/"
+target="_blank">
+Telegram
+</a>
+
+<a class="livechat"
+href="#"
+onclick="openChat()">
+Live Chat
+</a>
+
 </div>
+
+<div class="support-button"
+onclick="toggleSupport()">💬</div>
+
+</div>
+
+
+<script>
+
+function toggleSupport(){
+let menu=document.getElementById("supportMenu");
+menu.style.display=(menu.style.display=="flex")?"none":"flex";
+}
+
+function openChat(){
+alert("Live Chat Coming Soon");
+}
+
+</script>
 
 </body>
 </html>
