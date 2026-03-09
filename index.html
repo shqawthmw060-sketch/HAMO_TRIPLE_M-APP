@@ -1,156 +1,139 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>HAMO LIVE PRO • لوحة التحكم</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet"/>
-  
-  <style>
-    body {
-      font-family: 'Cairo', sans-serif;
-      background: linear-gradient(-45deg, #0a001f, #1a0038, #2a0055, #0a001f);
-      background-size: 400% 400%;
-      animation: gradient 20s ease infinite;
-      color: #e0f7ff;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-    @keyframes gradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    .neon-cyan { text-shadow: 0 0 10px #00f6ff, 0 0 20px #00f6ff; }
-    .neon-pink { text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff; }
-    .glass { background: rgba(20, 10, 60, 0.45); backdrop-filter: blur(16px); border: 1px solid rgba(0,246,255,0.3); }
-    .control-btn { transition: all 0.3s; }
-    .control-btn:hover { transform: scale(1.08); box-shadow: 0 0 20px rgba(0,246,255,0.5); }
-    .preview-window { background: #000; border: 2px solid #00f6ff; box-shadow: 0 0 30px #00f6ff44; }
-  </style>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HAMO TRIPLE M</title>
+
+<style>
+
+body{
+background:#0b0b0b;
+color:white;
+font-family:sans-serif;
+margin:0;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 30px;
+background:#000;
+}
+
+.logo{
+font-size:24px;
+color:red;
+font-weight:bold;
+}
+
+.banner{
+height:350px;
+background:url("https://image.tmdb.org/t/p/original/9yBVqNruk6Ykrwc32qrK2TIE5xw.jpg");
+background-size:cover;
+display:flex;
+align-items:flex-end;
+padding:40px;
+}
+
+.banner h1{
+font-size:40px;
+}
+
+.row{
+margin:20px;
+}
+
+.row h2{
+margin-bottom:10px;
+}
+
+.row-posters{
+display:flex;
+overflow-x:auto;
+gap:10px;
+}
+
+.poster{
+width:160px;
+height:230px;
+background:#222;
+border-radius:6px;
+overflow:hidden;
+cursor:pointer;
+}
+
+.poster img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+</style>
 </head>
-<body class="p-6">
 
-  <header class="glass rounded-2xl p-6 mb-8 shadow-2xl">
-    <div class="flex justify-between items-center">
-      <h1 class="text-5xl font-black neon-cyan">HAMO LIVE PRO</h1>
-      <div class="text-right">
-        <p class="text-xl neon-pink">لوحة تحكم البث المباشر الاحترافية</p>
-        <p class="text-sm opacity-70">مصادر متعددة • كروما كي • تفاعل حي • صوت متقدم</p>
-      </div>
-    </div>
-  </header>
+<body>
 
-  <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-    <!-- Preview الرئيسي -->
-    <div class="lg:col-span-3">
-      <div class="preview-window rounded-2xl overflow-hidden aspect-video relative">
-        <div class="absolute inset-0 flex items-center justify-center text-4xl font-bold text-cyan-300 opacity-50">
-          PREVIEW - المشهد الحي
-        </div>
-        <div id="overlayLayer" class="absolute inset-0 pointer-events-none">
-          <!-- هنا يمكن إضافة overlays ديناميكية -->
-        </div>
-      </div>
+<header>
 
-      <!-- أزرار التحكم السريع -->
-      <div class="mt-6 glass rounded-2xl p-6">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <button class="control-btn glass p-6 rounded-xl text-center text-xl font-bold" onclick="toggleScene()">
-            <i class="fas fa-video text-3xl mb-2 block text-cyan-400"></i>
-            تبديل مشهد
-          </button>
-          <button class="control-btn glass p-6 rounded-xl text-center text-xl font-bold" onclick="toggleChroma()">
-            <i class="fas fa-magic text-3xl mb-2 block text-green-400"></i>
-            كروما كي
-          </button>
-          <button class="control-btn glass p-6 rounded-xl text-center text-xl font-bold" onclick="addAlert()">
-            <i class="fas fa-bell text-3xl mb-2 block text-yellow-400"></i>
-            إظهار أليرت
-          </button>
-          <button class="control-btn glass p-6 rounded-xl text-center text-xl font-bold" onclick="showPoll()">
-            <i class="fas fa-poll text-3xl mb-2 block text-purple-400"></i>
-            استطلاع رأي
-          </button>
-        </div>
-      </div>
-    </div>
+<div class="logo">HAMO TRIPLE M</div>
 
-    <!-- اللوحة الجانبية -->
-    <div class="space-y-6">
-      <!-- المصادر -->
-      <div class="glass rounded-2xl p-6">
-        <h2 class="text-2xl font-bold neon-cyan mb-4">المصادر والإدخالات</h2>
-        <div class="space-y-3">
-          <button class="w-full bg-cyan-900/50 hover:bg-cyan-800 p-4 rounded-xl flex items-center gap-3">
-            <i class="fas fa-camera text-xl"></i> إضافة كاميرا (DSLR/PTZ/Webcam)
-          </button>
-          <button class="w-full bg-cyan-900/50 hover:bg-cyan-800 p-4 rounded-xl flex items-center gap-3">
-            <i class="fas fa-desktop text-xl"></i> التقاط شاشة / لعبة
-          </button>
-          <button class="w-full bg-cyan-900/50 hover:bg-cyan-800 p-4 rounded-xl flex items-center gap-3">
-            <i class="fas fa-film text-xl"></i> تشغيل فيديو / صورة / GIF
-          </button>
-          <button class="w-full bg-cyan-900/50 hover:bg-cyan-800 p-4 rounded-xl flex items-center gap-3">
-            <i class="fas fa-link text-xl"></i> مصدر خارجي (NDI / SRT / Browser)
-          </button>
-        </div>
-      </div>
+<input placeholder="Search">
 
-      <!-- التفاعل المباشر -->
-      <div class="glass rounded-2xl p-6">
-        <h2 class="text-2xl font-bold neon-pink mb-4">التفاعل الحي</h2>
-        <div id="commentsArea" class="h-48 overflow-y-auto bg-black/40 p-4 rounded-xl mb-4 text-sm">
-          <!-- كومنتات وهمية -->
-          <p class="text-green-300">محمد: مبروك يا وحش! 🔥</p>
-          <p class="text-yellow-300">سارة: سؤال: امتى الحلقة الجاية؟</p>
-        </div>
-        <button class="w-full bg-purple-900/50 hover:bg-purple-800 p-4 rounded-xl">تحديث الكومنتات (فيسبوك/يوتيوب)</button>
-      </div>
+</header>
 
-      <!-- خلاط الصوت -->
-      <div class="glass rounded-2xl p-6">
-        <h2 class="text-2xl font-bold neon-purple mb-4">خلاط الصوت</h2>
-        <div class="space-y-4">
-          <div>
-            <label class="block mb-1">الميكروفون</label>
-            <input type="range" min="0" max="100" value="80" class="w-full accent-cyan-400"/>
-          </div>
-          <div>
-            <label class="block mb-1">اللعبة / الموسيقى</label>
-            <input type="range" min="0" max="100" value="60" class="w-full accent-pink-400"/>
-          </div>
-          <div class="flex gap-4">
-            <button class="flex-1 bg-green-900/50 p-3 rounded-xl">Noise Suppression</button>
-            <button class="flex-1 bg-yellow-900/50 p-3 rounded-xl">Compressor</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="banner">
 
-  <script>
-    function toggleScene() {
-      alert('تبديل المشهد... (مثال: استوديو 1 → استوديو 2)');
-    }
+<h1>Featured Movie</h1>
 
-    function toggleChroma() {
-      alert('تفعيل/إيقاف الكروما كي + خلفية افتراضية');
-    }
+</div>
 
-    function addAlert() {
-      const msg = prompt('اكتب رسالة الأليرت (متابع جديد / تبرع / اشتراك)');
-      if (msg) {
-        const area = document.getElementById('commentsArea');
-        area.innerHTML += `<p class="text-red-400 font-bold animate-pulse">${msg}</p>`;
-      }
-    }
+<div class="row">
 
-    function showPoll() {
-      alert('عرض استطلاع رأي حي: "ما رأيك في الحلقة؟"');
-    }
-  </script>
+<h2>Live Channels</h2>
+
+<div class="row-posters">
+
+<div class="poster">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Al_Jazeera_Arabic.svg/512px-Al_Jazeera_Arabic.svg.png">
+</div>
+
+<div class="poster">
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/BBC_News_2022_%28Alt%29.svg">
+</div>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<h2>Movies</h2>
+
+<div class="row-posters">
+
+<div class="poster">
+<img src="https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg">
+</div>
+
+<div class="poster">
+<img src="https://image.tmdb.org/t/p/w500/r7XifzvtezNt31ypvsmb6Oqxw49.jpg">
+</div>
+
+</div>
+
+</div>
+
 </body>
   </html>
+
+<div class="row">
+
+<h2>Continue Watching</h2>
+
+<div class="row-posters" id="history"></div>
+
+</div>
