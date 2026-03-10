@@ -1,0 +1,40 @@
+#EXTM3U url-tvg="https://epgshare01.online/epgshare01/epg_ripper_ALL_SOURCES1.xml.gz"
+
+#EXTINF:-1 tvg-id="cbc.eg" tvg-name="CBC" group-title="Egypt",CBC
+https://cdnamd-hls.cdn.mangomolo.com/cbc/smil:cbc.stream.smil/playlist.m3u8
+
+#EXTINF:-1 tvg-id="cbcdrama.eg" tvg-name="CBC Drama" group-title="Egypt",CBC Drama
+https://cdnamd-hls.cdn.mangomolo.com/cbcdramahls/smil:cbcdramahls.smil/playlist.m3u8
+
+#EXTINF:-1 tvg-id="dmc.eg" tvg-name="DMC" group-title="Egypt",DMC
+https://dmcfree-hls.cdn.mangomolo.com/dmc/smil:dmc.smil/playlist.m3u8
+
+#EXTINF:-1 tvg-id="dmcdrama.eg" tvg-name="DMC Drama" group-title="Egypt",DMC Drama
+https://dmcfree-hls.cdn.mangomolo.com/dmcdramahls/smil:dmcdramahls.smil/playlist.m3u8
+
+#EXTINF:-1 tvg-id="extra.eg" tvg-name="Extra News" group-title="News",Extra News
+https://extranews.live.cdn.mangomolo.com/extra/smil:extra.smil/playlist.m3u8
+
+#EXTINF:-1 tvg-id="alhayah1.eg" tvg-name="Al Hayah 1" group-title="Egypt",Al Hayah 1
+https://hayah1-live.cdn.mangomolo.com/hayah1/smil:hayah1.smil/playlist.m3u8
+
+#EXTINF:-1 tvg-id="sadaelbalad.eg" tvg-name="Sada El Balad" group-title="Egypt",Sada El Balad
+https://sadaelbalad-live.cdn.mangomolo.com/sadaelbalad/smil:sadaelbalad.stream.smil/playlist.m3u8
+
+#EXTINF:-1 tvg-id="alnahar.eg" tvg-name="Al Nahar" group-title="Egypt",Al Nahar
+https://live.alnahar.tv/live/playlist.m3u8
+
+#EXTINF:-1 tvg-id="alkahrawalnas.eg" tvg-name="Al Kahera Wal Nas" group-title="Egypt",Al Kahera Wal Nas
+https://live.alkahrawalnas.com/live/alkahrawalnas/playlist.m3u8
+
+#EXTINF:-1 tvg-id="alqaheranews.eg" tvg-name="Al Qahera News" group-title="News",Al Qahera News
+https://alqahira.news/live/playlist.m3u8
+
+#EXTINF:-1 tvg-id="nhkworld.jp" tvg-name="NHK World" group-title="International",NHK World
+https://nhkworld.webcdn.stream.ne.jp/www11/nhkworld-tv/global/263941/live_tv.m3u8
+
+#EXTINF:-1 tvg-id="trt1.tr" tvg-name="TRT 1" group-title="International",TRT 1
+https://trtcanlitv-lb.trt.net.tr/trt1/playlist.m3u8
+
+#EXTINF:-1 tvg-id="trthaber.tr" tvg-name="TRT Haber" group-title="News",TRT Haber
+https://trtcanlitv-lb.trt.net.tr/trthaber/playlist.m3u8
