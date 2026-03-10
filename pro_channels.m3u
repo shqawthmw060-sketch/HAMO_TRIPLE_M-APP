@@ -1,60 +1,95 @@
 #EXTM3U url-tvg="https://epgshare01.online/epgshare01/epg_ripper_ALL_SOURCES1.xml.gz"
 
-############ EGYPT ############
+########################
+# 🇪🇬 EGYPT
+########################
 
-#EXTINF:-1 tvg-id="cbc.eg" group-title="🇪🇬 Egypt",CBC
-https://cdnamd-hls.cdn.mangomolo.com/cbc/smil:cbc.stream.smil/playlist.m3u8
+#EXTINF:-1 group-title="🇪🇬 Egypt",CBC
+https://example.com/cbc.m3u8
 
-#EXTINF:-1 tvg-id="dmc.eg" group-title="🇪🇬 Egypt",DMC
-https://dmcfree-hls.cdn.mangomolo.com/dmc/smil:dmc.smil/playlist.m3u8
+#EXTINF:-1 group-title="🇪🇬 Egypt",DMC
+https://example.com/dmc.m3u8
 
-#EXTINF:-1 tvg-id="alhayah1.eg" group-title="🇪🇬 Egypt",Al Hayah
-https://hayah1-live.cdn.mangomolo.com/hayah1/smil:hayah1.smil/playlist.m3u8
-
-
-############ SPORTS ############
-
-#EXTINF:-1 group-title="⚽ Sports",Red Bull TV
-https://rbmn-live.akamaized.net/hls/live/590964/redbulltv/master.m3u8
-
-#EXTINF:-1 group-title="⚽ Sports",FIFA TV
-https://a.jsrdn.com/broadcast/4dcb05dfe9/+0000/c.m3u8
+#EXTINF:-1 group-title="🇪🇬 Egypt",Al Hayah
+https://example.com/hayah.m3u8
 
 
-############ NEWS ############
+########################
+# 🇸🇦 SAUDI
+########################
 
-#EXTINF:-1 group-title="📰 News",France 24
-https://live.france24.com/hls/live/2037218/F24_EN_HI_HLS/master.m3u8
+#EXTINF:-1 group-title="🇸🇦 Saudi",MBC 1
+https://example.com/mbc1.m3u8
 
-#EXTINF:-1 group-title="📰 News",Al Jazeera
-https://live-hls-web-aje.getaj.net/AJE/01.m3u8
-
-
-############ KIDS ############
-
-#EXTINF:-1 group-title="🧸 Kids",Duck TV
-https://ducktv-hls.akamaized.net/hls/live/2012711/ducktv/master.m3u8
+#EXTINF:-1 group-title="🇸🇦 Saudi",MBC Action
+https://example.com/mbcaction.m3u8
 
 
-############ MOVIES ############
-
-#EXTINF:-1 group-title="🎬 Movies",Rakuten TV
-https://rakuten-tv-movies-1-eu.rakuten.wurl.tv/playlist.m3u8
-
-
-############ USA ############
+########################
+# 🇺🇸 USA
+########################
 
 #EXTINF:-1 group-title="🇺🇸 USA",ABC News
-https://abcnews-streams.akamaized.net/hls/live/2023560/abcnews/master.m3u8
+https://example.com/abc.m3u8
+
+#EXTINF:-1 group-title="🇺🇸 USA",Bloomberg
+https://example.com/bloomberg.m3u8
 
 
-############ UK ############
+########################
+# 🇬🇧 UK
+########################
 
 #EXTINF:-1 group-title="🇬🇧 UK",BBC News
-https://vs-cmaf-pushb-ww-live.akamaized.net/x=4/i=urn:bbc:pips:service:bbc_news24/pc_hd_abr_v2.mpd
+https://example.com/bbc.m3u8
 
 
-############ TURKEY ############
+########################
+# 🇫🇷 FRANCE
+########################
+
+#EXTINF:-1 group-title="🇫🇷 France",France 24
+https://example.com/france24.m3u8
+
+
+########################
+# 🇹🇷 TURKEY
+########################
 
 #EXTINF:-1 group-title="🇹🇷 Turkey",TRT World
-https://tv-trtworld.live.trt.com.tr/master.m3u8
+https://example.com/trtworld.m3u8
+
+
+########################
+# ⚽ SPORTS
+########################
+
+#EXTINF:-1 group-title="⚽ Sports",FIFA TV
+https://example.com/fifa.m3u8
+
+#EXTINF:-1 group-title="⚽ Sports",RedBull TV
+https://example.com/redbull.m3u8
+
+
+########################
+# 🎬 MOVIES
+########################
+
+#EXTINF:-1 group-title="🎬 Movies",Movie Channel 1
+https://example.com/movie1.m3u8
+
+
+########################
+# 🧸 KIDS
+########################
+
+#EXTINF:-1 group-title="🧸 Kids",Kids Channel
+https://example.com/kids.m3u8
+
+
+########################
+# 📰 NEWS
+########################
+
+#EXTINF:-1 group-title="📰 News",Global News
+https://example.com/news.m3u8
